@@ -1,0 +1,107 @@
+syntax = "proto3";
+
+package homegateway.v1;
+
+option go_package = "github.com/example/homegateway/gen/go/homegateway/v1;homegateway";
+
+message Empty {}
+
+message HealthResponse {
+  string status = 1;
+}
+
+message HomeMerlinProbeRequest {
+  string base_url = 1;
+  string token = 2;
+  repeated string entities = 3;
+  bool verify_ssl = 4;
+}
+
+message HomeMerlinReading {
+  string entity_id = 1;
+  string state = 2;
+  map<string, string> attributes = 3;
+  string error = 4;
+}
+
+message HomeMerlinProbeResponse {
+  bool healthy = 1;
+  map<string, HomeMerlinReading> readings = 2;
+  string error = 3;
+}
+
+message HomeMerlinServiceRequest {
+  string base_url = 1;
+  string token = 2;
+  string domain = 3;
+  string service = 4;
+  string data_json = 5;
+}
+
+message HomeMerlinServiceResponse {
+  bool success = 1;
+  string response_json = 2;
+  string error = 3;
+}
+
+message HomeMerlinStateRequest {
+  string base_url = 1;
+  string token = 2;
+  string entity_id = 3;
+  string state_json = 4;
+  string attributes_json = 5;
+}
+
+message HomeMerlinStateResponse {
+  bool success = 1;
+  string state_json = 2;
+  string attributes_json = 3;
+  string error = 4;
+}
+
+message FrigateProbeRequest {
+  string base_url = 1;
+  string api_key = 2;
+}
+
+message FrigateProbeResponse {
+  bool healthy = 1;
+  string version = 2;
+  string version_json = 3;
+  string error = 4;
+  repeated string cameras = 5;
+}
+
+message FrigateEventsRequest {
+  string base_url = 1;
+  string api_key = 2;
+  int32 limit = 3;
+}
+
+message FrigateEventsResponse {
+  bool success = 1;
+  string events_json = 2;
+  string error = 3;
+}
+
+message SnapshotRequest {
+  bool include_home_assistant = 1;
+  bool include_frigate = 2;
+  bool include_frigate_cameras = 3;
+  repeated string home_assistant_entities = 4;
+}
+
+message SnapshotResponse {
+  string home_assistant_json = 1;
+  string frigate_json = 2;
+}
+
+service MyFortress {
+  rpc Health(Empty) returns (HealthResponse);
+  rpc ProbeHomeMerlin(HomeMerlinProbeRequest) returns (HomeMerlinProbeResponse);
+  rpc HomeMerlinService(HomeMerlinServiceRequest) returns (HomeMerlinServiceResponse);
+  rpc HomeMerlinState(HomeMerlinStateRequest) returns (HomeMerlinStateResponse);
+  rpc ProbeFrigate(FrigateProbeRequest) returns (FrigateProbeResponse);
+  rpc FrigateEvents(FrigateEventsRequest) returns (FrigateEventsResponse);
+  rpc Snapshot(SnapshotRequest) returns (SnapshotResponse);
+}
