@@ -1,0 +1,54 @@
+{
+  "schemaName": "PluginManifest",
+  "schemaVersion": "1.0.0",
+  "name": "myfortress",
+  "version": "0.1.0",
+  "description": "Home automation gateway service",
+  "entry": "gateway/api/server.py",
+  "type": "service",
+  "enabled": true,
+  "capabilities": [
+    {
+      "schemaName": "Capability",
+      "schemaVersion": "1.0.0",
+      "name": "home.snapshot",
+      "version": "1.0.0",
+      "description": "Provide consolidated home snapshot"
+    },
+    {
+      "schemaName": "Capability",
+      "schemaVersion": "1.0.0",
+      "name": "home.command",
+      "version": "1.0.0",
+      "description": "Execute home device commands",
+      "contracts": [
+        {
+          "id": "https://aas.local/contracts/home-device-control/v1",
+          "name": "HomeDeviceControl",
+          "version": "1.0.0",
+          "direction": "consumes"
+        }
+      ]
+    },
+    {
+      "schemaName": "Capability",
+      "schemaVersion": "1.0.0",
+      "name": "home.events",
+      "version": "1.0.0",
+      "description": "Stream home automation events"
+    }
+  ],
+  "interfaces": [
+    {
+      "type": "http",
+      "version": "1.0.0",
+      "endpoint": "http://localhost:8080"
+    },
+    {
+      "type": "grpc",
+      "version": "1.0.0",
+      "endpoint": "localhost:50055"
+    }
+  ],
+  "tags": ["home", "gateway"]
+}

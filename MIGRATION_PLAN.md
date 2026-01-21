@@ -8,7 +8,7 @@ Goal: Separate MyFortress into a standalone service while keeping AAS functional
 3) **AAS Rewire** *(in progress)*: update `plugins/home_gateway` in AAS to call the standalone API (ship Python client) instead of local imports; keep fallback until validated. *(Feature-flagged service client added; fallback connectors remain; Python client module created.)*
 4) **CI/Health** *(done)*: CI workflow, Dockerfile/compose, metrics/readiness; add package/build artifacts and release.
 
-## TODOs (tracked in `artifacts/handoff/ACTIVE_TASKS.md`)
+## TODOs (tracked in `artifacts/guild/ACTIVE_TASKS.md`)
 - HG-001: Define standalone service layout and config *(scaffolded: config/env, middleware, CLI, HTTP client)*
 - HG-002: Extract plugin logic into service, expose API *(probes/snapshot + HA service + Frigate cameras/events added; continue porting actions/state writes)*
 - HG-003: Update AAS plugin to consume standalone API *(service client wired with env flag; validate + rollout)*

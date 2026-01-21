@@ -1,5 +1,6 @@
 import subprocess
 from pathlib import Path
+import subprocess
 
 import httpx
 import typer
@@ -20,7 +21,6 @@ def _python() -> str:
 def run(
     host: str = "0.0.0.0",
     port: int = 8100,
-    reload: bool = False,
     log_level: str = "info",
 ):
     """Run the MyFortress FastAPI service."""
@@ -35,7 +35,7 @@ def run(
         "--log-level",
         log_level,
     ]
-    if reload:
+    if False:
         cmd.append("--reload")
     typer.echo(f"Starting MyFortress: {' '.join(cmd)}")
     subprocess.run(cmd, check=True)

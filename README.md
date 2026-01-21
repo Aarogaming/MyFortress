@@ -3,6 +3,10 @@
 ## Overview
 MyFortress is a Python-based service that acts as a bridge between home automation devices, cloud APIs, and the central automation suite. It provides secure, extensible connectors for smart home integration and automation.
 
+## Guild Workflow
+- Quest template: https://github.com/Aarogaming/AaroneousAutomationSuite/blob/main/guild/QUEST_TEMPLATE.md
+- Protocol: https://github.com/Aarogaming/AaroneousAutomationSuite/blob/main/docs/GUILD_PROTOCOL.md
+
 ## Features
 - Connects to a variety of smart home devices and APIs
 - Secure local and remote communication

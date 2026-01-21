@@ -43,6 +43,12 @@ class Settings(BaseSettings):
 
     # Caching / telemetry
     snapshot_cache_ttl: float = Field(default=10.0, description="Seconds")
+    
+    # AAS Intelligence Integration
+    aas_hub_url: Optional[str] = Field(
+        default="http://localhost:8000", 
+        description="URL of the AAS Hub for intelligence services"
+    )
 
     @field_validator("home_assistant_url", "frigate_url", mode="after")
     @classmethod

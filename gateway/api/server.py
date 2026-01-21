@@ -9,6 +9,7 @@ from gateway.api.middleware import (
     RequestIDMiddleware,
 )
 from gateway.api.routes import router as api_router
+from gateway.api.intelligence_routes import router as intelligence_router
 from gateway.config import get_settings
 from gateway.core import metrics
 
@@ -23,11 +24,17 @@ app = FastAPI(title="MyFortress", version="0.1.0")
 app.state.start_time = time.time()
 app.state.request_count = 0
 app.state.settings = get_settings()
+
+# Initialize intelligence manager
+from gateway.intelligence.manager import initialize_intelligence_manager
+initialize_intelligence_manager(app.state.settings)
+
 app.add_middleware(RequestIDMiddleware)
 app.add_middleware(ApiKeyMiddleware)
 app.add_middleware(LoggingMiddleware)
 
 app.include_router(api_router)
+app.include_router(intelligence_router)
 
 if OTEL_AVAILABLE:
     FastAPIInstrumentor.instrument_app(app)
