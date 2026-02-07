@@ -25,25 +25,27 @@ def test_snapshot_endpoint_returns_data():
         json={"cameras": {"front": {}, "back": {}}}
     )
 
-    resp = client.post(
-        "/snapshot", json={"home_assistant_entities": ["sensor.temp"]}
-    )
+    resp = client.post("/snapshot", json={"home_assistant_entities": ["sensor.temp"]})
     assert resp.status_code == 200
     data = resp.json()
     assert data["home_assistant"]["healthy"] is True
     assert data["frigate"]["healthy"] is True
-    assert (
-        data["home_assistant"]["readings"]["sensor.temp"]["state"] == "on"
-    )
+    assert data["home_assistant"]["readings"]["sensor.temp"]["state"] == "on"
     assert "front" in data["frigate"]["cameras"]
 
 
 @respx.mock
 def test_home_assistant_service():
-    respx.post("http://ha.local/api/services/light/toggle").respond(json={"result": "ok"})
+    respx.post("http://ha.local/api/services/light/toggle").respond(
+        json={"result": "ok"}
+    )
     resp = client.post(
         "/home-assistant/service",
-        json={"domain": "light", "service": "toggle", "data": {"entity_id": "light.kitchen"}},
+        json={
+            "domain": "light",
+            "service": "toggle",
+            "data": {"entity_id": "light.kitchen"},
+        },
     )
     assert resp.status_code == 200
     body = resp.json()
@@ -70,7 +72,11 @@ def test_home_assistant_state():
     )
     resp = client.post(
         "/home-assistant/state",
-        json={"entity_id": "light.kitchen", "state": "on", "attributes": {"brightness": 150}},
+        json={
+            "entity_id": "light.kitchen",
+            "state": "on",
+            "attributes": {"brightness": 150},
+        },
     )
     assert resp.status_code == 200
     body = resp.json()
@@ -80,7 +86,9 @@ def test_home_assistant_state():
 
 @respx.mock
 def test_frigate_events():
-    respx.get("http://frigate.local/api/events").respond(json=[{"id": "1", "camera": "front"}])
+    respx.get("http://frigate.local/api/events").respond(
+        json=[{"id": "1", "camera": "front"}]
+    )
     resp = client.get("/frigate/events", params={"limit": 5})
     assert resp.status_code == 200
     body = resp.json()

@@ -1,0 +1,27 @@
+{
+  "schemaName": "PluginManifest",
+  "schemaVersion": "1.0.0",
+  "name": "openapi_export",
+  "version": "0.1.0",
+  "description": "Export MyFortress FastAPI OpenAPI schema",
+  "entry": "plugin.py",
+  "type": "plugin",
+  "capabilities": [
+    {
+      "schemaName": "Capability",
+      "schemaVersion": "1.0.0",
+      "name": "myfortress.openapi.export",
+      "version": "0.1.0"
+    }
+  ],
+  "extensions": {
+    "aas": {
+      "hive": "myfortress",
+      "visibility": "global",
+      "exports": [
+        "myfortress.openapi.export"
+      ],
+      "kernel": "myfortress"
+    }
+  }
+}

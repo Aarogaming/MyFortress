@@ -13,15 +13,15 @@ from .models import (
     HomeOptimizationRecommendation,
     EnergyOptimization,
     SecurityIntelligence,
-    PredictiveAutomation
+    PredictiveAutomation,
 )
 
 __all__ = [
     "MyFortressIntelligenceClient",
-    "MyFortressIntelligenceManager", 
+    "MyFortressIntelligenceManager",
     "HomeIntelligenceContext",
     "HomeOptimizationRecommendation",
     "EnergyOptimization",
     "SecurityIntelligence",
-    "PredictiveAutomation"
+    "PredictiveAutomation",
 ]

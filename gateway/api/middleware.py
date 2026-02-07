@@ -55,9 +55,11 @@ class LoggingMiddleware(BaseHTTPMiddleware):
         if getattr(settings, "structured_logging", False):
             import json
             import logging
+
             logging.getLogger("gateway.access").info(json.dumps(log_payload))
         else:
             import logging
+
             logging.getLogger("gateway.access").info(
                 f"{method} {path} -> {status} ({duration_ms:.1f} ms) request_id={request_id}"
             )
@@ -87,7 +89,9 @@ class ApiKeyMiddleware(BaseHTTPMiddleware):
             window_seconds=settings.rate_limit_window_seconds,
         ):
             metrics.increment("rate_limit_hits")
-            metrics.increment(f"rate_limit_hits_{_sanitize_metric_suffix(request.url.path)}")
+            metrics.increment(
+                f"rate_limit_hits_{_sanitize_metric_suffix(request.url.path)}"
+            )
             return JSONResponse(
                 status_code=429,
                 content={"detail": "Rate limit exceeded"},

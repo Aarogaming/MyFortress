@@ -1,0 +1,20 @@
+{
+  "communication": {
+    "channels": [
+      "event_bus",
+      "outbox"
+    ],
+    "require_ack": true,
+    "retries": 2,
+    "heartbeat_sec": 25
+  },
+  "verification": {
+    "required": true,
+    "expect_running": false
+  },
+  "repair": {
+    "recursive": true,
+    "max_attempts": 3,
+    "backoff_sec": 6
+  }
+}

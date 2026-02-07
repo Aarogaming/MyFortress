@@ -20,10 +20,14 @@ async def stream_events(
     backoff = 1.0
     last_event_time = time.time()
     while True:
-        client = build_async_client(settings=settings, base_url=url_base, headers=headers)
+        client = build_async_client(
+            settings=settings, base_url=url_base, headers=headers
+        )
         try:
             async with client:
-                async with client.stream("GET", "/api/events/stream", timeout=None) as resp:
+                async with client.stream(
+                    "GET", "/api/events/stream", timeout=None
+                ) as resp:
                     async for line in resp.aiter_lines():
                         if not line or line.startswith(":"):
                             # heartbeat if idle for too long
@@ -32,12 +36,12 @@ async def stream_events(
                                 last_event_time = time.time()
                             continue
                         last_event_time = time.time()
-                        
+
                         # Basic parsing of SSE data: line
                         data = line
                         if line.startswith("data: "):
                             data = line[6:]
-                        
+
                         try:
                             parsed = json.loads(data)
                             yield {"raw": line, "data": parsed, "type": "event"}

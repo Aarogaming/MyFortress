@@ -16,6 +16,7 @@ from gateway.core import metrics
 try:
     from opentelemetry import trace
     from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
+
     OTEL_AVAILABLE = True
 except ImportError:
     OTEL_AVAILABLE = False
@@ -27,6 +28,7 @@ app.state.settings = get_settings()
 
 # Initialize intelligence manager
 from gateway.intelligence.manager import initialize_intelligence_manager
+
 initialize_intelligence_manager(app.state.settings)
 
 app.add_middleware(RequestIDMiddleware)
@@ -64,6 +66,7 @@ async def _count_requests(request, call_next):
 async def system_info() -> dict:
     import platform
     import sys
+
     return {
         "platform": platform.system(),
         "platform_release": platform.release(),

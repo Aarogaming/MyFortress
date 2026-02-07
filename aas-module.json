@@ -1,0 +1,25 @@
+{
+  "id": "myfortress",
+  "name": "MyFortress",
+  "kernel": {
+    "type": "service",
+    "manager": "core.module_kernels.MyFortressKernel"
+  },
+  "plugins": {
+    "paths": [
+      "MyFortress/plugins",
+      "plugins/myfortress_service_adapter"
+    ]
+  },
+  "hive": {
+    "swarm_enabled": true,
+    "verify_interval_sec": 25,
+    "repair_backoff_sec": 6,
+    "max_recursive_repairs": 3
+  },
+  "metadata": {
+    "owner": "AAS",
+    "description": "MyFortress service kernel + adapter plugins",
+    "tier": "core"
+  }
+}

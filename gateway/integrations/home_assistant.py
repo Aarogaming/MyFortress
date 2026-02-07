@@ -70,7 +70,10 @@ class HomeMerlinClient:
                 return {"success": False, "error": str(exc)}
 
     async def set_state(
-        self, entity_id: str, state: object, attributes: Optional[Dict[str, object]] = None
+        self,
+        entity_id: str,
+        state: object,
+        attributes: Optional[Dict[str, object]] = None,
     ) -> Dict[str, object]:
         if not self.base_url:
             return {"success": False, "error": "home_assistant_url not set"}

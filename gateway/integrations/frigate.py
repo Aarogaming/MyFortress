@@ -77,9 +77,7 @@ class FrigateClient:
                     "/api/version",
                     max_retries=self.settings.max_retries,
                 )
-                metrics.record_latency(
-                    "frigate_probe_ms", (time.time() - start) * 1000
-                )
+                metrics.record_latency("frigate_probe_ms", (time.time() - start) * 1000)
                 data = resp.json()
                 version = data.get("version") if isinstance(data, dict) else None
                 return FrigateSnapshot(
@@ -88,9 +86,7 @@ class FrigateClient:
                 )
             except Exception as exc:
                 metrics.increment("frigate_probe_errors")
-                return FrigateSnapshot(
-                    healthy=False, version=None, error=str(exc)
-                )
+                return FrigateSnapshot(healthy=False, version=None, error=str(exc))
 
     async def fetch_snapshot(self) -> FrigateSnapshot:
         snapshot = await self.fetch_version()
@@ -100,7 +96,9 @@ class FrigateClient:
             snapshot.cameras = cameras
         else:
             error = cameras_result.get("error")
-            snapshot.error = snapshot.error or (str(error) if error is not None else None)
+            snapshot.error = snapshot.error or (
+                str(error) if error is not None else None
+            )
         return snapshot
 
     async def fetch_events(self, limit: int = 50) -> Dict[str, object]:

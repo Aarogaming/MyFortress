@@ -38,7 +38,9 @@ async def test_frigate_probe_handles_error():
 @respx.mock
 async def test_home_assistant_service_call():
     settings = Settings(home_assistant_url="http://ha.local")
-    respx.post("http://ha.local/api/services/light/toggle").respond(json={"result": "ok"})
+    respx.post("http://ha.local/api/services/light/toggle").respond(
+        json={"result": "ok"}
+    )
 
     client = HomeMerlinClient(settings=settings)
     resp = await client.call_service("light", "toggle", {"entity_id": "light.kitchen"})
@@ -82,7 +84,9 @@ async def test_home_assistant_set_state():
 @respx.mock
 async def test_frigate_events():
     settings = Settings(frigate_url="http://frigate.local")
-    respx.get("http://frigate.local/api/events").respond(json=[{"id": "1", "camera": "front"}])
+    respx.get("http://frigate.local/api/events").respond(
+        json=[{"id": "1", "camera": "front"}]
+    )
 
     client = FrigateClient(settings=settings)
     resp = await client.fetch_events(limit=10)

@@ -4,72 +4,73 @@
 # source: artifacts/api/homegateway.proto
 # Protobuf Python Version: 6.31.1
 """Generated protocol buffer code."""
+
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import runtime_version as _runtime_version
 from google.protobuf import symbol_database as _symbol_database
 from google.protobuf.internal import builder as _builder
+
 _runtime_version.ValidateProtobufRuntimeVersion(
-    _runtime_version.Domain.PUBLIC,
-    6,
-    31,
-    1,
-    '',
-    'artifacts/api/homegateway.proto'
+    _runtime_version.Domain.PUBLIC, 6, 31, 1, "", "artifacts/api/homegateway.proto"
 )
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
-
-
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1f\x61rtifacts/api/homegateway.proto\x12\x0ehomegateway.v1\"\x07\n\x05\x45mpty\" \n\x0eHealthResponse\x12\x0e\n\x06status\x18\x01 \x01(\t\"b\n\x19HomeMerlinProbeRequest\x12\x10\n\x08\x62\x61se_url\x18\x01 \x01(\t\x12\r\n\x05token\x18\x02 \x01(\t\x12\x10\n\x08\x65ntities\x18\x03 \x03(\t\x12\x12\n\nverify_ssl\x18\x04 \x01(\x08\"\xc4\x01\n\x14HomeMerlinReading\x12\x11\n\tentity_id\x18\x01 \x01(\t\x12\r\n\x05state\x18\x02 \x01(\t\x12H\n\nattributes\x18\x03 \x03(\x0b\x32\x34.homegateway.v1.HomeMerlinReading.AttributesEntry\x12\r\n\x05\x65rror\x18\x04 \x01(\t\x1a\x31\n\x0f\x41ttributesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xdf\x01\n\x1aHomeMerlinProbeResponse\x12\x0f\n\x07healthy\x18\x01 \x01(\x08\x12J\n\x08readings\x18\x02 \x03(\x0b\x32\x38.homegateway.v1.HomeMerlinProbeResponse.ReadingsEntry\x12\r\n\x05\x65rror\x18\x03 \x01(\t\x1aU\n\rReadingsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x33\n\x05value\x18\x02 \x01(\x0b\x32$.homegateway.v1.HomeMerlinReading:\x02\x38\x01\"r\n\x1bHomeMerlinServiceRequest\x12\x10\n\x08\x62\x61se_url\x18\x01 \x01(\t\x12\r\n\x05token\x18\x02 \x01(\t\x12\x0e\n\x06\x64omain\x18\x03 \x01(\t\x12\x0f\n\x07service\x18\x04 \x01(\t\x12\x11\n\tdata_json\x18\x05 \x01(\t\"U\n\x1cHomeMerlinServiceResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x15\n\rresponse_json\x18\x02 \x01(\t\x12\r\n\x05\x65rror\x18\x03 \x01(\t\"|\n\x19HomeMerlinStateRequest\x12\x10\n\x08\x62\x61se_url\x18\x01 \x01(\t\x12\r\n\x05token\x18\x02 \x01(\t\x12\x11\n\tentity_id\x18\x03 \x01(\t\x12\x12\n\nstate_json\x18\x04 \x01(\t\x12\x17\n\x0f\x61ttributes_json\x18\x05 \x01(\t\"i\n\x1aHomeMerlinStateResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x12\n\nstate_json\x18\x02 \x01(\t\x12\x17\n\x0f\x61ttributes_json\x18\x03 \x01(\t\x12\r\n\x05\x65rror\x18\x04 \x01(\t\"8\n\x13\x46rigateProbeRequest\x12\x10\n\x08\x62\x61se_url\x18\x01 \x01(\t\x12\x0f\n\x07\x61pi_key\x18\x02 \x01(\t\"n\n\x14\x46rigateProbeResponse\x12\x0f\n\x07healthy\x18\x01 \x01(\x08\x12\x0f\n\x07version\x18\x02 \x01(\t\x12\x14\n\x0cversion_json\x18\x03 \x01(\t\x12\r\n\x05\x65rror\x18\x04 \x01(\t\x12\x0f\n\x07\x63\x61meras\x18\x05 \x03(\t\"H\n\x14\x46rigateEventsRequest\x12\x10\n\x08\x62\x61se_url\x18\x01 \x01(\t\x12\x0f\n\x07\x61pi_key\x18\x02 \x01(\t\x12\r\n\x05limit\x18\x03 \x01(\x05\"L\n\x15\x46rigateEventsResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x13\n\x0b\x65vents_json\x18\x02 \x01(\t\x12\r\n\x05\x65rror\x18\x03 \x01(\t\"\x8c\x01\n\x0fSnapshotRequest\x12\x1e\n\x16include_home_assistant\x18\x01 \x01(\x08\x12\x17\n\x0finclude_frigate\x18\x02 \x01(\x08\x12\x1f\n\x17include_frigate_cameras\x18\x03 \x01(\x08\x12\x1f\n\x17home_assistant_entities\x18\x04 \x03(\t\"E\n\x10SnapshotResponse\x12\x1b\n\x13home_assistant_json\x18\x01 \x01(\t\x12\x14\n\x0c\x66rigate_json\x18\x02 \x01(\t2\xa3\x05\n\x0bMyFortress\x12?\n\x06Health\x12\x15.homegateway.v1.Empty\x1a\x1e.homegateway.v1.HealthResponse\x12k\n\x12ProbeHomeMerlin\x12).homegateway.v1.HomeMerlinProbeRequest\x1a*.homegateway.v1.HomeMerlinProbeResponse\x12q\n\x14HomeMerlinService\x12+.homegateway.v1.HomeMerlinServiceRequest\x1a,.homegateway.v1.HomeMerlinServiceResponse\x12k\n\x12HomeMerlinState\x12).homegateway.v1.HomeMerlinStateRequest\x1a*.homegateway.v1.HomeMerlinStateResponse\x12Y\n\x0cProbeFrigate\x12#.homegateway.v1.FrigateProbeRequest\x1a$.homegateway.v1.FrigateProbeResponse\x12\\\n\rFrigateEvents\x12$.homegateway.v1.FrigateEventsRequest\x1a%.homegateway.v1.FrigateEventsResponse\x12M\n\x08Snapshot\x12\x1f.homegateway.v1.SnapshotRequest\x1a .homegateway.v1.SnapshotResponseBBZ@github.com/example/homegateway/gen/go/homegateway/v1;homegatewayb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(
+    b'\n\x1f\x61rtifacts/api/homegateway.proto\x12\x0ehomegateway.v1"\x07\n\x05\x45mpty" \n\x0eHealthResponse\x12\x0e\n\x06status\x18\x01 \x01(\t"b\n\x19HomeMerlinProbeRequest\x12\x10\n\x08\x62\x61se_url\x18\x01 \x01(\t\x12\r\n\x05token\x18\x02 \x01(\t\x12\x10\n\x08\x65ntities\x18\x03 \x03(\t\x12\x12\n\nverify_ssl\x18\x04 \x01(\x08"\xc4\x01\n\x14HomeMerlinReading\x12\x11\n\tentity_id\x18\x01 \x01(\t\x12\r\n\x05state\x18\x02 \x01(\t\x12H\n\nattributes\x18\x03 \x03(\x0b\x32\x34.homegateway.v1.HomeMerlinReading.AttributesEntry\x12\r\n\x05\x65rror\x18\x04 \x01(\t\x1a\x31\n\x0f\x41ttributesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01"\xdf\x01\n\x1aHomeMerlinProbeResponse\x12\x0f\n\x07healthy\x18\x01 \x01(\x08\x12J\n\x08readings\x18\x02 \x03(\x0b\x32\x38.homegateway.v1.HomeMerlinProbeResponse.ReadingsEntry\x12\r\n\x05\x65rror\x18\x03 \x01(\t\x1aU\n\rReadingsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x33\n\x05value\x18\x02 \x01(\x0b\x32$.homegateway.v1.HomeMerlinReading:\x02\x38\x01"r\n\x1bHomeMerlinServiceRequest\x12\x10\n\x08\x62\x61se_url\x18\x01 \x01(\t\x12\r\n\x05token\x18\x02 \x01(\t\x12\x0e\n\x06\x64omain\x18\x03 \x01(\t\x12\x0f\n\x07service\x18\x04 \x01(\t\x12\x11\n\tdata_json\x18\x05 \x01(\t"U\n\x1cHomeMerlinServiceResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x15\n\rresponse_json\x18\x02 \x01(\t\x12\r\n\x05\x65rror\x18\x03 \x01(\t"|\n\x19HomeMerlinStateRequest\x12\x10\n\x08\x62\x61se_url\x18\x01 \x01(\t\x12\r\n\x05token\x18\x02 \x01(\t\x12\x11\n\tentity_id\x18\x03 \x01(\t\x12\x12\n\nstate_json\x18\x04 \x01(\t\x12\x17\n\x0f\x61ttributes_json\x18\x05 \x01(\t"i\n\x1aHomeMerlinStateResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x12\n\nstate_json\x18\x02 \x01(\t\x12\x17\n\x0f\x61ttributes_json\x18\x03 \x01(\t\x12\r\n\x05\x65rror\x18\x04 \x01(\t"8\n\x13\x46rigateProbeRequest\x12\x10\n\x08\x62\x61se_url\x18\x01 \x01(\t\x12\x0f\n\x07\x61pi_key\x18\x02 \x01(\t"n\n\x14\x46rigateProbeResponse\x12\x0f\n\x07healthy\x18\x01 \x01(\x08\x12\x0f\n\x07version\x18\x02 \x01(\t\x12\x14\n\x0cversion_json\x18\x03 \x01(\t\x12\r\n\x05\x65rror\x18\x04 \x01(\t\x12\x0f\n\x07\x63\x61meras\x18\x05 \x03(\t"H\n\x14\x46rigateEventsRequest\x12\x10\n\x08\x62\x61se_url\x18\x01 \x01(\t\x12\x0f\n\x07\x61pi_key\x18\x02 \x01(\t\x12\r\n\x05limit\x18\x03 \x01(\x05"L\n\x15\x46rigateEventsResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x13\n\x0b\x65vents_json\x18\x02 \x01(\t\x12\r\n\x05\x65rror\x18\x03 \x01(\t"\x8c\x01\n\x0fSnapshotRequest\x12\x1e\n\x16include_home_assistant\x18\x01 \x01(\x08\x12\x17\n\x0finclude_frigate\x18\x02 \x01(\x08\x12\x1f\n\x17include_frigate_cameras\x18\x03 \x01(\x08\x12\x1f\n\x17home_assistant_entities\x18\x04 \x03(\t"E\n\x10SnapshotResponse\x12\x1b\n\x13home_assistant_json\x18\x01 \x01(\t\x12\x14\n\x0c\x66rigate_json\x18\x02 \x01(\t2\xa3\x05\n\x0bMyFortress\x12?\n\x06Health\x12\x15.homegateway.v1.Empty\x1a\x1e.homegateway.v1.HealthResponse\x12k\n\x12ProbeHomeMerlin\x12).homegateway.v1.HomeMerlinProbeRequest\x1a*.homegateway.v1.HomeMerlinProbeResponse\x12q\n\x14HomeMerlinService\x12+.homegateway.v1.HomeMerlinServiceRequest\x1a,.homegateway.v1.HomeMerlinServiceResponse\x12k\n\x12HomeMerlinState\x12).homegateway.v1.HomeMerlinStateRequest\x1a*.homegateway.v1.HomeMerlinStateResponse\x12Y\n\x0cProbeFrigate\x12#.homegateway.v1.FrigateProbeRequest\x1a$.homegateway.v1.FrigateProbeResponse\x12\\\n\rFrigateEvents\x12$.homegateway.v1.FrigateEventsRequest\x1a%.homegateway.v1.FrigateEventsResponse\x12M\n\x08Snapshot\x12\x1f.homegateway.v1.SnapshotRequest\x1a .homegateway.v1.SnapshotResponseBBZ@github.com/example/homegateway/gen/go/homegateway/v1;homegatewayb\x06proto3'
+)
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
-_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'artifacts.api.homegateway_pb2', _globals)
+_builder.BuildTopDescriptorsAndMessages(
+    DESCRIPTOR, "artifacts.api.homegateway_pb2", _globals
+)
 if not _descriptor._USE_C_DESCRIPTORS:
-  _globals['DESCRIPTOR']._loaded_options = None
-  _globals['DESCRIPTOR']._serialized_options = b'Z@github.com/example/homegateway/gen/go/homegateway/v1;homegateway'
-  _globals['_HOMEASSISTANTREADING_ATTRIBUTESENTRY']._loaded_options = None
-  _globals['_HOMEASSISTANTREADING_ATTRIBUTESENTRY']._serialized_options = b'8\001'
-  _globals['_HOMEASSISTANTPROBERESPONSE_READINGSENTRY']._loaded_options = None
-  _globals['_HOMEASSISTANTPROBERESPONSE_READINGSENTRY']._serialized_options = b'8\001'
-  _globals['_EMPTY']._serialized_start=51
-  _globals['_EMPTY']._serialized_end=58
-  _globals['_HEALTHRESPONSE']._serialized_start=60
-  _globals['_HEALTHRESPONSE']._serialized_end=92
-  _globals['_HOMEASSISTANTPROBEREQUEST']._serialized_start=94
-  _globals['_HOMEASSISTANTPROBEREQUEST']._serialized_end=192
-  _globals['_HOMEASSISTANTREADING']._serialized_start=195
-  _globals['_HOMEASSISTANTREADING']._serialized_end=391
-  _globals['_HOMEASSISTANTREADING_ATTRIBUTESENTRY']._serialized_start=342
-  _globals['_HOMEASSISTANTREADING_ATTRIBUTESENTRY']._serialized_end=391
-  _globals['_HOMEASSISTANTPROBERESPONSE']._serialized_start=394
-  _globals['_HOMEASSISTANTPROBERESPONSE']._serialized_end=617
-  _globals['_HOMEASSISTANTPROBERESPONSE_READINGSENTRY']._serialized_start=532
-  _globals['_HOMEASSISTANTPROBERESPONSE_READINGSENTRY']._serialized_end=617
-  _globals['_HOMEASSISTANTSERVICEREQUEST']._serialized_start=619
-  _globals['_HOMEASSISTANTSERVICEREQUEST']._serialized_end=733
-  _globals['_HOMEASSISTANTSERVICERESPONSE']._serialized_start=735
-  _globals['_HOMEASSISTANTSERVICERESPONSE']._serialized_end=820
-  _globals['_HOMEASSISTANTSTATEREQUEST']._serialized_start=822
-  _globals['_HOMEASSISTANTSTATEREQUEST']._serialized_end=946
-  _globals['_HOMEASSISTANTSTATERESPONSE']._serialized_start=948
-  _globals['_HOMEASSISTANTSTATERESPONSE']._serialized_end=1053
-  _globals['_FRIGATEPROBEREQUEST']._serialized_start=1055
-  _globals['_FRIGATEPROBEREQUEST']._serialized_end=1111
-  _globals['_FRIGATEPROBERESPONSE']._serialized_start=1113
-  _globals['_FRIGATEPROBERESPONSE']._serialized_end=1223
-  _globals['_FRIGATEEVENTSREQUEST']._serialized_start=1225
-  _globals['_FRIGATEEVENTSREQUEST']._serialized_end=1297
-  _globals['_FRIGATEEVENTSRESPONSE']._serialized_start=1299
-  _globals['_FRIGATEEVENTSRESPONSE']._serialized_end=1375
-  _globals['_SNAPSHOTREQUEST']._serialized_start=1378
-  _globals['_SNAPSHOTREQUEST']._serialized_end=1518
-  _globals['_SNAPSHOTRESPONSE']._serialized_start=1520
-  _globals['_SNAPSHOTRESPONSE']._serialized_end=1589
-  _globals['_HOMEGATEWAY']._serialized_start=1592
-  _globals['_HOMEGATEWAY']._serialized_end=2267
+    _globals["DESCRIPTOR"]._loaded_options = None
+    _globals["DESCRIPTOR"]._serialized_options = (
+        b"Z@github.com/example/homegateway/gen/go/homegateway/v1;homegateway"
+    )
+    _globals["_HOMEASSISTANTREADING_ATTRIBUTESENTRY"]._loaded_options = None
+    _globals["_HOMEASSISTANTREADING_ATTRIBUTESENTRY"]._serialized_options = b"8\001"
+    _globals["_HOMEASSISTANTPROBERESPONSE_READINGSENTRY"]._loaded_options = None
+    _globals["_HOMEASSISTANTPROBERESPONSE_READINGSENTRY"]._serialized_options = b"8\001"
+    _globals["_EMPTY"]._serialized_start = 51
+    _globals["_EMPTY"]._serialized_end = 58
+    _globals["_HEALTHRESPONSE"]._serialized_start = 60
+    _globals["_HEALTHRESPONSE"]._serialized_end = 92
+    _globals["_HOMEASSISTANTPROBEREQUEST"]._serialized_start = 94
+    _globals["_HOMEASSISTANTPROBEREQUEST"]._serialized_end = 192
+    _globals["_HOMEASSISTANTREADING"]._serialized_start = 195
+    _globals["_HOMEASSISTANTREADING"]._serialized_end = 391
+    _globals["_HOMEASSISTANTREADING_ATTRIBUTESENTRY"]._serialized_start = 342
+    _globals["_HOMEASSISTANTREADING_ATTRIBUTESENTRY"]._serialized_end = 391
+    _globals["_HOMEASSISTANTPROBERESPONSE"]._serialized_start = 394
+    _globals["_HOMEASSISTANTPROBERESPONSE"]._serialized_end = 617
+    _globals["_HOMEASSISTANTPROBERESPONSE_READINGSENTRY"]._serialized_start = 532
+    _globals["_HOMEASSISTANTPROBERESPONSE_READINGSENTRY"]._serialized_end = 617
+    _globals["_HOMEASSISTANTSERVICEREQUEST"]._serialized_start = 619
+    _globals["_HOMEASSISTANTSERVICEREQUEST"]._serialized_end = 733
+    _globals["_HOMEASSISTANTSERVICERESPONSE"]._serialized_start = 735
+    _globals["_HOMEASSISTANTSERVICERESPONSE"]._serialized_end = 820
+    _globals["_HOMEASSISTANTSTATEREQUEST"]._serialized_start = 822
+    _globals["_HOMEASSISTANTSTATEREQUEST"]._serialized_end = 946
+    _globals["_HOMEASSISTANTSTATERESPONSE"]._serialized_start = 948
+    _globals["_HOMEASSISTANTSTATERESPONSE"]._serialized_end = 1053
+    _globals["_FRIGATEPROBEREQUEST"]._serialized_start = 1055
+    _globals["_FRIGATEPROBEREQUEST"]._serialized_end = 1111
+    _globals["_FRIGATEPROBERESPONSE"]._serialized_start = 1113
+    _globals["_FRIGATEPROBERESPONSE"]._serialized_end = 1223
+    _globals["_FRIGATEEVENTSREQUEST"]._serialized_start = 1225
+    _globals["_FRIGATEEVENTSREQUEST"]._serialized_end = 1297
+    _globals["_FRIGATEEVENTSRESPONSE"]._serialized_start = 1299
+    _globals["_FRIGATEEVENTSRESPONSE"]._serialized_end = 1375
+    _globals["_SNAPSHOTREQUEST"]._serialized_start = 1378
+    _globals["_SNAPSHOTREQUEST"]._serialized_end = 1518
+    _globals["_SNAPSHOTRESPONSE"]._serialized_start = 1520
+    _globals["_SNAPSHOTRESPONSE"]._serialized_end = 1589
+    _globals["_HOMEGATEWAY"]._serialized_start = 1592
+    _globals["_HOMEGATEWAY"]._serialized_end = 2267
 # @@protoc_insertion_point(module_scope)

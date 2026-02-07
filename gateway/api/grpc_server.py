@@ -12,6 +12,7 @@ from gateway.integrations.home_assistant import HomeMerlinClient
 
 logger = logging.getLogger(__name__)
 
+
 class MyFortressServicer(homegateway_pb2_grpc.MyFortressServicer):
     def __init__(self, settings: Settings):
         self.settings = settings
@@ -33,12 +34,10 @@ class MyFortressServicer(homegateway_pb2_grpc.MyFortressServicer):
                 entity_id=r.entity_id,
                 state=str(r.state),
                 attributes={k: str(v) for k, v in r.attributes.items()},
-                error=r.error or ""
+                error=r.error or "",
             )
         return homegateway_pb2.HomeMerlinProbeResponse(
-            healthy=res.healthy,
-            readings=readings,
-            error=res.error or ""
+            healthy=res.healthy, readings=readings, error=res.error or ""
         )
 
     async def HomeMerlinService(self, request, context):
@@ -52,7 +51,7 @@ class MyFortressServicer(homegateway_pb2_grpc.MyFortressServicer):
         return homegateway_pb2.HomeMerlinServiceResponse(
             success=res.success,
             response_json=json.dumps(res.response),
-            error=res.error or ""
+            error=res.error or "",
         )
 
     async def HomeMerlinState(self, request, context):
@@ -68,7 +67,7 @@ class MyFortressServicer(homegateway_pb2_grpc.MyFortressServicer):
             success=res.success,
             state_json=json.dumps(res.state),
             attributes_json=json.dumps(res.attributes),
-            error=res.error or ""
+            error=res.error or "",
         )
 
     async def ProbeFrigate(self, request, context):
@@ -83,7 +82,7 @@ class MyFortressServicer(homegateway_pb2_grpc.MyFortressServicer):
             version=res.version or "",
             version_json=json.dumps(res.raw),
             error=res.error or "",
-            cameras=res.cameras
+            cameras=res.cameras,
         )
 
     async def FrigateEvents(self, request, context):
@@ -96,19 +95,19 @@ class MyFortressServicer(homegateway_pb2_grpc.MyFortressServicer):
         return homegateway_pb2.FrigateEventsResponse(
             success=res.get("success", True),
             events_json=json.dumps(res.get("events", [])),
-            error=res.get("error", "")
+            error=res.get("error", ""),
         )
 
     async def Snapshot(self, request, context):
         # Simplified snapshot for gRPC baseline
         ha_json = "{}"
         fr_json = "{}"
-        
+
         if request.include_home_assistant:
             client = HomeMerlinClient(settings=self.settings)
             res = await client.probe_entities(list(request.home_assistant_entities))
             ha_json = json.dumps(res.model_dump())
-            
+
         if request.include_frigate:
             client = FrigateClient(settings=self.settings)
             if request.include_frigate_cameras:
@@ -118,9 +117,9 @@ class MyFortressServicer(homegateway_pb2_grpc.MyFortressServicer):
             fr_json = json.dumps(res.model_dump())
 
         return homegateway_pb2.SnapshotResponse(
-            home_assistant_json=ha_json,
-            frigate_json=fr_json
+            home_assistant_json=ha_json, frigate_json=fr_json
         )
+
 
 class AuthInterceptor(grpc.aio.ServerInterceptor):
     def __init__(self, api_key: str):
@@ -129,14 +128,17 @@ class AuthInterceptor(grpc.aio.ServerInterceptor):
     async def intercept_service(self, continuation, handler_call_details):
         if not self.api_key:
             return await continuation(handler_call_details)
-        
+
         metadata = dict(handler_call_details.invocation_metadata)
         if metadata.get("x-api-key") != self.api_key:
+
             async def abort(request, context):
                 await context.abort(grpc.StatusCode.UNAUTHENTICATED, "Invalid API key")
+
             return grpc.unary_unary_rpc_method_handler(abort)
-        
+
         return await continuation(handler_call_details)
+
 
 async def serve_grpc(settings: Settings):
     interceptors = []
