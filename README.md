@@ -10,6 +10,7 @@ The canonical documentation lives in the AAS superproject:
 
 - Start here: https://github.com/Aarogaming/AaroneousAutomationSuite/blob/master/docs/START_HERE.md
 - Docs index: https://github.com/Aarogaming/AaroneousAutomationSuite/blob/master/docs/INDEX.md
+- Gate governance pointer: `docs/GATE_GOVERNANCE_POINTER.md`
 
 ## Repo Map
 
