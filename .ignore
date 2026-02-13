@@ -1,0 +1,13 @@
+# >>> AAS SEARCH HYGIENE (managed) >>>
+**/.git/**
+**/.venv/**
+**/__pycache__/**
+**/.pytest_cache/**
+**/.mypy_cache/**
+**/.ruff_cache/**
+**/build/**
+**/dist/**
+**/logs/**
+**/artifacts/**
+
+# <<< AAS SEARCH HYGIENE (managed) <<<
