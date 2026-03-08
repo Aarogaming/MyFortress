@@ -45,9 +45,7 @@ class FrigateClient:
                     "/api/config",
                     max_retries=self.settings.max_retries,
                 )
-                metrics.record_latency(
-                    "frigate_config_ms", (time.time() - start) * 1000
-                )
+                metrics.record_latency("frigate_config_ms", (time.time() - start) * 1000)
                 data = resp.json()
                 cameras = list((data or {}).get("cameras", {}).keys())
                 return {"success": True, "cameras": cameras, "config": data}
@@ -57,9 +55,7 @@ class FrigateClient:
 
     async def fetch_version(self) -> FrigateSnapshot:
         if not self.base_url:
-            return FrigateSnapshot(
-                healthy=False, version=None, error="frigate_url not set"
-            )
+            return FrigateSnapshot(healthy=False, version=None, error="frigate_url not set")
 
         client = build_async_client(
             self.settings,
@@ -96,9 +92,7 @@ class FrigateClient:
             snapshot.cameras = cameras
         else:
             error = cameras_result.get("error")
-            snapshot.error = snapshot.error or (
-                str(error) if error is not None else None
-            )
+            snapshot.error = snapshot.error or (str(error) if error is not None else None)
         return snapshot
 
     async def fetch_events(self, limit: int = 50) -> Dict[str, object]:
@@ -120,9 +114,7 @@ class FrigateClient:
                     params={"limit": limit},
                     max_retries=self.settings.max_retries,
                 )
-                metrics.record_latency(
-                    "frigate_events_ms", (time.time() - start) * 1000
-                )
+                metrics.record_latency("frigate_events_ms", (time.time() - start) * 1000)
                 events = resp.json()
                 events_list = events if isinstance(events, list) else []
                 return {"success": True, "events": events_list}

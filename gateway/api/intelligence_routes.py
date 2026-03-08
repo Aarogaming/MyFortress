@@ -4,19 +4,21 @@ MyFortress Intelligence API Routes
 REST API endpoints for accessing MyFortress intelligence features.
 """
 
-from typing import Dict, Any, Optional
+from datetime import datetime
+from typing import Any, Dict, Optional
+
 from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel
 
 from gateway.config import Settings, get_settings
 from gateway.intelligence.manager import get_intelligence_manager
 from gateway.intelligence.models import (
-    HomeIntelligenceContext,
     EnergyOptimization,
-    SecurityIntelligence,
-    PredictiveAutomation,
-    MobileIntelligenceSync,
+    HomeIntelligenceContext,
     IntelligenceHealthCheck,
+    MobileIntelligenceSync,
+    PredictiveAutomation,
+    SecurityIntelligence,
 )
 
 router = APIRouter(prefix="/intelligence", tags=["intelligence"])
@@ -67,9 +69,7 @@ async def get_intelligence_dashboard(
         dashboard = await manager.get_home_intelligence_dashboard()
         return {"success": True, "data": dashboard}
     except Exception as e:
-        raise HTTPException(
-            status_code=500, detail=f"Failed to get intelligence dashboard: {e}"
-        )
+        raise HTTPException(status_code=500, detail=f"Failed to get intelligence dashboard: {e}")
 
 
 @router.get(
@@ -79,9 +79,7 @@ async def get_intelligence_dashboard(
     description="Get environmental context, system resources, and optimization opportunities for home automation",
 )
 async def get_home_intelligence_context(
-    include_opportunities: bool = Query(
-        True, description="Include optimization opportunities"
-    ),
+    include_opportunities: bool = Query(True, description="Include optimization opportunities"),
     include_predictions: bool = Query(True, description="Include predictive insights"),
     settings: Settings = Depends(get_settings),
 ):
@@ -91,9 +89,7 @@ async def get_home_intelligence_context(
         context = await manager.get_cached_home_context()
         return context
     except Exception as e:
-        raise HTTPException(
-            status_code=500, detail=f"Failed to get home intelligence context: {e}"
-        )
+        raise HTTPException(status_code=500, detail=f"Failed to get home intelligence context: {e}")
 
 
 @router.get(
@@ -109,9 +105,7 @@ async def get_energy_optimization(settings: Settings = Depends(get_settings)):
         energy = await manager.get_cached_energy_optimization()
         return energy
     except Exception as e:
-        raise HTTPException(
-            status_code=500, detail=f"Failed to get energy optimization: {e}"
-        )
+        raise HTTPException(status_code=500, detail=f"Failed to get energy optimization: {e}")
 
 
 @router.get(
@@ -127,9 +121,7 @@ async def get_security_intelligence(settings: Settings = Depends(get_settings)):
         security = await manager.get_cached_security_intelligence()
         return security
     except Exception as e:
-        raise HTTPException(
-            status_code=500, detail=f"Failed to get security intelligence: {e}"
-        )
+        raise HTTPException(status_code=500, detail=f"Failed to get security intelligence: {e}")
 
 
 @router.get(
@@ -146,9 +138,7 @@ async def get_predictive_automation(settings: Settings = Depends(get_settings)):
         predictions = await client.get_predictive_automation()
         return predictions
     except Exception as e:
-        raise HTTPException(
-            status_code=500, detail=f"Failed to get predictive automation: {e}"
-        )
+        raise HTTPException(status_code=500, detail=f"Failed to get predictive automation: {e}")
 
 
 @router.get(
@@ -164,9 +154,7 @@ async def get_mobile_intelligence_sync(settings: Settings = Depends(get_settings
         mobile_sync = await manager.get_cached_mobile_sync()
         return mobile_sync
     except Exception as e:
-        raise HTTPException(
-            status_code=500, detail=f"Failed to get mobile intelligence sync: {e}"
-        )
+        raise HTTPException(status_code=500, detail=f"Failed to get mobile intelligence sync: {e}")
 
 
 @router.get(
@@ -182,9 +170,7 @@ async def intelligence_health_check(settings: Settings = Depends(get_settings)):
         health = await manager.client.health_check()
         return health
     except Exception as e:
-        raise HTTPException(
-            status_code=500, detail=f"Intelligence health check failed: {e}"
-        )
+        raise HTTPException(status_code=500, detail=f"Intelligence health check failed: {e}")
 
 
 @router.get(
@@ -196,9 +182,7 @@ async def get_smart_recommendations(
     context: Optional[str] = Query(
         None, description="Context filter: energy, security, comfort, performance"
     ),
-    limit: int = Query(
-        10, ge=1, le=50, description="Maximum number of recommendations"
-    ),
+    limit: int = Query(10, ge=1, le=50, description="Maximum number of recommendations"),
     settings: Settings = Depends(get_settings),
 ):
     """Get smart recommendations for home automation."""
@@ -209,9 +193,7 @@ async def get_smart_recommendations(
         # Filter recommendations by context if specified
         recommendations = home_context.recommendations
         if context:
-            recommendations = [
-                rec for rec in recommendations if context.lower() in rec.lower()
-            ]
+            recommendations = [rec for rec in recommendations if context.lower() in rec.lower()]
 
         return {
             "success": True,
@@ -223,9 +205,7 @@ async def get_smart_recommendations(
             },
         }
     except Exception as e:
-        raise HTTPException(
-            status_code=500, detail=f"Failed to get recommendations: {e}"
-        )
+        raise HTTPException(status_code=500, detail=f"Failed to get recommendations: {e}")
 
 
 @router.get(
@@ -307,9 +287,7 @@ async def optimize_home_performance(
                 "energy_savings_potential": dashboard["overview"].get(
                     "potential_monthly_savings", 0
                 ),
-                "cost_savings_potential": dashboard["overview"].get(
-                    "potential_monthly_savings", 0
-                ),
+                "cost_savings_potential": dashboard["overview"].get("potential_monthly_savings", 0),
                 "details": dashboard["quick_actions"],
             }
 
@@ -322,9 +300,7 @@ async def optimize_home_performance(
             error=result.get("error"),
         )
     except Exception as e:
-        raise HTTPException(
-            status_code=500, detail=f"Failed to optimize home performance: {e}"
-        )
+        raise HTTPException(status_code=500, detail=f"Failed to optimize home performance: {e}")
 
 
 @router.get(
@@ -357,9 +333,7 @@ async def get_intelligence_status(settings: Settings = Depends(get_settings)):
             },
         }
     except Exception as e:
-        raise HTTPException(
-            status_code=500, detail=f"Failed to get intelligence status: {e}"
-        )
+        raise HTTPException(status_code=500, detail=f"Failed to get intelligence status: {e}")
 
 
 # Background task management endpoints
@@ -382,9 +356,7 @@ async def start_background_intelligence(settings: Settings = Depends(get_setting
             "timestamp": datetime.now().isoformat(),
         }
     except Exception as e:
-        raise HTTPException(
-            status_code=500, detail=f"Failed to start background intelligence: {e}"
-        )
+        raise HTTPException(status_code=500, detail=f"Failed to start background intelligence: {e}")
 
 
 @router.post(
@@ -404,10 +376,4 @@ async def stop_background_intelligence(settings: Settings = Depends(get_settings
             "timestamp": datetime.now().isoformat(),
         }
     except Exception as e:
-        raise HTTPException(
-            status_code=500, detail=f"Failed to stop background intelligence: {e}"
-        )
-
-
-# Import datetime for timestamp generation
-from datetime import datetime
+        raise HTTPException(status_code=500, detail=f"Failed to stop background intelligence: {e}")

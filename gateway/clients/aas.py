@@ -18,9 +18,7 @@ class MyFortressClient:
             timeout=settings.request_timeout,
         )
 
-    def __init__(
-        self, base_url: str, api_key: Optional[str] = None, timeout: float = 10.0
-    ):
+    def __init__(self, base_url: str, api_key: Optional[str] = None, timeout: float = 10.0):
         self.base_url = base_url.rstrip("/")
         self.api_key = api_key
         self.timeout = timeout
@@ -31,9 +29,7 @@ class MyFortressClient:
             headers["x-api-key"] = self.api_key
         return headers
 
-    async def get_snapshot(
-        self, entities: Optional[List[str]] = None
-    ) -> Dict[str, Any]:
+    async def get_snapshot(self, entities: Optional[List[str]] = None) -> Dict[str, Any]:
         async with httpx.AsyncClient(timeout=self.timeout) as client:
             resp = await client.post(
                 f"{self.base_url}/snapshot",

@@ -11,6 +11,17 @@ __pycache__/
 venv/
 env/
 
+# Secrets and local config
+.env
+.env.*
+!.env.example
+credentials.json
+token.pickle
+*.p12
+*.jks
+*.keystore
+keystore.properties
+
 # OS
 .DS_Store
 Thumbs.db
@@ -18,3 +29,9 @@ desktop.ini
 
 # Logs
 *.log
+logs/
+
+# Build outputs
+build/
+dist/
+artifacts/

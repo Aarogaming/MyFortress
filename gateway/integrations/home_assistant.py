@@ -61,9 +61,7 @@ class HomeMerlinClient:
                     json=payload,
                     max_retries=self.settings.max_retries,
                 )
-                metrics.record_latency(
-                    "home_assistant_service_ms", (time.time() - start) * 1000
-                )
+                metrics.record_latency("home_assistant_service_ms", (time.time() - start) * 1000)
                 return {"success": True, "response": resp.json()}
             except Exception as exc:
                 metrics.increment("home_assistant_service_errors")
@@ -95,9 +93,7 @@ class HomeMerlinClient:
                     json=payload,
                     max_retries=self.settings.max_retries,
                 )
-                metrics.record_latency(
-                    "home_assistant_state_ms", (time.time() - start) * 1000
-                )
+                metrics.record_latency("home_assistant_state_ms", (time.time() - start) * 1000)
                 data = resp.json()
                 return {
                     "success": True,
@@ -135,9 +131,7 @@ class HomeMerlinClient:
                         endpoint,
                         max_retries=self.settings.max_retries,
                     )
-                    metrics.record_latency(
-                        "home_assistant_probe_ms", (time.time() - start) * 1000
-                    )
+                    metrics.record_latency("home_assistant_probe_ms", (time.time() - start) * 1000)
                     data = resp.json()
                     reading = EntityReading(
                         entity_id=entity,

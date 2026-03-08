@@ -1,0 +1,115 @@
+{
+  "module_name": "MyFortress",
+  "cycle_id": "20260303T045910Z",
+  "started_utc": "2026-03-03T04:59:10.877570+00:00",
+  "finished_utc": "2026-03-03T04:59:36.293878+00:00",
+  "profile": "autonomous-v1",
+  "throttled": false,
+  "throttle_reason": null,
+  "resource_policy": {
+    "threshold_percent": 90.0,
+    "consecutive_seconds": 30,
+    "clear_below_percent": 80.0,
+    "clear_seconds": 30,
+    "sample_interval_sec": 5
+  },
+  "resource_samples": [
+    {
+      "timestamp_utc": "2026-03-03T04:59:10.878074+00:00",
+      "cpu_percent": 0.0,
+      "memory_percent": 76.0
+    },
+    {
+      "timestamp_utc": "2026-03-03T04:59:16.001565+00:00",
+      "cpu_percent": 65.57,
+      "memory_percent": 77.0
+    },
+    {
+      "timestamp_utc": "2026-03-03T04:59:21.086899+00:00",
+      "cpu_percent": 65.12,
+      "memory_percent": 77.0
+    },
+    {
+      "timestamp_utc": "2026-03-03T04:59:26.161719+00:00",
+      "cpu_percent": 60.79,
+      "memory_percent": 76.0
+    },
+    {
+      "timestamp_utc": "2026-03-03T04:59:31.232024+00:00",
+      "cpu_percent": 56.18,
+      "memory_percent": 76.0
+    }
+  ],
+  "tasks": [
+    {
+      "name": "Check secret hygiene",
+      "command": [
+        "python",
+        "C:\\Dev library\\AaroneousAutomationSuite\\MyFortress\\scripts\\check_secret_hygiene.py"
+      ],
+      "heavy": false,
+      "status": "ok",
+      "duration_sec": 0.109,
+      "exit_code": 0,
+      "skipped_reason": null,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "name": "Evaluate CP3 readiness",
+      "command": [
+        "python",
+        "C:\\Dev library\\AaroneousAutomationSuite\\MyFortress\\scripts\\evaluate_cp3_readiness.py"
+      ],
+      "heavy": false,
+      "status": "failed",
+      "duration_sec": 0.062,
+      "exit_code": 2,
+      "skipped_reason": null,
+      "stdout_tail": "",
+      "stderr_tail": "usage: evaluate_cp3_readiness.py [-h] [--policy POLICY] --metrics METRICS\n                                 [--output OUTPUT] [--strict]\nevaluate_cp3_readiness.py: error: the following arguments are required: --metrics\n"
+    },
+    {
+      "name": "Evaluate policy gate",
+      "command": [
+        "python",
+        "C:\\Dev library\\AaroneousAutomationSuite\\MyFortress\\scripts\\evaluate_policy_gate.py"
+      ],
+      "heavy": false,
+      "status": "failed",
+      "duration_sec": 0.062,
+      "exit_code": 2,
+      "skipped_reason": null,
+      "stdout_tail": "",
+      "stderr_tail": "usage: evaluate_policy_gate.py [-h] [--policy POLICY] --envelope ENVELOPE\n                               [--now-utc NOW_UTC]\nevaluate_policy_gate.py: error: the following arguments are required: --envelope\n"
+    },
+    {
+      "name": "Check generated artifact shapes",
+      "command": [
+        "python",
+        "C:\\Dev library\\AaroneousAutomationSuite\\MyFortress\\scripts\\check_generated_artifact_shapes.py"
+      ],
+      "heavy": false,
+      "status": "failed",
+      "duration_sec": 0.078,
+      "exit_code": 2,
+      "skipped_reason": null,
+      "stdout_tail": "",
+      "stderr_tail": "usage: check_generated_artifact_shapes.py [-h] --cp3-report CP3_REPORT\n                                          --trend-glob TREND_GLOB\ncheck_generated_artifact_shapes.py: error: the following arguments are required: --cp3-report, --trend-glob\n"
+    },
+    {
+      "name": "Generate policy trend snapshot",
+      "command": [
+        "python",
+        "C:\\Dev library\\AaroneousAutomationSuite\\MyFortress\\scripts\\generate_policy_trend_snapshot.py"
+      ],
+      "heavy": false,
+      "status": "failed",
+      "duration_sec": 0.047,
+      "exit_code": 2,
+      "skipped_reason": null,
+      "stdout_tail": "",
+      "stderr_tail": "usage: generate_policy_trend_snapshot.py [-h] --metrics METRICS\n                                         [--report REPORT]\n                                         [--snapshot-id SNAPSHOT_ID] --output\n                                         OUTPUT\ngenerate_policy_trend_snapshot.py: error: the following arguments are required: --metrics, --output\n"
+    }
+  ]
+}

@@ -2,7 +2,6 @@ import asyncio
 from typing import Any, Dict, Optional
 
 import httpx
-
 from gateway.config import Settings
 
 

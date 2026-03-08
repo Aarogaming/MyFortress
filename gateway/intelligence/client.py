@@ -4,12 +4,11 @@ MyFortress Intelligence Client
 Client for connecting MyFortress to the AAS Shared Intelligence Service.
 """
 
-import asyncio
 import sys
-from pathlib import Path
-from typing import Dict, List, Optional, Any
 from datetime import datetime
-import aiohttp
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
 from loguru import logger
 
 # Add AAS core to path for intelligence client
@@ -26,13 +25,13 @@ except ImportError:
     SimpleIntelligenceClient = None
 
 from .models import (
+    EnergyOptimization,
     HomeIntelligenceContext,
     HomeOptimizationRecommendation,
-    EnergyOptimization,
-    SecurityIntelligence,
-    PredictiveAutomation,
-    MobileIntelligenceSync,
     IntelligenceHealthCheck,
+    MobileIntelligenceSync,
+    PredictiveAutomation,
+    SecurityIntelligence,
 )
 
 
@@ -49,19 +48,15 @@ class MyFortressIntelligenceClient:
         self.aas_hub_url = aas_hub_url
         self.client = None
         self.simple_client = None
-        self.intelligence_cache = {}
-        self.last_context_update = None
+        self.intelligence_cache: Dict[str, Any] = {}
+        self.last_context_update: Optional[datetime] = None
 
         if AAS_INTELLIGENCE_AVAILABLE and IntelligenceClient:
             self.client = IntelligenceClient("myfortress", aas_hub_url)
             self.simple_client = SimpleIntelligenceClient("myfortress", aas_hub_url)
-            logger.info(
-                "🏠 MyFortress Intelligence Client initialized with AAS integration"
-            )
+            logger.info("🏠 MyFortress Intelligence Client initialized with AAS integration")
         else:
-            logger.warning(
-                "🏠 MyFortress Intelligence Client running in standalone mode"
-            )
+            logger.warning("🏠 MyFortress Intelligence Client running in standalone mode")
 
     async def get_home_intelligence_context(
         self, include_opportunities: bool = True, include_predictions: bool = True
@@ -87,9 +82,7 @@ class MyFortressIntelligenceClient:
 
                 # Get optimization opportunities
                 opportunities = (
-                    await client.get_optimization_opportunities()
-                    if include_opportunities
-                    else []
+                    await client.get_optimization_opportunities() if include_opportunities else []
                 )
 
                 # Build home intelligence context
@@ -148,9 +141,7 @@ class MyFortressIntelligenceClient:
                 ]
 
                 # Calculate potential savings
-                potential_savings = sum(
-                    opp.estimated_savings or 0 for opp in energy_opportunities
-                )
+                potential_savings = sum(opp.estimated_savings or 0 for opp in energy_opportunities)
 
                 optimization = EnergyOptimization(
                     current_usage=current_usage or {},
@@ -184,9 +175,7 @@ class MyFortressIntelligenceClient:
         try:
             async with self.client as client:
                 # Get security-specific recommendations
-                security_recommendations = await client.get_smart_recommendations(
-                    "security"
-                )
+                security_recommendations = await client.get_smart_recommendations("security")
 
                 # Get optimization opportunities
                 opportunities = await client.get_optimization_opportunities()
@@ -233,9 +222,7 @@ class MyFortressIntelligenceClient:
         try:
             async with self.client as client:
                 # Get contextual intelligence for predictions
-                context = await client.get_contextual_intelligence(
-                    include_opportunities=False
-                )
+                context = await client.get_contextual_intelligence(include_opportunities=False)
 
                 # Get performance recommendations
                 performance_recs = await client.get_smart_recommendations("performance")
@@ -285,12 +272,8 @@ class MyFortressIntelligenceClient:
                 home_status_summary={
                     "health_score": home_context.system_health,
                     "active_devices": len(home_context.home_devices),
-                    "optimization_opportunities": len(
-                        home_context.optimization_opportunities
-                    ),
-                    "network_status": home_context.network_status.get(
-                        "connected", False
-                    ),
+                    "optimization_opportunities": len(home_context.optimization_opportunities),
+                    "network_status": home_context.network_status.get("connected", False),
                 },
                 priority_alerts=[
                     {"type": "optimization", "message": rec, "priority": "medium"}
@@ -343,9 +326,7 @@ class MyFortressIntelligenceClient:
                             }
                         )
 
-                logger.info(
-                    f"🏠🤝 Found {len(opportunities)} collaboration opportunities"
-                )
+                logger.info(f"🏠🤝 Found {len(opportunities)} collaboration opportunities")
                 return opportunities
 
         except Exception as e:
@@ -367,6 +348,12 @@ class MyFortressIntelligenceClient:
                 health = await client.health_check()
 
             response_time = (datetime.now() - start_time).total_seconds() * 1000
+            cached_context = self.intelligence_cache.get("home_context")
+            recommendation_count = (
+                len(cached_context.recommendations)
+                if isinstance(cached_context, HomeIntelligenceContext)
+                else 0
+            )
 
             return IntelligenceHealthCheck(
                 intelligence_service_status=health.get("service_status", "unknown"),
@@ -375,11 +362,8 @@ class MyFortressIntelligenceClient:
                 predictive_analytics=True,
                 collaboration_mesh=True,
                 response_time_ms=response_time,
-                recommendation_count=len(
-                    self.intelligence_cache.get("home_context", {}).get(
-                        "recommendations", []
-                    )
-                ),
+                recommendation_count=recommendation_count,
+                error_details=None,
             )
 
         except Exception as e:
@@ -404,9 +388,7 @@ class MyFortressIntelligenceClient:
                 "active_recommendations": len(recommendations),
                 "top_recommendation": recommendations[0] if recommendations else None,
                 "last_update": (
-                    self.last_context_update.isoformat()
-                    if self.last_context_update
-                    else None
+                    self.last_context_update.isoformat() if self.last_context_update else None
                 ),
             }
 
@@ -484,6 +466,7 @@ class MyFortressIntelligenceClient:
             priority=opp.get("priority", 0.5),
             confidence=opp.get("confidence", 0.7),
             estimated_savings=opp.get("estimated_savings"),
+            energy_impact=opp.get("energy_impact"),
             action_items=opp.get("action_items", []),
         )
 
@@ -588,9 +571,7 @@ class MyFortressIntelligenceClient:
         """Get basic context when AAS intelligence is not available."""
         return HomeIntelligenceContext(
             system_health=0.7,
-            recommendations=[
-                "Enable AAS intelligence integration for smart recommendations"
-            ],
+            recommendations=["Enable AAS intelligence integration for smart recommendations"],
         )
 
     def _get_standalone_energy_optimization(self) -> EnergyOptimization:
@@ -608,9 +589,7 @@ class MyFortressIntelligenceClient:
     def _get_standalone_predictive_automation(self) -> PredictiveAutomation:
         """Get basic predictive automation when AAS intelligence is not available."""
         return PredictiveAutomation(
-            time_based_suggestions=[
-                "Enable AAS intelligence integration for predictive automation"
-            ]
+            time_based_suggestions=["Enable AAS intelligence integration for predictive automation"]
         )
 
     def _get_standalone_mobile_sync(self) -> MobileIntelligenceSync:

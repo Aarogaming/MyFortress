@@ -9,11 +9,11 @@ predictive, collaborative home ecosystem.
 from .client import MyFortressIntelligenceClient
 from .manager import MyFortressIntelligenceManager
 from .models import (
+    EnergyOptimization,
     HomeIntelligenceContext,
     HomeOptimizationRecommendation,
-    EnergyOptimization,
-    SecurityIntelligence,
     PredictiveAutomation,
+    SecurityIntelligence,
 )
 
 __all__ = [

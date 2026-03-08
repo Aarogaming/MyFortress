@@ -3,18 +3,19 @@ from typing import Any, Dict, cast
 
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
+
+from gateway.api.intelligence_routes import router as intelligence_router
 from gateway.api.middleware import (
     ApiKeyMiddleware,
     LoggingMiddleware,
     RequestIDMiddleware,
 )
 from gateway.api.routes import router as api_router
-from gateway.api.intelligence_routes import router as intelligence_router
 from gateway.config import get_settings
 from gateway.core import metrics
+from gateway.intelligence.manager import initialize_intelligence_manager
 
 try:
-    from opentelemetry import trace
     from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 
     OTEL_AVAILABLE = True
@@ -25,9 +26,6 @@ app = FastAPI(title="MyFortress", version="0.1.0")
 app.state.start_time = time.time()
 app.state.request_count = 0
 app.state.settings = get_settings()
-
-# Initialize intelligence manager
-from gateway.intelligence.manager import initialize_intelligence_manager
 
 initialize_intelligence_manager(app.state.settings)
 
@@ -98,8 +96,8 @@ async def health() -> dict:
     if settings.frigate_url:
         frigate_client = FrigateClient(settings=settings)
         try:
-            res = await frigate_client.fetch_version()
-            frigate_ok = res.healthy
+            frigate_version = await frigate_client.fetch_version()
+            frigate_ok = frigate_version.healthy
         except Exception:
             frigate_ok = False
     else:

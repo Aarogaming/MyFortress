@@ -1,11 +1,9 @@
-import asyncio
 import json
 import logging
-import time
-from concurrent import futures
 
 import grpc
 from artifacts.api import homegateway_pb2, homegateway_pb2_grpc
+
 from gateway.config import Settings
 from gateway.integrations.frigate import FrigateClient
 from gateway.integrations.home_assistant import HomeMerlinClient
@@ -116,9 +114,7 @@ class MyFortressServicer(homegateway_pb2_grpc.MyFortressServicer):
                 res = await client.fetch_version()
             fr_json = json.dumps(res.model_dump())
 
-        return homegateway_pb2.SnapshotResponse(
-            home_assistant_json=ha_json, frigate_json=fr_json
-        )
+        return homegateway_pb2.SnapshotResponse(home_assistant_json=ha_json, frigate_json=fr_json)
 
 
 class AuthInterceptor(grpc.aio.ServerInterceptor):
@@ -146,9 +142,7 @@ async def serve_grpc(settings: Settings):
         interceptors.append(AuthInterceptor(settings.api_key))
 
     server = grpc.aio.server(interceptors=interceptors)
-    homegateway_pb2_grpc.add_MyFortressServicer_to_server(
-        MyFortressServicer(settings), server
-    )
+    homegateway_pb2_grpc.add_MyFortressServicer_to_server(MyFortressServicer(settings), server)
     listen_addr = f"[::]:{settings.port + 1}"
     server.add_insecure_port(listen_addr)
     logger.info(f"Starting gRPC server on {listen_addr}")

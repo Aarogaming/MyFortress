@@ -6,17 +6,16 @@ High-level manager for coordinating all intelligence features in MyFortress.
 
 import asyncio
 from datetime import datetime, timedelta
-from typing import Dict, List, Optional, Any
+from typing import Any, Dict, List, Optional
+
 from loguru import logger
 
 from .client import MyFortressIntelligenceClient
 from .models import (
-    HomeIntelligenceContext,
     EnergyOptimization,
-    SecurityIntelligence,
-    PredictiveAutomation,
+    HomeIntelligenceContext,
     MobileIntelligenceSync,
-    IntelligenceHealthCheck,
+    SecurityIntelligence,
 )
 
 
@@ -32,9 +31,9 @@ class MyFortressIntelligenceManager:
     def __init__(self, aas_hub_url: str = "http://localhost:8000"):
         """Initialize the intelligence manager."""
         self.client = MyFortressIntelligenceClient(aas_hub_url)
-        self.cache = {}
-        self.cache_timestamps = {}
-        self.background_tasks = set()
+        self.cache: Dict[str, Any] = {}
+        self.cache_timestamps: Dict[str, datetime] = {}
+        self.background_tasks: set[asyncio.Task[Any]] = set()
 
         # Cache TTL settings
         self.context_cache_ttl = timedelta(minutes=5)
@@ -109,7 +108,7 @@ class MyFortressIntelligenceManager:
                 mobile = await self.client.get_mobile_intelligence_sync()
 
             # Build comprehensive dashboard
-            dashboard = {
+            dashboard: Dict[str, Any] = {
                 "timestamp": datetime.now().isoformat(),
                 "system_health": (
                     context.system_health if hasattr(context, "system_health") else 0.5
@@ -117,9 +116,7 @@ class MyFortressIntelligenceManager:
                 # Overview
                 "overview": {
                     "total_recommendations": (
-                        len(context.recommendations)
-                        if hasattr(context, "recommendations")
-                        else 0
+                        len(context.recommendations) if hasattr(context, "recommendations") else 0
                     ),
                     "optimization_opportunities": (
                         len(context.optimization_opportunities)
@@ -132,27 +129,19 @@ class MyFortressIntelligenceManager:
                         else 0
                     ),
                     "security_status": (
-                        security.threat_level
-                        if hasattr(security, "threat_level")
-                        else "unknown"
+                        security.threat_level if hasattr(security, "threat_level") else "unknown"
                     ),
                     "active_devices": (
-                        len(context.home_devices)
-                        if hasattr(context, "home_devices")
-                        else 0
+                        len(context.home_devices) if hasattr(context, "home_devices") else 0
                     ),
                 },
                 # Detailed sections
                 "context": context.dict() if hasattr(context, "dict") else {},
                 "energy_optimization": energy.dict() if hasattr(energy, "dict") else {},
-                "security_intelligence": (
-                    security.dict() if hasattr(security, "dict") else {}
-                ),
+                "security_intelligence": (security.dict() if hasattr(security, "dict") else {}),
                 "mobile_sync": mobile.dict() if hasattr(mobile, "dict") else {},
                 # Quick actions
-                "quick_actions": self._generate_quick_actions(
-                    context, energy, security
-                ),
+                "quick_actions": self._generate_quick_actions(context, energy, security),
                 # Intelligence health
                 "intelligence_health": await self._get_intelligence_health_summary(),
             }
@@ -221,7 +210,7 @@ class MyFortressIntelligenceManager:
         return mobile
 
     async def execute_intelligent_automation(
-        self, automation_id: str, context: Dict[str, Any] = None
+        self, automation_id: str, context: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:
         """
         Execute an intelligent automation with context awareness.
@@ -242,12 +231,8 @@ class MyFortressIntelligenceManager:
             analysis = {
                 "automation_id": automation_id,
                 "system_health": home_context.system_health,
-                "optimal_timing": self._calculate_optimal_timing(
-                    automation_id, predictions
-                ),
-                "resource_impact": self._analyze_resource_impact(
-                    automation_id, home_context
-                ),
+                "optimal_timing": self._calculate_optimal_timing(automation_id, predictions),
+                "resource_impact": self._analyze_resource_impact(automation_id, home_context),
                 "coordination_opportunities": await self._find_coordination_opportunities(
                     automation_id
                 ),
@@ -264,9 +249,7 @@ class MyFortressIntelligenceManager:
             return execution_result
 
         except Exception as e:
-            logger.error(
-                f"Failed to execute intelligent automation {automation_id}: {e}"
-            )
+            logger.error(f"Failed to execute intelligent automation {automation_id}: {e}")
             return {
                 "automation_id": automation_id,
                 "status": "error",
@@ -300,17 +283,14 @@ class MyFortressIntelligenceManager:
 
             # Security optimizations
             for recommendation in security.security_recommendations:
-                if (
-                    recommendation.priority > 0.8
-                    and recommendation.automation_available
-                ):
+                if recommendation.priority > 0.8 and recommendation.automation_available:
                     result = await self._apply_security_optimization(recommendation)
                     optimizations_applied.append(result)
 
             # System optimizations
-            for opportunity in context.optimization_opportunities:
-                if opportunity.get("priority", 0) > 0.6:
-                    result = await self._apply_system_optimization(opportunity)
+            for system_opportunity in context.optimization_opportunities:
+                if system_opportunity.get("priority", 0) > 0.6:
+                    result = await self._apply_system_optimization(system_opportunity)
                     optimizations_applied.append(result)
 
             optimization_summary = {
@@ -323,9 +303,7 @@ class MyFortressIntelligenceManager:
                     opt.get("cost_savings", 0) for opt in optimizations_applied
                 ),
                 "details": optimizations_applied,
-                "next_optimization_scheduled": (
-                    datetime.now() + timedelta(hours=24)
-                ).isoformat(),
+                "next_optimization_scheduled": (datetime.now() + timedelta(hours=24)).isoformat(),
             }
 
             logger.info(
@@ -405,7 +383,7 @@ class MyFortressIntelligenceManager:
         self.cache_timestamps[cache_key] = datetime.now()
 
     def _generate_quick_actions(
-        self, context, energy, security
+        self, context: Any, energy: Any, security: Any
     ) -> List[Dict[str, Any]]:
         """Generate quick actions based on intelligence analysis."""
         actions = []
@@ -466,12 +444,12 @@ class MyFortressIntelligenceManager:
         except Exception as e:
             return {"status": "error", "error": str(e)}
 
-    def _calculate_optimal_timing(self, automation_id: str, predictions) -> str:
+    def _calculate_optimal_timing(self, automation_id: str, predictions: Any) -> str:
         """Calculate optimal timing for automation execution."""
         # Placeholder for timing optimization logic
         return "immediate"
 
-    def _analyze_resource_impact(self, automation_id: str, context) -> Dict[str, Any]:
+    def _analyze_resource_impact(self, automation_id: str, context: Any) -> Dict[str, Any]:
         """Analyze resource impact of automation execution."""
         # Placeholder for resource impact analysis
         return {
@@ -489,7 +467,10 @@ class MyFortressIntelligenceManager:
             return []
 
     async def _execute_with_intelligence(
-        self, automation_id: str, analysis: Dict[str, Any], context: Dict[str, Any]
+        self,
+        automation_id: str,
+        analysis: Dict[str, Any],
+        context: Optional[Dict[str, Any]],
     ) -> Dict[str, Any]:
         """Execute automation with intelligence optimization."""
         # Placeholder for intelligent execution logic
@@ -522,9 +503,7 @@ class MyFortressIntelligenceManager:
             "security_improvement": "enhanced",
         }
 
-    async def _apply_system_optimization(
-        self, opportunity: Dict[str, Any]
-    ) -> Dict[str, Any]:
+    async def _apply_system_optimization(self, opportunity: Dict[str, Any]) -> Dict[str, Any]:
         """Apply a system optimization."""
         # Placeholder for system optimization application
         return {
@@ -558,7 +537,5 @@ def initialize_intelligence_manager(settings) -> MyFortressIntelligenceManager:
     aas_hub_url = getattr(settings, "aas_hub_url", "http://localhost:8000")
     _intelligence_manager = MyFortressIntelligenceManager(aas_hub_url)
 
-    logger.info(
-        f"🏠🧠 MyFortress Intelligence Manager initialized with AAS Hub: {aas_hub_url}"
-    )
+    logger.info(f"🏠🧠 MyFortress Intelligence Manager initialized with AAS Hub: {aas_hub_url}")
     return _intelligence_manager

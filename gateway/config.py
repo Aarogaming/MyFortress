@@ -20,15 +20,9 @@ class Settings(BaseSettings):
     )
     request_timeout: float = Field(default=5.0, description="Default HTTP timeout")
     max_retries: int = Field(default=2, description="HTTP retry attempts for upstreams")
-    structured_logging: bool = Field(
-        default=False, description="Emit JSON logs if true"
-    )
-    rate_limit_per_minute: int = Field(
-        default=120, description="Requests per minute per client"
-    )
-    rate_limit_window_seconds: int = Field(
-        default=60, description="Rate limit window in seconds"
-    )
+    structured_logging: bool = Field(default=False, description="Emit JSON logs if true")
+    rate_limit_per_minute: int = Field(default=120, description="Requests per minute per client")
+    rate_limit_window_seconds: int = Field(default=60, description="Rate limit window in seconds")
 
     # Home Merlin
     home_assistant_url: Optional[str] = Field(default=None)

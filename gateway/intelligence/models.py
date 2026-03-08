@@ -5,7 +5,8 @@ Data models for intelligent home automation features.
 """
 
 from datetime import datetime
-from typing import Dict, List, Optional, Any
+from typing import Any, Dict, List, Optional
+
 from pydantic import BaseModel, Field
 
 
@@ -13,9 +14,7 @@ class HomeIntelligenceContext(BaseModel):
     """Complete intelligence context for home automation."""
 
     timestamp: datetime = Field(default_factory=datetime.now)
-    system_health: float = Field(
-        ge=0.0, le=1.0, description="Overall system health score"
-    )
+    system_health: float = Field(ge=0.0, le=1.0, description="Overall system health score")
 
     # Environmental context
     environmental_context: Dict[str, Any] = Field(default_factory=dict)
@@ -38,9 +37,7 @@ class HomeOptimizationRecommendation(BaseModel):
     """A specific optimization recommendation for home automation."""
 
     id: str
-    category: str = Field(
-        description="Category: energy, security, comfort, maintenance"
-    )
+    category: str = Field(description="Category: energy, security, comfort, maintenance")
     title: str
     description: str
     potential_benefit: str
@@ -50,12 +47,8 @@ class HomeOptimizationRecommendation(BaseModel):
 
     # Home-specific fields
     affected_devices: List[str] = Field(default_factory=list)
-    estimated_savings: Optional[float] = Field(
-        None, description="Monthly savings in dollars"
-    )
-    energy_impact: Optional[float] = Field(
-        None, description="Energy savings in kWh/month"
-    )
+    estimated_savings: Optional[float] = Field(None, description="Monthly savings in dollars")
+    energy_impact: Optional[float] = Field(None, description="Energy savings in kWh/month")
 
     action_items: List[str] = Field(default_factory=list)
     automation_available: bool = Field(default=False)
@@ -72,9 +65,7 @@ class EnergyOptimization(BaseModel):
     usage_patterns: Dict[str, Any] = Field(default_factory=dict)
     peak_hours: List[int] = Field(default_factory=list)
 
-    optimization_opportunities: List[HomeOptimizationRecommendation] = Field(
-        default_factory=list
-    )
+    optimization_opportunities: List[HomeOptimizationRecommendation] = Field(default_factory=list)
     potential_monthly_savings: float = Field(default=0.0)
     recommended_schedule_changes: List[Dict[str, Any]] = Field(default_factory=list)
 
@@ -93,9 +84,7 @@ class SecurityIntelligence(BaseModel):
     access_patterns: Dict[str, Any] = Field(default_factory=dict)
 
     # Recommendations
-    security_recommendations: List[HomeOptimizationRecommendation] = Field(
-        default_factory=list
-    )
+    security_recommendations: List[HomeOptimizationRecommendation] = Field(default_factory=list)
     suggested_automations: List[Dict[str, Any]] = Field(default_factory=list)
 
     # Device status

@@ -4,10 +4,11 @@ from typing import Callable
 
 from fastapi import Request, Response
 from fastapi.responses import JSONResponse
+from starlette.middleware.base import BaseHTTPMiddleware
+
 from gateway.api.rate_limit import allow as rate_allow
 from gateway.config import get_settings
 from gateway.core import metrics
-from starlette.middleware.base import BaseHTTPMiddleware
 
 
 def _sanitize_metric_suffix(path: str) -> str:
@@ -72,9 +73,7 @@ class ApiKeyMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next: Callable) -> Response:
         settings = getattr(request.app.state, "settings", get_settings())
         if settings.api_key:
-            provided = request.headers.get("x-api-key") or request.query_params.get(
-                "api_key"
-            )
+            provided = request.headers.get("x-api-key") or request.query_params.get("api_key")
             if provided != settings.api_key:
                 return JSONResponse(
                     status_code=401,
@@ -89,9 +88,7 @@ class ApiKeyMiddleware(BaseHTTPMiddleware):
             window_seconds=settings.rate_limit_window_seconds,
         ):
             metrics.increment("rate_limit_hits")
-            metrics.increment(
-                f"rate_limit_hits_{_sanitize_metric_suffix(request.url.path)}"
-            )
+            metrics.increment(f"rate_limit_hits_{_sanitize_metric_suffix(request.url.path)}")
             return JSONResponse(
                 status_code=429,
                 content={"detail": "Rate limit exceeded"},

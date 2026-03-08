@@ -36,9 +36,7 @@ def test_snapshot_endpoint_returns_data():
 
 @respx.mock
 def test_home_assistant_service():
-    respx.post("http://ha.local/api/services/light/toggle").respond(
-        json={"result": "ok"}
-    )
+    respx.post("http://ha.local/api/services/light/toggle").respond(json={"result": "ok"})
     resp = client.post(
         "/home-assistant/service",
         json={
@@ -86,9 +84,7 @@ def test_home_assistant_state():
 
 @respx.mock
 def test_frigate_events():
-    respx.get("http://frigate.local/api/events").respond(
-        json=[{"id": "1", "camera": "front"}]
-    )
+    respx.get("http://frigate.local/api/events").respond(json=[{"id": "1", "camera": "front"}])
     resp = client.get("/frigate/events", params={"limit": 5})
     assert resp.status_code == 200
     body = resp.json()

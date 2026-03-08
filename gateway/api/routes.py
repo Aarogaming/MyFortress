@@ -95,9 +95,7 @@ async def home_assistant_state(
     response_model=FrigateProbeResponse,
     summary="Probe Frigate version",
 )
-async def frigate_probe(
-    req: FrigateProbeRequest, settings: Settings = Depends(get_settings)
-):
+async def frigate_probe(req: FrigateProbeRequest, settings: Settings = Depends(get_settings)):
     client = FrigateClient(
         settings=settings,
         base_url=req.base_url or settings.frigate_url,
@@ -235,14 +233,18 @@ async def snapshot(req: SnapshotRequest, settings: Settings = Depends(get_settin
 async def get_system_info():
     """Get system information from MyFortress gateway."""
     try:
+        import sys
+
         mem = psutil.virtual_memory()
         disk = psutil.disk_usage("/")
         net = psutil.net_if_addrs()
 
         return SystemInfoResponse(
+            platform=platform.system(),
             os=platform.system(),
             os_release=platform.release(),
             os_version=platform.version(),
+            python_version=sys.version,
             architecture=platform.machine(),
             hostname=socket.gethostname(),
             cpu_count=psutil.cpu_count(logical=True),
@@ -257,9 +259,11 @@ async def get_system_info():
         )
     except Exception as e:
         return SystemInfoResponse(
+            platform="",
             os="",
             os_release="",
             os_version="",
+            python_version="",
             architecture="",
             hostname="",
             cpu_count=0,
@@ -343,9 +347,7 @@ async def get_agent_analytics():
         total_tasks = sum(agent.total_tasks for agent in agents_data)
         total_completed = sum(agent.completed_tasks for agent in agents_data)
 
-        overall_success_rate = (
-            (total_completed / total_tasks * 100) if total_tasks > 0 else 0.0
-        )
+        overall_success_rate = (total_completed / total_tasks * 100) if total_tasks > 0 else 0.0
 
         # Calculate weighted average completion time
         total_completion_time = sum(
@@ -488,9 +490,7 @@ async def get_plugin_analytics():
         }
 
         # Sort by invocations for top plugins
-        top_plugins = sorted(
-            plugins_data, key=lambda p: p.total_invocations, reverse=True
-        )
+        top_plugins = sorted(plugins_data, key=lambda p: p.total_invocations, reverse=True)
 
         return PluginAnalyticsResponse(
             timestamp=datetime.now(timezone.utc).isoformat(),

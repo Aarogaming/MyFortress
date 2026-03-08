@@ -43,9 +43,7 @@ class SnapshotRequest(BaseModel):
     include_home_assistant: bool = True
     include_frigate: bool = True
     home_assistant_entities: List[str] = Field(default_factory=list)
-    include_frigate_cameras: bool = Field(
-        default=True, description="Include camera list"
-    )
+    include_frigate_cameras: bool = Field(default=True, description="Include camera list")
 
 
 class SnapshotResponse(GatewaySnapshot):
@@ -86,9 +84,11 @@ class HomeMerlinStateResponse(BaseModel):
 class SystemInfoResponse(BaseModel):
     """System information from MyFortress gateway."""
 
+    platform: str = Field(description="Operating system name (legacy compatibility field)")
     os: str = Field(description="Operating system name")
     os_release: str = Field(description="OS release version")
     os_version: str = Field(description="Full OS version string")
+    python_version: str = Field(description="Python runtime version")
     architecture: str = Field(description="System architecture")
     hostname: str = Field(description="System hostname")
     cpu_count: int = Field(description="Number of CPU cores")
@@ -102,9 +102,7 @@ class SystemInfoResponse(BaseModel):
     network_interfaces: List[str] = Field(
         default_factory=list, description="Available network interfaces"
     )
-    error: Optional[str] = Field(
-        default=None, description="Error message if retrieval failed"
-    )
+    error: Optional[str] = Field(default=None, description="Error message if retrieval failed")
 
 
 class AgentPerformanceMetrics(BaseModel):
@@ -120,15 +118,9 @@ class AgentPerformanceMetrics(BaseModel):
         default=0.0, description="Average completion time in minutes"
     )
     current_load: float = Field(default=0.0, description="Current load (0-1)")
-    status: str = Field(
-        default="idle", description="Current status (idle, busy, offline)"
-    )
-    capabilities: List[str] = Field(
-        default_factory=list, description="Agent capabilities"
-    )
-    last_activity: Optional[str] = Field(
-        default=None, description="Last activity timestamp"
-    )
+    status: str = Field(default="idle", description="Current status (idle, busy, offline)")
+    capabilities: List[str] = Field(default_factory=list, description="Agent capabilities")
+    last_activity: Optional[str] = Field(default=None, description="Last activity timestamp")
 
 
 class AgentAnalyticsResponse(BaseModel):
@@ -139,9 +131,7 @@ class AgentAnalyticsResponse(BaseModel):
     total_tasks_completed: int = Field(
         default=0, description="Total tasks completed across all agents"
     )
-    overall_success_rate: float = Field(
-        default=0.0, description="Overall success rate (0-100)"
-    )
+    overall_success_rate: float = Field(default=0.0, description="Overall success rate (0-100)")
     avg_completion_time: float = Field(
         default=0.0, description="Average completion time across all agents"
     )
@@ -163,9 +153,7 @@ class PluginMetricsResponse(BaseModel):
     failed_invocations: int = Field(description="Number of failed invocations")
     success_rate: float = Field(description="Success rate percentage")
     error_rate: float = Field(description="Error rate percentage")
-    avg_execution_time_ms: float = Field(
-        description="Average execution time in milliseconds"
-    )
+    avg_execution_time_ms: float = Field(description="Average execution time in milliseconds")
     health_score: float = Field(description="Overall health score (0-100)")
     last_used: Optional[str] = Field(default=None, description="Last usage timestamp")
 

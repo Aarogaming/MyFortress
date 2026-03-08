@@ -1,6 +1,5 @@
 import subprocess
 from pathlib import Path
-import subprocess
 
 import httpx
 import typer
@@ -118,9 +117,7 @@ def set_ha_state(
     base_url: str = typer.Option("http://127.0.0.1:8100", help="Gateway base URL"),
     entity_id: str = typer.Option(..., help="Entity ID to set"),
     state: str = typer.Option(..., help="New state value"),
-    attributes: str = typer.Option(
-        "", help='JSON string of attributes, e.g. {"brightness":150}'
-    ),
+    attributes: str = typer.Option("", help='JSON string of attributes, e.g. {"brightness":150}'),
 ):
     """Set a Home Merlin entity state via the Gateway."""
     attr_dict = {}

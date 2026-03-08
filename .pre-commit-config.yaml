@@ -6,3 +6,26 @@ repos:
         entry: python3 scripts/check_git_size.py
         language: system
         stages: [pre-commit, pre-push]
+      - id: secret-hygiene-guard
+        name: Secret hygiene guard
+        entry: python3 scripts/check_secret_hygiene.py
+        language: system
+        stages: [pre-commit, pre-push]
+      - id: gitleaks-guard
+        name: Gitleaks guard
+        entry: bash scripts/run_gitleaks_hook.sh
+        language: system
+        pass_filenames: false
+        stages: [pre-commit, pre-push]
+      - id: json-tool-docs-policy
+        name: JSON tool validate docs/policy
+        entry: python3 scripts/check_json_tool_validation.py
+        language: system
+        files: ^docs/policy/.*\.json$
+        stages: [pre-commit, pre-push]
+      - id: json-tool-artifacts-policy
+        name: JSON tool validate artifacts/policy
+        entry: python3 scripts/check_json_tool_validation.py
+        language: system
+        files: ^artifacts/policy/.*\.json$
+        stages: [pre-commit, pre-push]
