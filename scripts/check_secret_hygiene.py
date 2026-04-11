@@ -51,7 +51,7 @@ def main():
         action="store_true",
         help="Check all tracked files instead of staged files only.",
     )
-    args = parser.parse_args()
+    args, _ = parser.parse_known_args()
 
     try:
         candidates = _candidate_paths(include_all=args.all)
