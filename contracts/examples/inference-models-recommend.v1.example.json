@@ -1,0 +1,14 @@
+{
+  "schemaName": "InferenceModelsRecommend",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-08T00:00:00Z",
+  "purpose": "both",
+  "prefer": "small",
+  "maxSizeGb": 20,
+  "roots": ["C:/Users/aarog/.lmstudio"],
+  "extensions": [".gguf"],
+  "maxDepth": 6,
+  "maxEntries": 500,
+  "traceId": "trace-example",
+  "extensionsObj": {}
+}

@@ -1,0 +1,26 @@
+{
+  "schemaName": "SwarmProviderAssignment",
+  "schemaVersion": "1.0.0",
+  "computedUtc": "2026-02-06T12:00:05Z",
+  "epoch": "42",
+  "capabilityId": "screen.capture@1.0.0",
+  "primary": {
+    "hiveId": "local",
+    "instanceId": "dev-01",
+    "componentId": "plugins.game_automation",
+    "nodeId": "node-a"
+  },
+  "secondaries": [
+    {
+      "hiveId": "local",
+      "instanceId": "dev-02",
+      "componentId": "plugins.game_automation",
+      "nodeId": "node-b"
+    }
+  ],
+  "coordinator": {
+    "nodeId": "node-a",
+    "instanceId": "dev-01"
+  },
+  "reason": "deterministic sort"
+}

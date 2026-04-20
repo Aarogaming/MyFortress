@@ -1,0 +1,10 @@
+{
+  "schemaName": "WorkPacketCreate",
+  "schemaVersion": "1.0.0",
+  "packetId": "0001-aas-orchestrator",
+  "title": "AAS Orchestrator",
+  "goal": "Make AAS the orchestrator-of-record for the work cycle.",
+  "constraints": ["Keep micro-batches small"],
+  "verifyCommands": ["powershell -NoProfile -Command ./eng/validate-contracts.ps1"],
+  "extensions": {}
+}

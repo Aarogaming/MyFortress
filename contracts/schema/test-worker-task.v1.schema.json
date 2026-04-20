@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/test-worker-task/v1",
+  "title": "TestWorkerTask v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "issuedUtc", "target", "goals"],
+  "properties": {
+    "schemaName": { "const": "TestWorkerTask" },
+    "schemaVersion": { "const": "1.0.0" },
+    "issuedUtc": { "type": "string", "format": "date-time" },
+
+    "target": { "$ref": "#/$defs/target" },
+    "goals": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+
+    "maxDurationSec": { "type": "integer", "minimum": 1 },
+    "artifacts": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "dryRun": { "type": "boolean" },
+
+    "source": { "$ref": "#/$defs/providerRef" },
+    "traceId": { "type": "string", "minLength": 1 },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "providerRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hiveId", "instanceId", "componentId"],
+      "properties": {
+        "hiveId": { "type": "string", "minLength": 1 },
+        "instanceId": { "type": "string", "minLength": 1 },
+        "componentId": { "type": "string", "minLength": 1 },
+        "nodeId": { "type": "string", "minLength": 1 }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": { "type": "string", "enum": ["http", "desktop", "cli"] },
+        "url": { "type": "string" },
+        "command": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schemaName": "Capability",
+  "schemaVersion": "1.0.0",
+  "name": "tasks.query",
+  "version": "1.0.0",
+  "description": "Query tasks via the Hub task manager",
+  "visibility": "public",
+  "contracts": [
+    {
+      "id": "https://aas.local/contracts/handoff-envelope/v1",
+      "name": "HandoffEnvelope",
+      "version": "1.0.0",
+      "direction": "consumes"
+    }
+  ],
+  "requires": [
+    {
+      "name": "events.publish",
+      "version": "1.0.0",
+      "optional": true
+    }
+  ]
+}

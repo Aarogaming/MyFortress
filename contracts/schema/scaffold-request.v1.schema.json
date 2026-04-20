@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/scaffold-request/v1",
+  "title": "ScaffoldRequest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "issuedUtc", "target", "output"],
+  "properties": {
+    "schemaName": { "const": "ScaffoldRequest" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "issuedUtc": { "type": "string", "format": "date-time" },
+
+    "integrationPlanRef": { "type": "string", "minLength": 1 },
+    "integrationPlan": { "type": "object", "additionalProperties": true },
+
+    "target": { "$ref": "#/$defs/target" },
+    "output": { "$ref": "#/$defs/output" },
+
+    "mode": { "type": "string", "enum": ["plan_only", "scaffold"] },
+    "dryRun": { "type": "boolean" },
+
+    "runTests": { "type": "boolean" },
+    "testCommands": { "type": "array", "items": { "type": "string" } },
+
+    "createBranch": { "type": "boolean" },
+    "branchName": { "type": "string" },
+    "createCommit": { "type": "boolean" },
+    "commitMessage": { "type": "string" },
+
+    "source": { "$ref": "#/$defs/providerRef" },
+    "traceId": { "type": "string", "minLength": 1 },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "oneOf": [
+    { "required": ["integrationPlanRef"] },
+    { "required": ["integrationPlan"] }
+  ],
+  "$defs": {
+    "providerRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hiveId", "instanceId", "componentId"],
+      "properties": {
+        "hiveId": { "type": "string", "minLength": 1 },
+        "instanceId": { "type": "string", "minLength": 1 },
+        "componentId": { "type": "string", "minLength": 1 },
+        "nodeId": { "type": "string", "minLength": 1 }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["language"],
+      "properties": {
+        "language": { "type": "string", "minLength": 1 },
+        "runtime": { "type": "string" },
+        "framework": { "type": "string" }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rootPath"],
+      "properties": {
+        "rootPath": { "type": "string", "minLength": 1 },
+        "moduleId": { "type": "string" },
+        "pluginId": { "type": "string" }
+      }
+    }
+  }
+}

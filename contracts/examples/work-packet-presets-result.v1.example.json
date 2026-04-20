@@ -1,0 +1,33 @@
+{
+  "schemaName": "WorkPacketPresetsResult",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-08T00:00:00Z",
+  "platform": "win32",
+  "items": [
+    {
+      "name": "repo-default",
+      "description": "Default repo verification.",
+      "verifyCommands": [
+        "powershell -NoProfile -Command ./eng/validate-contracts.ps1",
+        ".venv\\Scripts\\python.exe -m pytest -q"
+      ],
+      "extensions": {}
+    },
+    {
+      "name": "fast",
+      "description": "Fast verification subset.",
+      "verifyCommands": [
+        "powershell -NoProfile -Command ./eng/validate-contracts.ps1",
+        ".venv\\Scripts\\python.exe -m pytest -q tests/test_local_agent_work_packets.py"
+      ],
+      "extensions": {}
+    },
+    {
+      "name": "none",
+      "description": "No default verify commands.",
+      "verifyCommands": [],
+      "extensions": {}
+    }
+  ],
+  "extensions": {}
+}

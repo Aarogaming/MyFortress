@@ -1,0 +1,19 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "builder",
+  "topic": "builder.app.generate.result.v1",
+  "message_id": "msg-builder-generate-result-001",
+  "emitted_utc": "2026-02-06T17:31:05Z",
+  "trace_id": "trace-builder-001",
+  "correlation_id": "msg-builder-generate-001",
+  "payload": {
+    "schemaName": "AppGenerateResult",
+    "schemaVersion": "1.0.0",
+    "generatedUtc": "2026-02-06T17:31:05Z",
+    "requestMessageId": "msg-builder-generate-001",
+    "status": "planned",
+    "plan": []
+  },
+  "source": { "component": "builder-provider", "instanceId": "dev-01" }
+}

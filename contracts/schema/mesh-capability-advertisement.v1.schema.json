@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/mesh-capability-advertisement/v1",
+  "title": "MeshCapabilityAdvertisement v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaName",
+    "schemaVersion",
+    "emittedUtc",
+    "ttlSec",
+    "capabilityId",
+    "provider",
+    "transports"
+  ],
+  "properties": {
+    "schemaName": { "const": "MeshCapabilityAdvertisement" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "emittedUtc": { "type": "string", "format": "date-time" },
+    "ttlSec": { "type": "integer", "minimum": 1 },
+
+    "capabilityId": { "type": "string", "minLength": 1 },
+    "capability": { "$ref": "#/$defs/capabilityRef" },
+
+    "provider": { "$ref": "#/$defs/providerRef" },
+    "transports": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+
+    "contracts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/contractRef" }
+    },
+    "labels": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "capabilityRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "providerRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hiveId", "instanceId", "componentId"],
+      "properties": {
+        "hiveId": { "type": "string", "minLength": 1 },
+        "instanceId": { "type": "string", "minLength": 1 },
+        "componentId": { "type": "string", "minLength": 1 },
+        "nodeId": { "type": "string", "minLength": 1 },
+        "endpoint": { "type": "string", "minLength": 1 }
+      }
+    },
+    "contractRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "version", "direction"],
+      "properties": {
+        "id": { "type": "string", "format": "uri" },
+        "name": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 },
+        "direction": {
+          "type": "string",
+          "enum": ["produces", "consumes", "bidirectional"]
+        }
+      }
+    }
+  }
+}

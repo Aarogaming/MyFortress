@@ -1,0 +1,22 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "memory",
+  "topic": "memory.delete.v1",
+  "message_id": "msg-mem-del-001",
+  "emitted_utc": "2026-02-06T12:33:00Z",
+  "trace_id": "trace-mem-003",
+  "payload": {
+    "schemaName": "MemoryDelete",
+    "schemaVersion": "1.0.0",
+    "issuedUtc": "2026-02-06T12:33:00Z",
+    "op": "delete",
+    "scope": "task:AAS-123",
+    "namespace": "observations",
+    "key": "entity/window/active"
+  },
+  "source": {
+    "component": "memory-client",
+    "instanceId": "dev-01"
+  }
+}

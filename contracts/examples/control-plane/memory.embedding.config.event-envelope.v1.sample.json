@@ -1,0 +1,23 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "memory",
+  "topic": "memory.embedding.config.v1",
+  "message_id": "msg-mem-embedcfg-001",
+  "emitted_utc": "2026-02-06T13:20:00Z",
+  "trace_id": "trace-mem-embedcfg-001",
+  "payload": {
+    "schemaName": "MemoryEmbeddingConfig",
+    "schemaVersion": "1.0.0",
+    "issuedUtc": "2026-02-06T13:20:00Z",
+    "primary": {
+      "provider": "lm_studio",
+      "model": "text-embedding-nomic-embed-text-v1.5",
+      "baseUrl": "http://localhost:1234"
+    }
+  },
+  "source": {
+    "component": "memory-provider",
+    "instanceId": "dev-01"
+  }
+}

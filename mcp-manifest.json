@@ -1,0 +1,32 @@
+{
+  "repo": "MyFortress",
+  "description": "Security, Policy Gates, Sentinel Enforcement, and Secret Scanning.",
+  "capabilities": [
+    {
+      "schema_version": "1.0",
+      "governing_body": "MyFortress",
+      "capability_id": "fortress_secret_scan",
+      "name": "SecretHygieneScan",
+      "description": "Performs deep GitLeaks and entropy scans to detect sensitive secrets.",
+      "mcp_type": "event_trigger",
+      "entry_point": "myfortress.scan.secrets",
+      "version": "v1.0.0",
+      "confirmed_conditions": [
+        "gitleaks_ruleset_loaded"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "governing_body": "MyFortress",
+      "capability_id": "fortress_policy_evaluate",
+      "name": "PolicyGateEvaluation",
+      "description": "Evaluates architectural or security policies against a proposed changeset.",
+      "mcp_type": "event_trigger",
+      "entry_point": "myfortress.policy.evaluate",
+      "version": "v1.0.0",
+      "confirmed_conditions": [
+        "opa_policies_synced"
+      ]
+    }
+  ]
+}

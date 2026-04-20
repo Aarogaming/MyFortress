@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/runtime-unit-run/v1",
+  "title": "RuntimeUnitRun v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaName",
+    "schemaVersion",
+    "issuedUtc",
+    "spec"
+  ],
+  "properties": {
+    "schemaName": { "const": "RuntimeUnitRun" },
+    "schemaVersion": { "const": "1.0.0" },
+    "issuedUtc": { "type": "string", "format": "date-time" },
+
+    "spec": { "$ref": "runtime-unit-spec.v1.schema.json" },
+
+    "timeoutSec": { "type": "integer", "minimum": 1 },
+    "captureLogs": { "type": "boolean", "default": true },
+    "dryRun": { "type": "boolean", "default": false },
+
+    "source": { "$ref": "resource-snapshot.v1.schema.json#/$defs/providerRef" },
+    "traceId": { "type": "string", "minLength": 1 },
+    "extensions": { "type": "object", "additionalProperties": true }
+  }
+}

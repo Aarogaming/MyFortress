@@ -1,0 +1,16 @@
+{
+  "schemaName": "ScaffoldRequest",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-06T15:06:00Z",
+  "integrationPlanRef": "memory://task:example/integration-plan/001",
+  "target": { "language": "python", "runtime": "3.12", "framework": "none" },
+  "output": { "rootPath": "artifacts/scaffolds/research-validator", "moduleId": "research_validator" },
+  "mode": "plan_only",
+  "dryRun": true,
+  "runTests": true,
+  "testCommands": ["pytest", "./eng/validate-contracts.ps1"],
+  "createBranch": true,
+  "branchName": "scaffold/research-validator",
+  "createCommit": false,
+  "traceId": "trace-research-001"
+}

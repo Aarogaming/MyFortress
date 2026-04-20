@@ -1,0 +1,17 @@
+{
+  "schemaName": "ScaffoldResult",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-06T15:07:00Z",
+  "requestMessageId": "msg-research-scaffold-001",
+  "status": "planned",
+  "plan": [
+    "Create output directory",
+    "Add minimal package skeleton",
+    "Add contract validation helper",
+    "Add tests",
+    "Run validation commands"
+  ],
+  "commands": ["pytest", "./eng/validate-contracts.ps1"],
+  "warnings": [],
+  "traceId": "trace-research-001"
+}

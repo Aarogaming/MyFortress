@@ -1,0 +1,27 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "event",
+  "topic": "task.created.v1",
+  "message_id": "msg-20260118-0001",
+  "emitted_utc": "2026-01-18T01:15:00Z",
+  "trace_id": "trace-20260118-0001",
+  "correlation_id": "workflow-42",
+
+  "eventType": "TaskCreated",
+  "emittedUtc": "2026-01-18T01:15:00Z",
+  "traceId": "trace-20260118-0001",
+  "correlationId": "workflow-42",
+  "severity": "info",
+  "source": {
+    "service": "aas-hub",
+    "component": "task-manager",
+    "instanceId": "local-dev",
+    "plugin": "core"
+  },
+  "payload": {
+    "taskId": "AAS-123",
+    "title": "Sample task created",
+    "status": "queued"
+  }
+}

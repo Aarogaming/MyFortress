@@ -1,0 +1,23 @@
+{
+  "schemaName": "MemoryQueryResult",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-06T12:32:00Z",
+  "scope": "task:AAS-123",
+  "namespace": "decisions",
+  "items": [],
+  "error": {
+    "code": "not_found",
+    "message": "Memory item not found",
+    "retryable": false,
+    "details": {
+      "key": "decision/DOES_NOT_EXIST"
+    }
+  },
+  "nextCursor": null,
+  "source": {
+    "hiveId": "local",
+    "instanceId": "dev-01",
+    "componentId": "core.memory"
+  },
+  "traceId": "trace-mem-002"
+}

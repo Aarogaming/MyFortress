@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/swarm-provider-assignment/v1",
+  "title": "SwarmProviderAssignment v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaName",
+    "schemaVersion",
+    "computedUtc",
+    "epoch",
+    "capabilityId",
+    "primary"
+  ],
+  "properties": {
+    "schemaName": { "const": "SwarmProviderAssignment" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "computedUtc": { "type": "string", "format": "date-time" },
+    "epoch": { "type": "string", "minLength": 1 },
+
+    "capabilityId": { "type": "string", "minLength": 1 },
+
+    "primary": { "$ref": "#/$defs/providerRef" },
+    "secondaries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/providerRef" }
+    },
+
+    "coordinator": { "$ref": "#/$defs/coordinatorRef" },
+    "reason": { "type": "string" },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "providerRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hiveId", "instanceId", "componentId"],
+      "properties": {
+        "hiveId": { "type": "string", "minLength": 1 },
+        "instanceId": { "type": "string", "minLength": 1 },
+        "componentId": { "type": "string", "minLength": 1 },
+        "nodeId": { "type": "string", "minLength": 1 }
+      }
+    },
+    "coordinatorRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nodeId", "instanceId"],
+      "properties": {
+        "nodeId": { "type": "string", "minLength": 1 },
+        "instanceId": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

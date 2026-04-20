@@ -1,0 +1,54 @@
+{
+  "schemaName": "ResearchAnalysisResult",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-06T15:02:00Z",
+  "requestMessageId": "msg-research-analyze-001",
+  "inputs": {
+    "requirements": "Find libraries for contract validation in Python.",
+    "discoveryRequestMessageId": "msg-research-discovery-001",
+    "discoveryResultMessageId": "msg-research-discovery-result-001",
+    "ecosystems": ["github", "pypi"],
+    "language": "python",
+    "licenseAllowlist": ["MIT", "Apache-2.0", "BSD-3-Clause"]
+  },
+  "evaluations": [
+    {
+      "candidate": {
+        "id": "pypi:jsonschema",
+        "ecosystem": "pypi",
+        "name": "jsonschema",
+        "version": "4.21.1",
+        "license": "MIT"
+      },
+      "decision": "adopt",
+      "score": 0.92,
+      "license": { "declared": "MIT", "allowed": true, "requiresAttribution": true },
+      "security": { "risk": "low", "findings": [] },
+      "quality": { "maintained": true, "hasTests": true, "hasCI": true, "stars": 0 },
+      "compatibility": { "language": "python", "runtime": ">=3.9" },
+      "rationale": "Widely used validator; supports modern JSON Schema drafts."
+    },
+    {
+      "candidate": {
+        "id": "github:someorg/unknown-validator",
+        "ecosystem": "github",
+        "name": "unknown-validator",
+        "repoUrl": "https://github.com/someorg/unknown-validator"
+      },
+      "decision": "reject",
+      "score": 0.12,
+      "security": {
+        "risk": "high",
+        "findings": [
+          { "severity": "high", "title": "No release process; unpinned dependencies" }
+        ]
+      },
+      "rationale": "Insufficient signals for safe adoption."
+    }
+  ],
+  "recommended": [
+    { "candidateId": "pypi:jsonschema", "reason": "Meets license/security/maintenance criteria", "confidence": "high" }
+  ],
+  "warnings": [],
+  "traceId": "trace-research-001"
+}

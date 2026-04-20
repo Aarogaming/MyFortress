@@ -1,0 +1,17 @@
+{
+  "schemaName": "ResearchDiscoveryRequest",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-06T15:00:00Z",
+  "requirements": "Find libraries for contract validation in Python.",
+  "ecosystems": ["github", "pypi"],
+  "language": "python",
+  "licenseAllowlist": ["MIT", "Apache-2.0", "BSD-3-Clause"],
+  "maxCandidates": 20,
+  "minStars": 50,
+  "source": {
+    "hiveId": "local",
+    "instanceId": "dev-01",
+    "componentId": "core.research"
+  },
+  "traceId": "trace-research-001"
+}

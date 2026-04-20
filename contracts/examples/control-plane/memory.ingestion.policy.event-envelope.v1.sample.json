@@ -1,0 +1,26 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "memory",
+  "topic": "memory.ingestion.policy.v1",
+  "message_id": "msg-mem-ingest-policy-001",
+  "emitted_utc": "2026-02-06T14:05:00Z",
+  "trace_id": "trace-mem-ingest-policy-001",
+  "payload": {
+    "schemaName": "MemoryIngestionPolicy",
+    "schemaVersion": "1.0.0",
+    "issuedUtc": "2026-02-06T14:05:00Z",
+    "policyId": "mem-ingest-default",
+    "enabled": true,
+    "defaults": {
+      "mode": "infer",
+      "confidenceThreshold": 0.7,
+      "allowDelete": false,
+      "maxOps": 50
+    }
+  },
+  "source": {
+    "component": "memory-provider",
+    "instanceId": "dev-01"
+  }
+}

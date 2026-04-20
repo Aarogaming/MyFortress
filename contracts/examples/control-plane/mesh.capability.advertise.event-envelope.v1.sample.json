@@ -1,0 +1,34 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "mesh",
+  "topic": "mesh.capability.advertise.v1",
+  "message_id": "msg-mesh-001",
+  "emitted_utc": "2026-02-06T12:00:00Z",
+  "trace_id": "trace-mesh-001",
+  "payload": {
+    "schemaName": "MeshCapabilityAdvertisement",
+    "schemaVersion": "1.0.0",
+    "emittedUtc": "2026-02-06T12:00:00Z",
+    "ttlSec": 30,
+    "capabilityId": "screen.capture@1.0.0",
+    "provider": {
+      "hiveId": "local",
+      "instanceId": "dev-01",
+      "componentId": "plugins.game_automation"
+    },
+    "transports": ["event_bus", "nats"],
+    "contracts": [
+      {
+        "id": "https://aas.local/contracts/snapshot/v1",
+        "name": "snapshot",
+        "version": "1.0.0",
+        "direction": "produces"
+      }
+    ]
+  },
+  "source": {
+    "component": "mesh-advertiser",
+    "instanceId": "dev-01"
+  }
+}

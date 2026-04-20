@@ -1,0 +1,13 @@
+{
+  "schemaName": "AppSpec",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-06T17:30:00Z",
+  "name": "Example Scaffolder",
+  "description": "Minimal demo spec",
+  "features": ["CLI command to generate a project skeleton"],
+  "ui": { "type": "cli" },
+  "api": { "type": "none" },
+  "storage": { "type": "none" },
+  "constraints": ["micro-batches only"],
+  "nonGoals": ["no production deployment"]
+}

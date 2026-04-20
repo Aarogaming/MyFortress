@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/app-generate-result/v1",
+  "title": "AppGenerateResult v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "generatedUtc", "requestMessageId", "status"],
+  "properties": {
+    "schemaName": { "const": "AppGenerateResult" },
+    "schemaVersion": { "const": "1.0.0" },
+    "generatedUtc": { "type": "string", "format": "date-time" },
+    "requestMessageId": { "type": "string", "minLength": 1 },
+
+    "status": { "type": "string", "enum": ["planned", "scaffolded", "failed"] },
+
+    "plan": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+
+    "files": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/file" }
+    },
+    "artifactRef": { "type": "string", "minLength": 1 },
+
+    "warnings": { "type": "array", "items": { "type": "string" } },
+
+    "source": { "$ref": "#/$defs/providerRef" },
+    "traceId": { "type": "string", "minLength": 1 },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "oneOf": [
+    { "required": ["plan"] },
+    { "required": ["files"] },
+    { "required": ["artifactRef"] }
+  ],
+  "$defs": {
+    "providerRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hiveId", "instanceId", "componentId"],
+      "properties": {
+        "hiveId": { "type": "string", "minLength": 1 },
+        "instanceId": { "type": "string", "minLength": 1 },
+        "componentId": { "type": "string", "minLength": 1 },
+        "nodeId": { "type": "string", "minLength": 1 }
+      }
+    },
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "content"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "content": { "type": "string" },
+        "mode": { "type": "string" }
+      }
+    }
+  }
+}

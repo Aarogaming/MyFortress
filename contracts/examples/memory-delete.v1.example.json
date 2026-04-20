@@ -1,0 +1,16 @@
+{
+  "schemaName": "MemoryDelete",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-06T12:33:00Z",
+  "op": "delete",
+  "scope": "task:AAS-123",
+  "namespace": "observations",
+  "key": "entity/window/active",
+  "idempotencyKey": "memory-delete-001",
+  "source": {
+    "hiveId": "local",
+    "instanceId": "dev-01",
+    "componentId": "core.memory"
+  },
+  "traceId": "trace-mem-003"
+}

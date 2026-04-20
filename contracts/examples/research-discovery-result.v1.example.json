@@ -1,0 +1,25 @@
+{
+  "schemaName": "ResearchDiscoveryResult",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-06T15:00:02Z",
+  "requestMessageId": "msg-research-discovery-001",
+  "candidates": [
+    {
+      "id": "pypi:jsonschema",
+      "ecosystem": "pypi",
+      "name": "jsonschema",
+      "version": "4.x",
+      "license": "MIT",
+      "homepageUrl": "https://pypi.org/project/jsonschema/",
+      "score": 0.9,
+      "notes": "Python JSON Schema implementation"
+    }
+  ],
+  "warnings": [],
+  "source": {
+    "hiveId": "local",
+    "instanceId": "dev-01",
+    "componentId": "core.research"
+  },
+  "traceId": "trace-research-001"
+}

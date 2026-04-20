@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aas.local/contracts/aas-comm-envelope/v1",
+  "title": "AAS Comm Envelope v1",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schemaName",
+    "schemaVersion",
+    "kind",
+    "topic",
+    "message_id",
+    "emitted_utc",
+    "trace_id",
+    "payload"
+  ],
+  "properties": {
+    "schemaName": { "type": "string", "minLength": 1 },
+    "schemaVersion": { "type": "string", "minLength": 1 },
+    "kind": { "type": "string", "minLength": 1 },
+    "topic": { "type": "string", "minLength": 1 },
+    "message_id": { "type": "string", "minLength": 1 },
+    "emitted_utc": { "type": "string", "minLength": 1 },
+    "trace_id": { "type": "string", "minLength": 1 },
+    "correlation_id": { "type": ["string", "null"] },
+    "payload": { "type": "object" },
+    "source": { "type": "object" },
+
+    "event_type": { "type": "string" },
+    "module_id": { "type": "string" },
+    "sequence": { "type": "integer" },
+    "require_ack": { "type": "boolean" }
+  }
+}

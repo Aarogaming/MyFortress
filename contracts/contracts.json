@@ -1,0 +1,520 @@
+{
+  "schemaName": "ContractsIndex",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-07T00:00:00Z",
+  "schemas": [
+    {
+      "name": "AppGenerateRequest",
+      "version": "1.0.0",
+      "file": "schema/app-generate.v1.schema.json",
+      "id": "https://aas.local/contracts/app-generate/v1",
+      "channel": "builder",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "AppGenerateResult",
+      "version": "1.0.0",
+      "file": "schema/app-generate-result.v1.schema.json",
+      "id": "https://aas.local/contracts/app-generate-result/v1",
+      "channel": "builder",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "AppSpec",
+      "version": "1.0.0",
+      "file": "schema/app-spec.v1.schema.json",
+      "id": "https://aas.local/contracts/app-spec/v1",
+      "channel": "builder",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "AASCommEnvelope",
+      "version": "1.0.0",
+      "file": "schema/aas-comm-envelope.v1.schema.json",
+      "id": "https://aas.local/contracts/aas-comm-envelope/v1",
+      "channel": "comm",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "active"
+    },
+    {
+      "name": "AgentEnvelope",
+      "version": "1.0.0",
+      "file": "schema/agent-envelope.v1.schema.json",
+      "id": "https://aas.local/contracts/agent-envelope/v1",
+      "channel": "comm",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "active"
+    },
+    {
+      "name": "HiveCommEnvelope",
+      "version": "1.0.0",
+      "file": "schema/hive-comm-envelope.v1.schema.json",
+      "id": "https://aas.local/contracts/hive-comm-envelope/v1",
+      "channel": "comm",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "active"
+    },
+    {
+      "name": "CommandBatch",
+      "version": "1.0.0",
+      "file": "schema/command-batch.v1.schema.json",
+      "id": "https://aas.local/contracts/command-batch/v1",
+      "channel": "commands",
+      "owners": ["ProjectMaelstrom", "AaroneousAutomationSuite"],
+      "status": "active"
+    },
+    {
+      "name": "HomeDeviceControl",
+      "version": "1.0.0",
+      "file": "schema/home-device-control.v1.schema.json",
+      "id": "https://aas.local/contracts/home-device-control/v1",
+      "channel": "commands",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "EventEnvelope",
+      "version": "1.0.0",
+      "file": "schema/event-envelope.v1.schema.json",
+      "id": "https://aas.local/contracts/event-envelope/v1",
+      "channel": "events",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "active"
+    },
+    {
+      "name": "HandoffEnvelope",
+      "version": "1.0.0",
+      "file": "schema/handoff-envelope.v1.schema.json",
+      "id": "https://aas.local/contracts/handoff-envelope/v1",
+      "channel": "handoff",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "active"
+    },
+    {
+      "name": "MemoryConsolidate",
+      "version": "1.0.0",
+      "file": "schema/memory-consolidate.v1.schema.json",
+      "id": "https://aas.local/contracts/memory-consolidate/v1",
+      "channel": "memory",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MemoryConsolidateResult",
+      "version": "1.0.0",
+      "file": "schema/memory-consolidate-result.v1.schema.json",
+      "id": "https://aas.local/contracts/memory-consolidate-result/v1",
+      "channel": "memory",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MemoryConsolidationPolicy",
+      "version": "1.0.0",
+      "file": "schema/memory-consolidation-policy.v1.schema.json",
+      "id": "https://aas.local/contracts/memory-consolidation-policy/v1",
+      "channel": "memory",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MemoryDelete",
+      "version": "1.0.0",
+      "file": "schema/memory-delete.v1.schema.json",
+      "id": "https://aas.local/contracts/memory-delete/v1",
+      "channel": "memory",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MemoryEmbeddingConfig",
+      "version": "1.0.0",
+      "file": "schema/memory-embedding-config.v1.schema.json",
+      "id": "https://aas.local/contracts/memory-embedding-config/v1",
+      "channel": "memory",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MemoryError",
+      "version": "1.0.0",
+      "file": "schema/memory-error.v1.schema.json",
+      "id": "https://aas.local/contracts/memory-error/v1",
+      "channel": "memory",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MemoryFeedback",
+      "version": "1.0.0",
+      "file": "schema/memory-feedback.v1.schema.json",
+      "id": "https://aas.local/contracts/memory-feedback/v1",
+      "channel": "memory",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MemoryHealth",
+      "version": "1.0.0",
+      "file": "schema/memory-health.v1.schema.json",
+      "id": "https://aas.local/contracts/memory-health/v1",
+      "channel": "memory",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MemoryIngest",
+      "version": "1.0.0",
+      "file": "schema/memory-ingest.v1.schema.json",
+      "id": "https://aas.local/contracts/memory-ingest/v1",
+      "channel": "memory",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MemoryIngestResult",
+      "version": "1.0.0",
+      "file": "schema/memory-ingest-result.v1.schema.json",
+      "id": "https://aas.local/contracts/memory-ingest-result/v1",
+      "channel": "memory",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MemoryIngestionPolicy",
+      "version": "1.0.0",
+      "file": "schema/memory-ingestion-policy.v1.schema.json",
+      "id": "https://aas.local/contracts/memory-ingestion-policy/v1",
+      "channel": "memory",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MemoryItem",
+      "version": "1.0.0",
+      "file": "schema/memory-item.v1.schema.json",
+      "id": "https://aas.local/contracts/memory-item/v1",
+      "channel": "memory",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MemoryMergePlan",
+      "version": "1.0.0",
+      "file": "schema/memory-merge-plan.v1.schema.json",
+      "id": "https://aas.local/contracts/memory-merge-plan/v1",
+      "channel": "memory",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MemoryQuery",
+      "version": "1.0.0",
+      "file": "schema/memory-query.v1.schema.json",
+      "id": "https://aas.local/contracts/memory-query/v1",
+      "channel": "memory",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MemoryQueryResult",
+      "version": "1.0.0",
+      "file": "schema/memory-query-result.v1.schema.json",
+      "id": "https://aas.local/contracts/memory-query-result/v1",
+      "channel": "memory",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MemoryReplicationPolicy",
+      "version": "1.0.0",
+      "file": "schema/memory-replication-policy.v1.schema.json",
+      "id": "https://aas.local/contracts/memory-replication-policy/v1",
+      "channel": "memory",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MemorySearch",
+      "version": "1.0.0",
+      "file": "schema/memory-search.v1.schema.json",
+      "id": "https://aas.local/contracts/memory-search/v1",
+      "channel": "memory",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MemorySearchResult",
+      "version": "1.0.0",
+      "file": "schema/memory-search-result.v1.schema.json",
+      "id": "https://aas.local/contracts/memory-search-result/v1",
+      "channel": "memory",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MemoryUpsert",
+      "version": "1.0.0",
+      "file": "schema/memory-upsert.v1.schema.json",
+      "id": "https://aas.local/contracts/memory-upsert/v1",
+      "channel": "memory",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MeshCapabilityAdvertisement",
+      "version": "1.0.0",
+      "file": "schema/mesh-capability-advertisement.v1.schema.json",
+      "id": "https://aas.local/contracts/mesh-capability-advertisement/v1",
+      "channel": "mesh",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "ConfigSnapshot",
+      "version": "1.0.0",
+      "file": "schema/config-snapshot.v1.schema.json",
+      "id": "https://aas.local/contracts/config-snapshot/v1",
+      "channel": "ops",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "DriftSignal",
+      "version": "1.0.0",
+      "file": "schema/drift-signal.v1.schema.json",
+      "id": "https://aas.local/contracts/drift-signal/v1",
+      "channel": "ops",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "OpsIntervention",
+      "version": "1.0.0",
+      "file": "schema/ops-intervention.v1.schema.json",
+      "id": "https://aas.local/contracts/ops-intervention/v1",
+      "channel": "ops",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "OpsInterventionResult",
+      "version": "1.0.0",
+      "file": "schema/ops-intervention-result.v1.schema.json",
+      "id": "https://aas.local/contracts/ops-intervention-result/v1",
+      "channel": "ops",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "ResourceRoutingDecision",
+      "version": "1.0.0",
+      "file": "schema/resource-routing-decision.v1.schema.json",
+      "id": "https://aas.local/contracts/resource-routing-decision/v1",
+      "channel": "ops",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "ResourceRoutingPolicy",
+      "version": "1.0.0",
+      "file": "schema/resource-routing-policy.v1.schema.json",
+      "id": "https://aas.local/contracts/resource-routing-policy/v1",
+      "channel": "ops",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "ResourceSnapshot",
+      "version": "1.0.0",
+      "file": "schema/resource-snapshot.v1.schema.json",
+      "id": "https://aas.local/contracts/resource-snapshot/v1",
+      "channel": "ops",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "WeeklyDigest",
+      "version": "1.0.0",
+      "file": "schema/weekly-digest.v1.schema.json",
+      "id": "https://aas.local/contracts/weekly-digest/v1",
+      "channel": "ops",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "TestWorkerReport",
+      "version": "1.0.0",
+      "file": "schema/test-worker-report.v1.schema.json",
+      "id": "https://aas.local/contracts/test-worker-report/v1",
+      "channel": "qa",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "TestWorkerTask",
+      "version": "1.0.0",
+      "file": "schema/test-worker-task.v1.schema.json",
+      "id": "https://aas.local/contracts/test-worker-task/v1",
+      "channel": "qa",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "Capability",
+      "version": "1.0.0",
+      "file": "schema/capability.v1.schema.json",
+      "id": "https://aas.local/contracts/capability/v1",
+      "channel": "registry",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "active"
+    },
+    {
+      "name": "ContractsIndex",
+      "version": "1.0.0",
+      "file": "schema/contracts-index.v1.schema.json",
+      "id": "https://aas.local/contracts/contracts-index/v1",
+      "channel": "registry",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "active"
+    },
+    {
+      "name": "PluginManifest",
+      "version": "1.0.0",
+      "file": "schema/plugin-manifest.v1.schema.json",
+      "id": "https://aas.local/contracts/plugin-manifest/v1",
+      "channel": "registry",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "active"
+    },
+    {
+      "name": "IntegrationPlan",
+      "version": "1.0.0",
+      "file": "schema/integration-plan.v1.schema.json",
+      "id": "https://aas.local/contracts/integration-plan/v1",
+      "channel": "research",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "ResearchAnalysisResult",
+      "version": "1.0.0",
+      "file": "schema/research-analysis-result.v1.schema.json",
+      "id": "https://aas.local/contracts/research-analysis-result/v1",
+      "channel": "research",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "ResearchDiscoveryRequest",
+      "version": "1.0.0",
+      "file": "schema/research-discovery-request.v1.schema.json",
+      "id": "https://aas.local/contracts/research-discovery-request/v1",
+      "channel": "research",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "ResearchDiscoveryResult",
+      "version": "1.0.0",
+      "file": "schema/research-discovery-result.v1.schema.json",
+      "id": "https://aas.local/contracts/research-discovery-result/v1",
+      "channel": "research",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "ScaffoldRequest",
+      "version": "1.0.0",
+      "file": "schema/scaffold-request.v1.schema.json",
+      "id": "https://aas.local/contracts/scaffold-request/v1",
+      "channel": "research",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "ScaffoldResult",
+      "version": "1.0.0",
+      "file": "schema/scaffold-result.v1.schema.json",
+      "id": "https://aas.local/contracts/scaffold-result/v1",
+      "channel": "research",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "GameStateSnapshot",
+      "version": "1.0.0",
+      "file": "schema/snapshot.v1.schema.json",
+      "id": "https://aas.local/contracts/snapshot/v1",
+      "channel": "snapshots",
+      "owners": ["ProjectMaelstrom"],
+      "status": "active"
+    },
+    {
+      "name": "SwarmMembershipHeartbeat",
+      "version": "1.0.0",
+      "file": "schema/swarm-membership-heartbeat.v1.schema.json",
+      "id": "https://aas.local/contracts/swarm-membership-heartbeat/v1",
+      "channel": "swarm",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "SwarmProviderAssignment",
+      "version": "1.0.0",
+      "file": "schema/swarm-provider-assignment.v1.schema.json",
+      "id": "https://aas.local/contracts/swarm-provider-assignment/v1",
+      "channel": "swarm",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MultiWindowOrchestration",
+      "version": "1.0.0",
+      "file": "schema/multi-window-orchestration.v1.schema.json",
+      "id": "https://aas.local/contracts/multi-window-orchestration/v1",
+      "channel": "tools",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "PersonaDirective",
+      "version": "1.0.0",
+      "file": "schema/persona-directive.v1.schema.json",
+      "id": "https://aas.local/contracts/persona-directive/v1",
+      "channel": "ux",
+      "owners": ["AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MerlinActionPlan",
+      "version": "1.0.0",
+      "file": "merlin/action_plan.schema.json",
+      "id": "https://aas.local/contracts/merlin/action-plan/v1",
+      "channel": "merlin",
+      "owners": ["Merlin", "AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MerlinDistillEvent",
+      "version": "1.0.0",
+      "file": "merlin/event.schema.json",
+      "id": "https://aas.local/contracts/merlin/distill-event/v1",
+      "channel": "merlin",
+      "owners": ["Merlin", "AaroneousAutomationSuite"],
+      "status": "experimental"
+    },
+    {
+      "name": "MerlinArtifactIndex",
+      "version": "1.0.0",
+      "file": "merlin/artifact_index.schema.json",
+      "id": "https://aas.local/contracts/merlin/artifact-index/v1",
+      "channel": "merlin",
+      "owners": ["Merlin", "AaroneousAutomationSuite"],
+      "status": "experimental"
+    }
+  ]
+}

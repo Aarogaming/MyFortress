@@ -1,0 +1,23 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "memory",
+  "topic": "memory.feedback.v1",
+  "message_id": "msg-mem-feedback-001",
+  "emitted_utc": "2026-02-06T13:55:00Z",
+  "trace_id": "trace-mem-feedback-001",
+  "payload": {
+    "schemaName": "MemoryFeedback",
+    "schemaVersion": "1.0.0",
+    "issuedUtc": "2026-02-06T13:55:00Z",
+    "feedback": "NEGATIVE",
+    "scope": "task:AAS-123",
+    "namespace": "decisions",
+    "key": "decision/P4.1",
+    "signal": "retrieval"
+  },
+  "source": {
+    "component": "memory-client",
+    "instanceId": "dev-01"
+  }
+}

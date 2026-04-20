@@ -1,0 +1,24 @@
+{
+  "id": "hub-core",
+  "name": "AAS Hub Core",
+  "kernel": {
+    "type": "in_process",
+    "manager": "core.managers.ManagerHub"
+  },
+  "plugins": {
+    "paths": [
+      "plugins",
+      "runtime_plugins"
+    ]
+  },
+  "hive": {
+    "swarm_enabled": true,
+    "verify_interval_sec": 15,
+    "repair_backoff_sec": 5,
+    "max_recursive_repairs": 3
+  },
+  "metadata": {
+    "description": "Primary kernel hive for the AAS Hub",
+    "tier": "core"
+  }
+}

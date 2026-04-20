@@ -1,0 +1,18 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "ops",
+  "topic": "ops.weekly.digest.v1",
+  "message_id": "msg-digest-001",
+  "emitted_utc": "2026-02-06T17:00:00Z",
+  "trace_id": "trace-digest-001",
+  "payload": {
+    "schemaName": "WeeklyDigest",
+    "schemaVersion": "1.0.0",
+    "generatedUtc": "2026-02-06T17:00:00Z",
+    "weekOfUtc": "2026-02-03",
+    "highlights": [],
+    "actions": ["noop"]
+  },
+  "source": { "component": "reporter", "instanceId": "dev-01" }
+}

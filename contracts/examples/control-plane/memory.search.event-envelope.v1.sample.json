@@ -1,0 +1,20 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "memory",
+  "topic": "memory.search.v1",
+  "message_id": "msg-mem-search-001",
+  "emitted_utc": "2026-02-06T13:10:00Z",
+  "trace_id": "trace-mem-search-001",
+  "payload": {
+    "schemaName": "MemorySearch",
+    "schemaVersion": "1.0.0",
+    "issuedUtc": "2026-02-06T13:10:00Z",
+    "query": "What were the decisions about the memory layer?",
+    "limit": 10
+  },
+  "source": {
+    "component": "memory-client",
+    "instanceId": "dev-01"
+  }
+}

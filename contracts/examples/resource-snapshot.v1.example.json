@@ -1,0 +1,13 @@
+{
+  "schemaName": "ResourceSnapshot",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-06T15:30:00Z",
+  "host": "devbox-01",
+  "cpu": { "percent": 82.1, "cores": 16 },
+  "memory": { "percent": 41.2, "totalBytes": 34359738368, "availableBytes": 20615843072 },
+  "gpus": [
+    { "id": "0", "name": "RTX 4090", "utilPercent": 5.0, "memUtilPercent": 12.0 }
+  ],
+  "source": { "hiveId": "local", "instanceId": "dev-01", "componentId": "core.resource" },
+  "traceId": "trace-resource-001"
+}

@@ -1,0 +1,17 @@
+{
+  "schemaName": "AgentEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "agent",
+  "topic": "agent.message.v1",
+  "message_id": "msg-agent-001",
+  "timestamp": "2026-02-07T00:00:00Z",
+  "emitted_utc": "2026-02-07T00:00:00Z",
+  "trace_id": "trace-agent-001",
+  "correlation_id": null,
+  "source": "agent:test",
+  "target": null,
+  "transport": "http",
+  "message_type": "message",
+  "payload": { "text": "hello" },
+  "metadata": {}
+}

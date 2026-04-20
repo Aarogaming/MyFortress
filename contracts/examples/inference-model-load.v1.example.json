@@ -1,0 +1,16 @@
+{
+  "schemaName": "InferenceModelLoad",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-08T00:00:00Z",
+  "backendType": "llama_cpp_python_server",
+  "backendId": "qwen3-coder",
+  "modelPath": "C:/Users/aarog/.lmstudio/models/lmstudio-community/Qwen3-Coder-Next-GGUF/Qwen3-Coder-Next-Q4_K_M.gguf",
+  "port": 8089,
+  "openaiHeaders": {},
+  "extraArgs": ["--n_ctx", "8192"],
+  "setActive": true,
+  "waitReadySec": 3,
+  "dryRun": true,
+  "traceId": "trace-example",
+  "extensions": {}
+}

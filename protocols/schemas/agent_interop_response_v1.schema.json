@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/myfortress/protocols/agent_interop_response_v1.schema.json",
+  "title": "Agent Interop Response V1",
+  "type": "object",
+  "required": [
+    "protocol_version",
+    "operation_id",
+    "request_id",
+    "ack",
+    "status",
+    "message",
+    "artifacts",
+    "updated_at_utc"
+  ],
+  "properties": {
+    "protocol_version": { "type": "string", "pattern": "^1\\.[0-9]+$" },
+    "operation_id": { "type": "string", "minLength": 1 },
+    "request_id": { "type": "string", "minLength": 1 },
+    "ack": { "type": "boolean" },
+    "status": {
+      "type": "string",
+      "enum": ["acknowledged", "in_progress", "blocked", "completed", "failed", "cancelled"]
+    },
+    "message": { "type": "string", "minLength": 1 },
+    "artifacts": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "updated_at_utc": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": true
+}

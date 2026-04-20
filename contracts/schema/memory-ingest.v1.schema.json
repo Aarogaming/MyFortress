@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/memory-ingest/v1",
+  "title": "MemoryIngest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaName",
+    "schemaVersion",
+    "issuedUtc",
+    "mode",
+    "scope",
+    "namespace",
+    "messages"
+  ],
+  "properties": {
+    "schemaName": { "const": "MemoryIngest" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "issuedUtc": { "type": "string", "format": "date-time" },
+
+    "mode": { "type": "string", "enum": ["infer", "raw"] },
+
+    "scope": { "$ref": "#/$defs/scope" },
+    "namespace": { "type": "string", "minLength": 1 },
+
+    "messages": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/message" }
+    },
+
+    "context": { "$ref": "#/$defs/context" },
+
+    "policyId": { "type": "string", "minLength": 1 },
+
+    "customInstructions": { "type": "string" },
+    "factExtractionPrompt": { "type": "string" },
+    "mergeDecisionPrompt": { "type": "string" },
+    "confidenceThreshold": { "type": "number", "minimum": 0, "maximum": 1 },
+
+    "allowDelete": { "type": "boolean" },
+    "includePlan": { "type": "boolean" },
+    "maxOps": { "type": "integer", "minimum": 1, "maximum": 1000 },
+    "keyPrefix": { "type": "string", "minLength": 1 },
+
+    "source": { "$ref": "#/$defs/providerRef" },
+    "traceId": { "type": "string", "minLength": 1 },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "scope": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(global|session:[^\\s]+|task:[^\\s]+|hive:[^\\s]+)$"
+    },
+    "providerRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hiveId", "instanceId", "componentId"],
+      "properties": {
+        "hiveId": { "type": "string", "minLength": 1 },
+        "instanceId": { "type": "string", "minLength": 1 },
+        "componentId": { "type": "string", "minLength": 1 },
+        "nodeId": { "type": "string", "minLength": 1 }
+      }
+    },
+    "message": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "content"],
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": ["system", "user", "assistant", "tool"]
+        },
+        "content": { "type": "string" },
+        "name": { "type": "string" },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "userId": { "type": "string", "minLength": 1 },
+        "sessionId": { "type": "string", "minLength": 1 },
+        "runId": { "type": "string", "minLength": 1 },
+        "agentId": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

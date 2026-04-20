@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/resource-routing-decision/v1",
+  "title": "ResourceRoutingDecision v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "issuedUtc", "lane", "decision"],
+  "properties": {
+    "schemaName": { "const": "ResourceRoutingDecision" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "issuedUtc": { "type": "string", "format": "date-time" },
+    "lane": { "type": "string", "minLength": 1 },
+
+    "capabilityId": { "type": "string", "minLength": 1 },
+    "taskId": { "type": "string", "minLength": 1 },
+
+    "decision": { "$ref": "#/$defs/decision" },
+    "metrics": { "$ref": "#/$defs/metrics" },
+
+    "source": { "$ref": "#/$defs/providerRef" },
+    "traceId": { "type": "string", "minLength": 1 },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "providerRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hiveId", "instanceId", "componentId"],
+      "properties": {
+        "hiveId": { "type": "string", "minLength": 1 },
+        "instanceId": { "type": "string", "minLength": 1 },
+        "componentId": { "type": "string", "minLength": 1 },
+        "nodeId": { "type": "string", "minLength": 1 }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary"],
+      "properties": {
+        "primary": { "type": "string", "enum": ["cpu", "gpu", "hybrid"] },
+        "fallback": { "type": "string", "enum": ["cpu", "gpu", "hybrid"] },
+        "reason": { "type": "string" },
+        "policyId": { "type": "string" },
+        "cpuOnly": { "type": "boolean" }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cpuPercent": { "type": "number", "minimum": 0, "maximum": 100 },
+        "gpuUtilPercent": { "type": "number", "minimum": 0, "maximum": 100 },
+        "memPercent": { "type": "number", "minimum": 0, "maximum": 100 },
+        "overheadEstimate": { "type": "number", "minimum": 0 }
+      }
+    }
+  }
+}

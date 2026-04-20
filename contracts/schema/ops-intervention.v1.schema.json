@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/ops-intervention/v1",
+  "title": "OpsIntervention v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "issuedUtc", "action"],
+  "properties": {
+    "schemaName": { "const": "OpsIntervention" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "issuedUtc": { "type": "string", "format": "date-time" },
+
+    "action": { "type": "string", "enum": ["safe_mode", "shed_load", "tighten_ingestion", "pause_background"] },
+    "target": { "type": "string" },
+    "reason": { "type": "string" },
+    "ttlSec": { "type": "integer", "minimum": 1 },
+
+    "dryRun": { "type": "boolean" },
+    "parameters": { "type": "object", "additionalProperties": true },
+
+    "source": { "$ref": "#/$defs/providerRef" },
+    "traceId": { "type": "string", "minLength": 1 },
+    "correlationId": { "type": "string", "minLength": 1 }
+  },
+  "$defs": {
+    "providerRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hiveId", "instanceId", "componentId"],
+      "properties": {
+        "hiveId": { "type": "string", "minLength": 1 },
+        "instanceId": { "type": "string", "minLength": 1 },
+        "componentId": { "type": "string", "minLength": 1 },
+        "nodeId": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

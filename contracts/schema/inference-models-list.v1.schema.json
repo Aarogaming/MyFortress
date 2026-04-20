@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/inference-models-list/v1",
+  "title": "InferenceModelsList v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "issuedUtc"],
+  "properties": {
+    "schemaName": { "const": "InferenceModelsList" },
+    "schemaVersion": { "const": "1.0.0" },
+    "issuedUtc": { "type": "string", "format": "date-time" },
+
+    "roots": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "extensions": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "maxDepth": { "type": "integer", "minimum": 1, "default": 4 },
+    "maxEntries": { "type": "integer", "minimum": 1, "default": 200 },
+
+    "traceId": { "type": "string", "minLength": 1 },
+    "extensionsObj": { "type": "object", "additionalProperties": true }
+  }
+}

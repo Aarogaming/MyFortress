@@ -1,0 +1,19 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "research",
+  "topic": "research.integrate.result.v1",
+  "message_id": "msg-research-integrate-result-001",
+  "emitted_utc": "2026-02-06T15:05:00Z",
+  "trace_id": "trace-research-001",
+  "payload": {
+    "schemaName": "IntegrationPlan",
+    "schemaVersion": "1.0.0",
+    "generatedUtc": "2026-02-06T15:05:00Z",
+    "requestMessageId": "msg-research-integrate-001",
+    "target": { "language": "python" },
+    "components": [{ "id": "pypi:jsonschema", "ecosystem": "pypi", "name": "jsonschema" }],
+    "steps": [{ "id": "step-1", "kind": "add_dependency", "title": "Add dependency" }]
+  },
+  "source": { "component": "integration-agent", "instanceId": "dev-01" }
+}

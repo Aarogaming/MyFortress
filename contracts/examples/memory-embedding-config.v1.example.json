@@ -1,0 +1,28 @@
+{
+  "schemaName": "MemoryEmbeddingConfig",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-06T13:20:00Z",
+  "primary": {
+    "provider": "lm_studio",
+    "model": "text-embedding-nomic-embed-text-v1.5",
+    "baseUrl": "http://localhost:1234",
+    "timeoutMs": 2000,
+    "description": "LM Studio primary"
+  },
+  "fallback": {
+    "provider": "ollama",
+    "model": "nomic-embed-text",
+    "baseUrl": "http://localhost:11434",
+    "timeoutMs": 2000,
+    "description": "Ollama fallback"
+  },
+  "options": {
+    "openai": {
+      "provider": "openai",
+      "model": "text-embedding-3-small",
+      "baseUrl": "https://api.openai.com/v1",
+      "apiKeyEnv": "OPENAI_API_KEY",
+      "timeoutMs": 5000
+    }
+  }
+}

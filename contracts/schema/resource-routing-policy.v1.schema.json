@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/resource-routing-policy/v1",
+  "title": "ResourceRoutingPolicy v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "issuedUtc", "policyId", "enabled", "defaults"],
+  "properties": {
+    "schemaName": { "const": "ResourceRoutingPolicy" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "issuedUtc": { "type": "string", "format": "date-time" },
+    "policyId": { "type": "string", "minLength": 1 },
+    "enabled": { "type": "boolean" },
+
+    "defaults": { "$ref": "#/$defs/defaults" },
+    "laneOverrides": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/defaults" }
+    },
+
+    "notes": { "type": "string" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "defaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "idleGpuUtilPercent": { "type": "number", "minimum": 0, "maximum": 100 },
+        "busyCpuPercent": { "type": "number", "minimum": 0, "maximum": 100 },
+        "overheadTolerance": { "type": "number", "minimum": 1 },
+        "cpuOnlyMode": { "type": "boolean" },
+        "maxWaitMs": { "type": "integer", "minimum": 0, "maximum": 60000 }
+      }
+    }
+  }
+}

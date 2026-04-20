@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/inference-models-list-result/v1",
+  "title": "InferenceModelsListResult v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "generatedUtc", "models"],
+  "properties": {
+    "schemaName": { "const": "InferenceModelsListResult" },
+    "schemaVersion": { "const": "1.0.0" },
+    "generatedUtc": { "type": "string", "format": "date-time" },
+
+    "models": { "type": "array", "items": { "$ref": "#/$defs/model" } },
+    "roots": { "type": "array", "items": { "type": "string" } },
+    "truncated": { "type": "boolean" },
+
+    "traceId": { "type": "string", "minLength": 1 },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "path"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "path": { "type": "string", "minLength": 1 },
+        "format": { "type": "string" },
+        "sizeBytes": { "type": "integer", "minimum": 0 },
+        "mtimeUtc": { "type": "string", "format": "date-time" },
+        "tags": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

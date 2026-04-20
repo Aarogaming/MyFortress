@@ -1,0 +1,27 @@
+{
+  "schemaName": "WorkPacket",
+  "schemaVersion": "1.0.0",
+  "packetId": "0001-aas-orchestrator",
+  "createdUtc": "2026-02-08T00:00:00Z",
+  "updatedUtc": "2026-02-08T00:00:00Z",
+  "state": "open",
+  "title": "AAS Orchestrator",
+  "goal": "Make AAS the orchestrator-of-record for the work cycle.",
+  "constraints": ["Keep micro-batches small", "Do not touch web refactor branch"],
+  "verifyCommands": [
+    "powershell -NoProfile -Command ./eng/validate-contracts.ps1",
+    ".venv/Scripts/python.exe -m pytest -q tests/test_local_agent_work_packets.py"
+  ],
+  "notes": [
+    { "utc": "2026-02-08T00:00:00Z", "author": "user", "text": "Start MVP." }
+  ],
+  "delegations": [
+    { "kind": "runtime_unit", "ref": "unit.test.verify", "createdUtc": "2026-02-08T00:00:00Z" }
+  ],
+  "extensions": {
+    "initPreset": "fast",
+    "initVerifySource": "preset",
+    "initPlatform": "win32",
+    "initPresetVerifyCommandsSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  }
+}

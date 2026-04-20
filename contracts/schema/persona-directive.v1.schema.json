@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/persona-directive/v1",
+  "title": "PersonaDirective v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "issuedUtc", "scope", "directive"],
+  "properties": {
+    "schemaName": { "const": "PersonaDirective" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "issuedUtc": { "type": "string", "format": "date-time" },
+
+    "scope": { "$ref": "#/$defs/scope" },
+
+    "directive": { "$ref": "#/$defs/directive" },
+
+    "ttlSec": { "type": "integer", "minimum": 1 },
+    "reason": { "type": "string" },
+
+    "source": { "$ref": "#/$defs/providerRef" },
+    "traceId": { "type": "string", "minLength": 1 },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "scope": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(global|session:[^\\s]+|task:[^\\s]+|hive:[^\\s]+)$"
+    },
+    "providerRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hiveId", "instanceId", "componentId"],
+      "properties": {
+        "hiveId": { "type": "string", "minLength": 1 },
+        "instanceId": { "type": "string", "minLength": 1 },
+        "componentId": { "type": "string", "minLength": 1 },
+        "nodeId": { "type": "string", "minLength": 1 }
+      }
+    },
+    "directive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": { "type": "string", "enum": ["set_fascia", "set_blend", "reset"] },
+
+        "fasciaId": { "type": "string", "minLength": 1 },
+        "traits": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "verbosity": { "type": "string", "enum": ["minimal", "standard", "detailed"] },
+        "tone": { "type": "string", "minLength": 1 },
+
+        "blend": {
+          "type": "object",
+          "additionalProperties": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      }
+    }
+  }
+}

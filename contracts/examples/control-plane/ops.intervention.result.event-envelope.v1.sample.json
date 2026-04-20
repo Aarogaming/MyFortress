@@ -1,0 +1,18 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "ops",
+  "topic": "ops.intervention.result.v1",
+  "message_id": "msg-ops-intervention-result-001",
+  "emitted_utc": "2026-02-06T16:40:01Z",
+  "trace_id": "trace-ops-002",
+  "correlation_id": "msg-ops-intervention-001",
+  "payload": {
+    "schemaName": "OpsInterventionResult",
+    "schemaVersion": "1.0.0",
+    "generatedUtc": "2026-02-06T16:40:01Z",
+    "requestMessageId": "msg-ops-intervention-001",
+    "status": "skipped"
+  },
+  "source": { "component": "ops", "instanceId": "dev-01" }
+}

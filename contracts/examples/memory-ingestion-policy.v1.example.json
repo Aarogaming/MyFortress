@@ -1,0 +1,25 @@
+{
+  "schemaName": "MemoryIngestionPolicy",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-06T14:05:00Z",
+  "policyId": "mem-ingest-default",
+  "enabled": true,
+  "defaults": {
+    "mode": "infer",
+    "confidenceThreshold": 0.7,
+    "allowDelete": false,
+    "maxOps": 50,
+    "customInstructions": "Only store confirmed facts. Ignore speculation and secrets."
+  },
+  "rules": [
+    {
+      "match": { "namespace": "observations" },
+      "apply": { "allowDelete": true, "confidenceThreshold": 0.4 }
+    },
+    {
+      "match": { "scope": "hive:.*", "namespace": "decisions" },
+      "apply": { "confidenceThreshold": 0.8 }
+    }
+  ],
+  "notes": "Default ingest gating"
+}

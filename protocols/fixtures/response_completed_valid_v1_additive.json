@@ -1,0 +1,16 @@
+{
+  "protocol_version": "1.1",
+  "operation_id": "op_20260213_compat_001",
+  "request_id": "req_compat_001",
+  "ack": true,
+  "status": "completed",
+  "message": "additive field compatibility validated",
+  "artifacts": [
+    "MyFortress/protocols/fixtures/response_completed_valid_v1_additive.json"
+  ],
+  "updated_at_utc": "2026-02-13T00:16:30Z",
+  "duration_ms": 812,
+  "diagnostics": {
+    "validator": "myfortress.protocol_validator"
+  }
+}

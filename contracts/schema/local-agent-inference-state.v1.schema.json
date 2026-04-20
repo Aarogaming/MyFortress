@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/local-agent-inference-state/v1",
+  "title": "LocalAgentInferenceState v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "generatedUtc", "backends"],
+  "properties": {
+    "schemaName": { "const": "LocalAgentInferenceState" },
+    "schemaVersion": { "const": "1.0.0" },
+    "generatedUtc": { "type": "string", "format": "date-time" },
+
+    "activeBackendId": { "type": ["string", "null"] },
+
+    "backends": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/backend" }
+    }
+  },
+  "$defs": {
+    "backend": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["unitId", "openaiBaseUrl"],
+      "properties": {
+        "unitId": { "type": "string", "minLength": 1 },
+        "openaiBaseUrl": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "protocol_version": "1.0",
+  "operation_id": "op_20260213_001",
+  "request_id": "req_903ab",
+  "source_repo": "AaroneousAutomationSuite/MyFortress",
+  "target_repo": "AaroneousAutomationSuite/Merlin",
+  "initiator": "codex.myfortress",
+  "intent": "sync protocol docs and validate references",
+  "constraints": {
+    "max_cpu_threads": 2,
+    "no_superproject_scan": true
+  },
+  "expected_outputs": [
+    "updated docs",
+    "validation report"
+  ],
+  "timeout_sec": 900,
+  "created_at_utc": "2026-02-13T00:00:00Z"
+}

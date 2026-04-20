@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/inference-model-load/v1",
+  "title": "InferenceModelLoad v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "issuedUtc", "backendType"],
+  "properties": {
+    "schemaName": { "const": "InferenceModelLoad" },
+    "schemaVersion": { "const": "1.0.0" },
+    "issuedUtc": { "type": "string", "format": "date-time" },
+
+    "backendType": {
+      "type": "string",
+      "enum": ["stub", "llama_cpp_server", "llama_cpp_python_server"]
+    },
+
+    "backendId": { "type": "string", "minLength": 1 },
+
+    "modelId": { "type": "string", "minLength": 1 },
+    "modelPath": { "type": "string", "minLength": 1 },
+    "modelRoots": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+
+    "port": { "type": "integer", "minimum": 1, "maximum": 65535 },
+    "openaiHeaders": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+
+    "serverBin": { "type": "string", "minLength": 1 },
+    "extraArgs": { "type": "array", "items": { "type": "string" } },
+    "setActive": { "type": "boolean", "default": true },
+    "waitReadySec": { "type": "integer", "minimum": 0, "default": 0 },
+    "dryRun": { "type": "boolean", "default": false },
+
+    "traceId": { "type": "string", "minLength": 1 },
+    "extensions": { "type": "object", "additionalProperties": true }
+  }
+}

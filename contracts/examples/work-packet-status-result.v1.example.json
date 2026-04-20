@@ -1,0 +1,63 @@
+{
+  "schemaName": "WorkPacketStatusResult",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-08T00:00:00Z",
+  "role": "verify",
+  "runId": "abc",
+  "packet": {
+    "schemaName": "WorkPacket",
+    "schemaVersion": "1.0.0",
+    "packetId": "0001-aas-orchestrator",
+    "createdUtc": "2026-02-08T00:00:00Z",
+    "updatedUtc": "2026-02-08T00:00:00Z",
+    "state": "open",
+    "title": "AAS Orchestrator",
+    "goal": null,
+    "constraints": [],
+    "verifyCommands": [],
+    "notes": [],
+    "delegations": [
+      {
+        "kind": "runtime_unit",
+        "ref": "work.verify.0001.abc.1",
+        "createdUtc": "2026-02-08T00:00:00Z",
+        "extensions": { "role": "verify" }
+      }
+    ],
+    "extensions": {}
+  },
+  "delegations": [
+    {
+      "kind": "runtime_unit",
+      "ref": "work.verify.0001.abc.1",
+      "unitStatus": {
+        "schemaName": "RuntimeUnitStatus",
+        "schemaVersion": "1.0.0",
+        "generatedUtc": "2026-02-08T00:00:00Z",
+        "unitId": "work.verify.0001.abc.1",
+        "state": "running",
+        "pid": 1234,
+        "startedUtc": "2026-02-08T00:00:00Z",
+        "endedUtc": null,
+        "exitCode": null,
+        "spec": {
+          "schemaName": "RuntimeUnitSpec",
+          "schemaVersion": "1.0.0",
+          "unitId": "work.verify.0001.abc.1",
+          "command": "cmd",
+          "args": ["/c", "echo ok"],
+          "cwd": "C:/Dev library/AaroneousAutomationSuite",
+          "env": {},
+          "killTree": true,
+          "jobObject": true,
+          "labels": {},
+          "extensions": {}
+        },
+        "logDir": "artifacts/local_agent/units/work.verify.0001.abc.1",
+        "extensions": {}
+      },
+      "extensions": { "role": "verify" }
+    }
+  ],
+  "extensions": {}
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/test-worker-report/v1",
+  "title": "TestWorkerReport v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "generatedUtc", "requestMessageId", "status", "findings"],
+  "properties": {
+    "schemaName": { "const": "TestWorkerReport" },
+    "schemaVersion": { "const": "1.0.0" },
+    "generatedUtc": { "type": "string", "format": "date-time" },
+    "requestMessageId": { "type": "string", "minLength": 1 },
+
+    "status": { "type": "string", "enum": ["pass", "fail", "inconclusive"] },
+    "findings": { "type": "array", "items": { "$ref": "#/$defs/finding" } },
+
+    "artifacts": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+
+    "source": { "$ref": "#/$defs/providerRef" },
+    "traceId": { "type": "string", "minLength": 1 },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "providerRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hiveId", "instanceId", "componentId"],
+      "properties": {
+        "hiveId": { "type": "string", "minLength": 1 },
+        "instanceId": { "type": "string", "minLength": 1 },
+        "componentId": { "type": "string", "minLength": 1 },
+        "nodeId": { "type": "string", "minLength": 1 }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["severity", "summary"],
+      "properties": {
+        "severity": { "type": "string", "enum": ["info", "warning", "error", "critical"] },
+        "summary": { "type": "string", "minLength": 1 },
+        "steps": { "type": "array", "items": { "type": "string" } },
+        "expected": { "type": "string" },
+        "actual": { "type": "string" },
+        "evidence": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

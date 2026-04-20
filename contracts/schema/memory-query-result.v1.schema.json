@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/memory-query-result/v1",
+  "title": "MemoryQueryResult v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaName",
+    "schemaVersion",
+    "generatedUtc",
+    "scope",
+    "namespace",
+    "items"
+  ],
+  "properties": {
+    "schemaName": { "const": "MemoryQueryResult" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "generatedUtc": { "type": "string", "format": "date-time" },
+
+    "scope": { "$ref": "#/$defs/scope" },
+    "namespace": { "type": "string", "minLength": 1 },
+
+    "items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/memoryItem" }
+    },
+    "error": { "$ref": "#/$defs/memoryError" },
+    "nextCursor": { "type": ["string", "null"], "minLength": 1 },
+
+    "source": { "$ref": "#/$defs/providerRef" },
+    "traceId": { "type": "string", "minLength": 1 },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "scope": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(global|session:[^\\s]+|task:[^\\s]+|hive:[^\\s]+)$"
+    },
+    "providerRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hiveId", "instanceId", "componentId"],
+      "properties": {
+        "hiveId": { "type": "string", "minLength": 1 },
+        "instanceId": { "type": "string", "minLength": 1 },
+        "componentId": { "type": "string", "minLength": 1 },
+        "nodeId": { "type": "string", "minLength": 1 }
+      }
+    },
+    "memoryItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaName",
+        "schemaVersion",
+        "scope",
+        "namespace",
+        "key",
+        "value",
+        "createdUtc",
+        "updatedUtc",
+        "revision"
+      ],
+      "properties": {
+        "schemaName": { "const": "MemoryItem" },
+        "schemaVersion": { "const": "1.0.0" },
+        "scope": { "$ref": "#/$defs/scope" },
+        "namespace": { "type": "string", "minLength": 1 },
+        "key": { "type": "string", "minLength": 1 },
+        "value": { "type": "object" },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "createdUtc": { "type": "string", "format": "date-time" },
+        "updatedUtc": { "type": "string", "format": "date-time" },
+        "ttlSec": { "type": "integer", "minimum": 1 },
+        "expiresUtc": { "type": "string", "format": "date-time" },
+        "revision": { "type": "integer", "minimum": 0 },
+        "source": { "$ref": "#/$defs/providerRef" },
+        "origin": { "$ref": "#/$defs/providerRef" },
+        "originIssuedUtc": { "type": "string", "format": "date-time" },
+        "originMessageId": { "type": "string", "minLength": 1 },
+        "traceId": { "type": "string", "minLength": 1 },
+        "extensions": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    }
+    ,
+    "memoryError": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "message", "retryable"],
+      "properties": {
+        "code": { "type": "string", "minLength": 1 },
+        "message": { "type": "string", "minLength": 1 },
+        "retryable": { "type": "boolean" },
+        "details": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "research",
+  "topic": "research.scaffold.v1",
+  "message_id": "msg-research-scaffold-001",
+  "emitted_utc": "2026-02-06T15:06:00Z",
+  "trace_id": "trace-research-001",
+  "payload": {
+    "schemaName": "ScaffoldRequest",
+    "schemaVersion": "1.0.0",
+    "issuedUtc": "2026-02-06T15:06:00Z",
+    "integrationPlanRef": "memory://task:example/integration-plan/001",
+    "target": { "language": "python" },
+    "output": { "rootPath": "artifacts/scaffolds/research-validator" },
+    "mode": "plan_only",
+    "dryRun": true
+  },
+  "source": { "component": "scaffold-client", "instanceId": "dev-01" }
+}

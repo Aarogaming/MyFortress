@@ -1,0 +1,11 @@
+{
+  "schemaName": "WorkPacketVerify",
+  "schemaVersion": "1.0.0",
+  "packetId": "0001-aas-orchestrator",
+  "commands": [
+    "powershell -NoProfile -Command ./eng/validate-contracts.ps1",
+    ".venv/Scripts/python.exe -m pytest -q tests/test_local_agent_work_packets.py"
+  ],
+  "timeoutSec": 900,
+  "extensions": {}
+}

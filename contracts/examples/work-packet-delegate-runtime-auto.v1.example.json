@@ -1,0 +1,18 @@
+{
+  "schemaName": "WorkPacketDelegateRuntimeAuto",
+  "schemaVersion": "1.0.0",
+  "packetId": "0001-aas-orchestrator",
+  "role": "verify",
+  "command": "cmd",
+  "args": ["/c", "echo ok"],
+  "cwd": "C:/Dev library/AaroneousAutomationSuite",
+  "env": {},
+  "timeoutSec": 120,
+  "captureLogs": true,
+  "dryRun": false,
+  "killTree": true,
+  "jobObject": true,
+  "delegationExtensions": { "role": "verify" },
+  "note": "Auto-delegated verify command.",
+  "extensions": {}
+}

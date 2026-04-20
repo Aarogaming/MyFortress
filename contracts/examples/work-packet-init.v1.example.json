@@ -1,0 +1,11 @@
+{
+  "schemaName": "WorkPacketInit",
+  "schemaVersion": "1.0.0",
+  "packetId": "aas-native-orchestrator",
+  "title": "AAS Orchestrator",
+  "goal": "Make AAS the orchestrator-of-record.",
+  "constraints": ["micro-batches"],
+  "preset": "fast",
+  "verifyCommands": null,
+  "extensions": {}
+}

@@ -1,0 +1,19 @@
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+include = "gateway|tests"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["gateway", "tests"]
+
+[tool.ruff.lint]
+extend-select = ["I"]  # import sorting
+
+[tool.mypy]
+python_version = "3.12"
+strict = false
+warn_unused_ignores = true
+disallow_untyped_defs = false
+ignore_missing_imports = true

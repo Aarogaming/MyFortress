@@ -1,0 +1,8 @@
+{
+  "schemaName": "WorkPacketDelegateVerify",
+  "schemaVersion": "1.0.0",
+  "packetId": "0001-aas-orchestrator",
+  "timeoutSec": 900,
+  "note": "Start verification run.",
+  "extensions": {}
+}

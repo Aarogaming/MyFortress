@@ -1,0 +1,24 @@
+{
+  "schemaName": "WorkPacketDelegateRuntime",
+  "schemaVersion": "1.0.0",
+  "packetId": "0001-aas-orchestrator",
+  "spec": {
+    "schemaName": "RuntimeUnitSpec",
+    "schemaVersion": "1.0.0",
+    "unitId": "wp.0001.verify.1",
+    "command": "cmd",
+    "args": ["/c", "echo ok"],
+    "cwd": "C:/Dev library/AaroneousAutomationSuite",
+    "env": {},
+    "killTree": true,
+    "jobObject": true,
+    "labels": {},
+    "extensions": {}
+  },
+  "timeoutSec": 120,
+  "captureLogs": true,
+  "dryRun": false,
+  "delegationExtensions": { "role": "verify" },
+  "note": "Delegated verify command.",
+  "extensions": {}
+}

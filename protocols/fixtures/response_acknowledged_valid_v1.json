@@ -1,0 +1,10 @@
+{
+  "protocol_version": "1.0",
+  "operation_id": "op_20260213_001",
+  "request_id": "req_903ab",
+  "ack": true,
+  "status": "acknowledged",
+  "message": "request accepted",
+  "artifacts": [],
+  "updated_at_utc": "2026-02-13T00:00:10Z"
+}

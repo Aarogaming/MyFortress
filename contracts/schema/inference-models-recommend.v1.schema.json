@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/inference-models-recommend/v1",
+  "title": "InferenceModelsRecommend v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "issuedUtc"],
+  "properties": {
+    "schemaName": { "const": "InferenceModelsRecommend" },
+    "schemaVersion": { "const": "1.0.0" },
+    "issuedUtc": { "type": "string", "format": "date-time" },
+
+    "purpose": {
+      "type": "string",
+      "enum": ["chat", "embeddings", "both"],
+      "default": "both"
+    },
+    "prefer": {
+      "type": "string",
+      "enum": ["small", "quality"],
+      "default": "small"
+    },
+    "maxSizeGb": { "type": "number", "minimum": 0 },
+
+    "roots": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "extensions": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "maxDepth": { "type": "integer", "minimum": 1, "default": 6 },
+    "maxEntries": { "type": "integer", "minimum": 1, "default": 500 },
+
+    "traceId": { "type": "string", "minLength": 1 },
+    "extensionsObj": { "type": "object", "additionalProperties": true }
+  }
+}

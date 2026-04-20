@@ -1,0 +1,16 @@
+{
+  "schema_name": "MerlinArtifactIndex",
+  "schema_version": 1,
+  "generated_utc": "2026-02-10T00:00:00Z",
+  "run_id": "eval_demo_001",
+  "artifacts": [
+    {
+      "name": "plan_candidate",
+      "path": "artifacts/plan_candidate.json",
+      "size_bytes": 123,
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "tier": "Tier0",
+      "content_type": "application/json"
+    }
+  ]
+}

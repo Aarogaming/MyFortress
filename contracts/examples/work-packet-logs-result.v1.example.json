@@ -1,0 +1,23 @@
+{
+  "schemaName": "WorkPacketLogsResult",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-08T00:00:00Z",
+  "packetId": "0001-aas-orchestrator",
+  "role": "verify",
+  "runId": "abc12345",
+  "which": "stdout",
+  "maxBytes": 8000,
+  "items": [
+    {
+      "kind": "runtime_unit",
+      "ref": "work.verify.0001.abc12345.1",
+      "unitId": "work.verify.0001.abc12345.1",
+      "logDir": "artifacts/local_agent/units/work.verify.0001.abc12345.1",
+      "stdout": "ok\n",
+      "stderr": "",
+      "error": null,
+      "extensions": { "role": "verify", "runId": "abc12345" }
+    }
+  ],
+  "extensions": {}
+}

@@ -1,0 +1,56 @@
+{
+  "schemaName": "IntegrationPlan",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-06T15:05:00Z",
+  "requestMessageId": "msg-research-integrate-001",
+  "target": {
+    "language": "python",
+    "runtime": "3.12",
+    "framework": "none",
+    "repoRoot": "."
+  },
+  "components": [
+    {
+      "id": "pypi:jsonschema",
+      "ecosystem": "pypi",
+      "name": "jsonschema",
+      "version": "4.21.1",
+      "license": "MIT",
+      "sourceUrl": "https://pypi.org/project/jsonschema/"
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-1",
+      "kind": "add_dependency",
+      "title": "Add jsonschema dependency",
+      "details": "Add jsonschema to requirements/dev dependencies.",
+      "command": "python -m pip install jsonschema"
+    },
+    {
+      "id": "step-2",
+      "kind": "add_tests",
+      "title": "Add contract validation tests",
+      "details": "Add a smoke test that validates payload examples via MaelstromToolkit checkfile.",
+      "files": ["tests/test_contract_examples_smoke.py"],
+      "dependsOn": ["step-1"]
+    },
+    {
+      "id": "step-3",
+      "kind": "verify",
+      "title": "Run validation",
+      "command": "./eng/validate-contracts.ps1",
+      "dependsOn": ["step-2"]
+    }
+  ],
+  "acceptanceCriteria": [
+    "Contract schemas exist under contracts/schema/",
+    "At least one payload example exists under contracts/examples/",
+    "Contract validation tooling passes"
+  ],
+  "risks": [
+    { "severity": "low", "description": "Draft differences between runtime and tooling validation", "mitigation": "Keep envelopes Draft7; validate payloads with tooling" }
+  ],
+  "licenseSummary": { "allowed": true, "licenses": ["MIT"], "notes": "Attribution required" },
+  "traceId": "trace-research-001"
+}

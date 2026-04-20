@@ -1,0 +1,16 @@
+{
+  "schemaName": "MemorySearch",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-06T13:10:00Z",
+  "query": "What were the decisions about the memory layer?",
+  "scopes": ["hive:local"],
+  "namespaces": ["decisions"],
+  "limit": 10,
+  "includeExpired": false,
+  "source": {
+    "hiveId": "local",
+    "instanceId": "dev-01",
+    "componentId": "core.memory"
+  },
+  "traceId": "trace-mem-search-001"
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/runtime-unit-meta/v1",
+  "title": "RuntimeUnitMeta v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "unitId"],
+  "properties": {
+    "schemaName": { "const": "RuntimeUnitMeta" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "unitId": { "type": "string", "minLength": 1 },
+    "pid": { "type": ["integer", "null"], "minimum": 0 },
+    "startedUtc": { "type": ["string", "null"], "format": "date-time" },
+    "endedUtc": { "type": ["string", "null"], "format": "date-time" },
+    "exitCode": { "type": ["integer", "null"] },
+
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["command", "args", "killTree", "jobObject", "captureLogs"],
+      "properties": {
+        "command": { "type": "string" },
+        "args": { "type": "array", "items": { "type": "string" } },
+        "cwd": { "type": ["string", "null"] },
+        "killTree": { "type": "boolean" },
+        "jobObject": { "type": "boolean" },
+        "captureLogs": { "type": "boolean" }
+      }
+    }
+  }
+}

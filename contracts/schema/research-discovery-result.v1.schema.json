@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/research-discovery-result/v1",
+  "title": "ResearchDiscoveryResult v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaName",
+    "schemaVersion",
+    "generatedUtc",
+    "requestMessageId",
+    "candidates"
+  ],
+  "properties": {
+    "schemaName": { "const": "ResearchDiscoveryResult" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "generatedUtc": { "type": "string", "format": "date-time" },
+    "requestMessageId": { "type": "string", "minLength": 1 },
+
+    "candidates": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/candidate" }
+    },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+
+    "source": { "$ref": "#/$defs/providerRef" },
+    "traceId": { "type": "string", "minLength": 1 },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "providerRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hiveId", "instanceId", "componentId"],
+      "properties": {
+        "hiveId": { "type": "string", "minLength": 1 },
+        "instanceId": { "type": "string", "minLength": 1 },
+        "componentId": { "type": "string", "minLength": 1 },
+        "nodeId": { "type": "string", "minLength": 1 }
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "ecosystem", "name"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "ecosystem": { "type": "string", "enum": ["github", "pypi", "npm", "cargo"] },
+        "name": { "type": "string", "minLength": 1 },
+        "version": { "type": "string" },
+        "license": { "type": "string" },
+        "repoUrl": { "type": "string", "format": "uri" },
+        "homepageUrl": { "type": "string", "format": "uri" },
+        "stars": { "type": "integer", "minimum": 0 },
+        "lastUpdatedUtc": { "type": "string", "format": "date-time" },
+        "score": { "type": "number" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

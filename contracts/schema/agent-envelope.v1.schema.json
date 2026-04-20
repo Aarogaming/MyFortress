@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aas.local/contracts/agent-envelope/v1",
+  "title": "AgentEnvelope v1",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schemaName",
+    "schemaVersion",
+    "kind",
+    "topic",
+    "message_id",
+    "timestamp",
+    "emitted_utc",
+    "trace_id",
+    "source",
+    "transport",
+    "message_type",
+    "payload",
+    "metadata"
+  ],
+  "properties": {
+    "schemaName": { "const": "AgentEnvelope" },
+    "schemaVersion": { "const": "1.0.0" },
+    "kind": { "const": "agent" },
+    "topic": { "type": "string" },
+    "message_id": { "type": "string", "minLength": 1 },
+    "timestamp": { "type": "string" },
+    "emitted_utc": { "type": "string" },
+    "trace_id": { "type": "string", "minLength": 1 },
+    "correlation_id": { "type": ["string", "null"] },
+    "source": { "type": "string", "minLength": 1 },
+    "target": { "type": ["string", "null"] },
+    "transport": { "type": "string", "minLength": 1 },
+    "message_type": { "type": "string", "minLength": 1 },
+    "payload": { "type": "object" },
+    "metadata": { "type": "object" },
+
+    "messageId": { "type": "string" },
+    "emittedUtc": { "type": "string" },
+    "traceId": { "type": "string" },
+    "correlationId": { "type": ["string", "null"] }
+  }
+}

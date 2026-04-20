@@ -1,0 +1,30 @@
+{
+  "schemaName": "RuntimeUnitRun",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-08T00:00:00Z",
+  "spec": {
+    "schemaName": "RuntimeUnitSpec",
+    "schemaVersion": "1.0.0",
+    "unitId": "example.long_running",
+    "command": "python",
+    "args": ["-c", "import time; print('start'); time.sleep(60); print('done')"],
+    "cwd": ".",
+    "env": {},
+    "killTree": true,
+    "jobObject": true,
+    "resources": {
+      "maxMemoryBytes": 0,
+      "maxCpuPercent": 0
+    },
+    "labels": {
+      "lane": "background",
+      "owner": "aas"
+    },
+    "extensions": {}
+  },
+  "timeoutSec": 120,
+  "captureLogs": true,
+  "dryRun": true,
+  "traceId": "trace-example",
+  "extensions": {}
+}

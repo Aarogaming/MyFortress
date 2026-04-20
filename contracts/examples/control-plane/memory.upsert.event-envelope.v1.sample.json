@@ -1,0 +1,28 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "memory",
+  "topic": "memory.upsert.v1",
+  "message_id": "msg-mem-upsert-001",
+  "emitted_utc": "2026-02-06T12:30:00Z",
+  "trace_id": "trace-mem-001",
+  "payload": {
+    "schemaName": "MemoryUpsert",
+    "schemaVersion": "1.0.0",
+    "issuedUtc": "2026-02-06T12:30:00Z",
+    "op": "upsert",
+    "scope": "task:AAS-123",
+    "namespace": "decisions",
+    "key": "decision/M0.1",
+    "value": {
+      "status": "proposed",
+      "text": "Introduce a contextual + shared memory layer"
+    },
+    "tags": ["planning"],
+    "ttlSec": 86400
+  },
+  "source": {
+    "component": "memory-client",
+    "instanceId": "dev-01"
+  }
+}

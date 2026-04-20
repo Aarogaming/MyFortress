@@ -1,0 +1,25 @@
+{
+  "schemaName": "MeshCapabilityAdvertisement",
+  "schemaVersion": "1.0.0",
+  "emittedUtc": "2026-02-06T12:00:00Z",
+  "ttlSec": 30,
+  "capabilityId": "screen.capture@1.0.0",
+  "provider": {
+    "hiveId": "local",
+    "instanceId": "dev-01",
+    "componentId": "plugins.game_automation"
+  },
+  "transports": ["event_bus", "nats"],
+  "contracts": [
+    {
+      "id": "https://aas.local/contracts/snapshot/v1",
+      "name": "snapshot",
+      "version": "1.0.0",
+      "direction": "produces"
+    }
+  ],
+  "labels": {
+    "region": "local",
+    "tier": "dev"
+  }
+}

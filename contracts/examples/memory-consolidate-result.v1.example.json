@@ -1,0 +1,39 @@
+{
+  "schemaName": "MemoryConsolidateResult",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-06T14:22:05Z",
+  "requestMessageId": "msg-mem-consolidate-001",
+  "scope": "task:AAS-123",
+  "namespace": "observations",
+  "operations": [
+    {
+      "op": "upsert",
+      "scope": "task:AAS-123",
+      "namespace": "summaries",
+      "key": "summary/entities",
+      "value": {
+        "summary": "Observed active window and current app focus; details omitted."
+      },
+      "ttlSec": 3600,
+      "idempotencyKey": "consolidate-ops-001"
+    }
+  ],
+  "plan": [
+    {
+      "event": "ADD",
+      "scope": "task:AAS-123",
+      "namespace": "summaries",
+      "key": "summary/entities",
+      "newSummary": "Consolidated entity observations into one summary",
+      "confidence": 0.75,
+      "reason": "policy mem-consolidate-default"
+    }
+  ],
+  "warnings": [],
+  "source": {
+    "hiveId": "local",
+    "instanceId": "dev-01",
+    "componentId": "core.memory"
+  },
+  "traceId": "trace-mem-consolidate-001"
+}

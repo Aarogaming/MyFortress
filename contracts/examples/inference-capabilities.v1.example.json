@@ -1,0 +1,13 @@
+{
+  "schemaName": "InferenceCapabilities",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-08T00:00:00Z",
+  "capabilities": {
+    "stub": true,
+    "llamaCppPythonServer": false,
+    "llamaCppServer": false
+  },
+  "details": {
+    "notes": "Capabilities depend on local installation and configuration"
+  }
+}

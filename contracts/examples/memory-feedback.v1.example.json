@@ -1,0 +1,19 @@
+{
+  "schemaName": "MemoryFeedback",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-06T13:55:00Z",
+  "feedback": "NEGATIVE",
+  "reason": "Irrelevant to the current task",
+  "signal": "retrieval",
+  "query": "What decisions did we make about memory?",
+  "scope": "task:AAS-123",
+  "namespace": "decisions",
+  "key": "decision/P4.1",
+  "source": {
+    "hiveId": "local",
+    "instanceId": "dev-01",
+    "componentId": "core.memory"
+  },
+  "traceId": "trace-mem-feedback-001",
+  "requestMessageId": "msg-mem-search-001"
+}

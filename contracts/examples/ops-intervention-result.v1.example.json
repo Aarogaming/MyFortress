@@ -1,0 +1,11 @@
+{
+  "schemaName": "OpsInterventionResult",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-06T16:40:01Z",
+  "requestMessageId": "msg-ops-intervention-001",
+  "status": "skipped",
+  "message": "dryRun=true",
+  "details": { "action": "shed_load" },
+  "source": { "hiveId": "local", "instanceId": "dev-01", "componentId": "core.ops" },
+  "traceId": "trace-ops-002"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/inference-backend-status/v1",
+  "title": "InferenceBackendStatus v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "generatedUtc", "backendId", "openaiBaseUrl", "active"],
+  "properties": {
+    "schemaName": { "const": "InferenceBackendStatus" },
+    "schemaVersion": { "const": "1.0.0" },
+    "generatedUtc": { "type": "string", "format": "date-time" },
+
+    "backendId": { "type": "string", "minLength": 1 },
+    "openaiBaseUrl": { "type": "string", "minLength": 1 },
+    "active": { "type": "boolean" },
+    "unitId": { "type": ["string", "null"] },
+    "unitStatus": { "$ref": "runtime-unit-status.v1.schema.json" },
+
+    "traceId": { "type": "string", "minLength": 1 },
+    "extensions": { "type": "object", "additionalProperties": true }
+  }
+}

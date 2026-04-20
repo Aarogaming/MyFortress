@@ -1,0 +1,17 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "qa",
+  "topic": "qa.testworker.task.v1",
+  "message_id": "msg-qa-task-001",
+  "emitted_utc": "2026-02-06T17:40:00Z",
+  "trace_id": "trace-qa-001",
+  "payload": {
+    "schemaName": "TestWorkerTask",
+    "schemaVersion": "1.0.0",
+    "issuedUtc": "2026-02-06T17:40:00Z",
+    "target": { "type": "http" },
+    "goals": ["Open the home page"]
+  },
+  "source": { "component": "qa-orchestrator", "instanceId": "dev-01" }
+}

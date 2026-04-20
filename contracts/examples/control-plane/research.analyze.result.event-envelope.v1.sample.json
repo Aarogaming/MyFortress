@@ -1,0 +1,23 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "research",
+  "topic": "research.analyze.result.v1",
+  "message_id": "msg-research-analyze-result-001",
+  "emitted_utc": "2026-02-06T15:02:00Z",
+  "trace_id": "trace-research-001",
+  "payload": {
+    "schemaName": "ResearchAnalysisResult",
+    "schemaVersion": "1.0.0",
+    "generatedUtc": "2026-02-06T15:02:00Z",
+    "requestMessageId": "msg-research-analyze-001",
+    "inputs": { "requirements": "Find libraries for contract validation in Python." },
+    "evaluations": [
+      {
+        "candidate": { "id": "pypi:jsonschema", "ecosystem": "pypi", "name": "jsonschema" },
+        "decision": "adopt"
+      }
+    ]
+  },
+  "source": { "component": "research-agent", "instanceId": "dev-01" }
+}

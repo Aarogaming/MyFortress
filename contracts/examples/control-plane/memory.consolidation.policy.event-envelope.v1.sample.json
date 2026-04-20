@@ -1,0 +1,26 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "memory",
+  "topic": "memory.consolidation.policy.v1",
+  "message_id": "msg-mem-consolidation-policy-001",
+  "emitted_utc": "2026-02-06T14:20:00Z",
+  "trace_id": "trace-mem-consolidation-policy-001",
+  "payload": {
+    "schemaName": "MemoryConsolidationPolicy",
+    "schemaVersion": "1.0.0",
+    "issuedUtc": "2026-02-06T14:20:00Z",
+    "policyId": "mem-consolidate-default",
+    "enabled": true,
+    "defaults": {
+      "minItems": 5,
+      "maxItems": 200,
+      "maxOutputItems": 10,
+      "allowDelete": false
+    }
+  },
+  "source": {
+    "component": "memory-provider",
+    "instanceId": "dev-01"
+  }
+}

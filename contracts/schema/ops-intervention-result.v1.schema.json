@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/ops-intervention-result/v1",
+  "title": "OpsInterventionResult v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "generatedUtc", "requestMessageId", "status"],
+  "properties": {
+    "schemaName": { "const": "OpsInterventionResult" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "generatedUtc": { "type": "string", "format": "date-time" },
+    "requestMessageId": { "type": "string", "minLength": 1 },
+
+    "status": { "type": "string", "enum": ["applied", "skipped", "failed"] },
+    "message": { "type": "string" },
+    "details": { "type": "object", "additionalProperties": true },
+
+    "source": { "$ref": "#/$defs/providerRef" },
+    "traceId": { "type": "string", "minLength": 1 }
+  },
+  "$defs": {
+    "providerRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hiveId", "instanceId", "componentId"],
+      "properties": {
+        "hiveId": { "type": "string", "minLength": 1 },
+        "instanceId": { "type": "string", "minLength": 1 },
+        "componentId": { "type": "string", "minLength": 1 },
+        "nodeId": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "memory",
+  "topic": "memory.query.result.v1",
+  "message_id": "msg-mem-query-result-global-001",
+  "emitted_utc": "2026-02-06T12:50:00Z",
+  "trace_id": "trace-mem-global-001",
+  "payload": {
+    "schemaName": "MemoryQueryResult",
+    "schemaVersion": "1.0.0",
+    "generatedUtc": "2026-02-06T12:50:00Z",
+    "scope": "global",
+    "namespace": "decisions",
+    "items": [],
+    "nextCursor": null
+  },
+  "source": {
+    "component": "memory-replica",
+    "instanceId": "replica-01"
+  }
+}

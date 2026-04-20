@@ -1,0 +1,12 @@
+{
+  "schemaName": "DriftSignal",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-06T16:31:00Z",
+  "type": "config",
+  "severity": "warning",
+  "summary": "Config hash differs from baseline",
+  "details": { "baseline": "sha256:aaa", "current": "sha256:bbb" },
+  "source": { "hiveId": "local", "instanceId": "dev-01", "componentId": "core.ops" },
+  "traceId": "trace-ops-001",
+  "correlationId": "msg-config-snapshot-001"
+}

@@ -1,0 +1,14 @@
+{
+  "schemaName": "ConfigSnapshot",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-06T16:30:00Z",
+  "environment": "local-dev",
+  "configHash": "sha256:abc123",
+  "items": {
+    "AAS_PLUGIN_EXECUTION_POLICY": "runtime_only",
+    "AAS_COMM_VALIDATE_INBOUND": "1",
+    "AAS_COMM_VALIDATE_OUTBOUND": "1"
+  },
+  "source": { "hiveId": "local", "instanceId": "dev-01", "componentId": "core.ops" },
+  "traceId": "trace-ops-001"
+}

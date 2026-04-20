@@ -1,0 +1,34 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "memory",
+  "topic": "memory.replication.policy.v1",
+  "message_id": "msg-mem-repl-policy-001",
+  "emitted_utc": "2026-02-06T13:00:00Z",
+  "trace_id": "trace-mem-repl-policy-001",
+  "payload": {
+    "schemaName": "MemoryReplicationPolicy",
+    "schemaVersion": "1.0.0",
+    "issuedUtc": "2026-02-06T13:00:00Z",
+    "policyId": "mem-repl-default",
+    "enabled": true,
+    "sources": [
+      {
+        "scope": "hive:.*",
+        "namespaces": ["decisions", "capabilities", "assignments"],
+        "keyPrefixDeny": ["secrets/", "credentials/"]
+      }
+    ],
+    "destinations": [
+      {
+        "scope": "global",
+        "mode": "derive",
+        "conflict": "prefer_origin_issued_utc"
+      }
+    ]
+  },
+  "source": {
+    "component": "memory-replica",
+    "instanceId": "replica-01"
+  }
+}

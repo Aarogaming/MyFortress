@@ -1,0 +1,17 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "ops",
+  "topic": "ops.resource.route.v1",
+  "message_id": "msg-resource-route-001",
+  "emitted_utc": "2026-02-06T15:31:05Z",
+  "trace_id": "trace-resource-001",
+  "payload": {
+    "schemaName": "ResourceRoutingDecision",
+    "schemaVersion": "1.0.0",
+    "issuedUtc": "2026-02-06T15:31:05Z",
+    "lane": "background",
+    "decision": { "primary": "gpu" }
+  },
+  "source": { "component": "resource-router", "instanceId": "dev-01" }
+}

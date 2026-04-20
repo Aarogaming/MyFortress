@@ -1,0 +1,29 @@
+{
+  "schemaName": "MemoryIngest",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-06T13:40:00Z",
+  "mode": "infer",
+  "scope": "task:AAS-123",
+  "namespace": "decisions",
+  "keyPrefix": "decision/",
+  "includePlan": true,
+  "allowDelete": false,
+  "confidenceThreshold": 0.7,
+  "customInstructions": "Only store confirmed architectural decisions; ignore speculation.",
+  "messages": [
+    { "role": "user", "content": "We need a shared contextual memory layer." },
+    { "role": "assistant", "content": "I'll draft a memory subsystem plan." }
+  ],
+  "context": {
+    "userId": "aaron",
+    "sessionId": "planning-2026-02-06",
+    "runId": "run-001",
+    "agentId": "aas-planner"
+  },
+  "source": {
+    "hiveId": "local",
+    "instanceId": "dev-01",
+    "componentId": "core.memory"
+  },
+  "traceId": "trace-mem-ingest-001"
+}

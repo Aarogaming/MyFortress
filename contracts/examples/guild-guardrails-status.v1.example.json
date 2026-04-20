@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "generated_utc": "2026-02-14T02:03:05Z",
+  "repo": {
+    "branch": "tools/opencode-autopilot",
+    "head_sha": "139156ce7b569bb6a137838709e03046731397fe"
+  },
+  "guild": {
+    "submodule_sha": "3733e180f83b32878e29bb7990d13cb6b7a9a370",
+    "submodule_ref": "heads/main"
+  },
+  "protocol_locks": {
+    "hub_io": {
+      "version": "1.0.0",
+      "sha256": "42cf92b88b47fdfa2e16a116cae2c446a8dae6f137f81f62bd96e51a219d48d9"
+    },
+    "agent_interop": {
+      "version": "1.0",
+      "sha256": "17382cb859b4fb1f870ee15249554056172e567ae5ca4eff9779c586ebee4dd9"
+    }
+  },
+  "guildtray_protocol_locks": {
+    "hub_io": {
+      "version": "1.0.0",
+      "sha256": "53986ba26f20dca8402db4a3962aa0017cb37122375a19b444b3578b95387a25"
+    },
+    "agent_interop": {
+      "version": "1.0.0",
+      "sha256": "4115a7655bdc39ed92a99008ff7b5c92d8a177014feebfe4981db2dd58f39880"
+    }
+  },
+  "checks": {
+    "snapshot_sync": true,
+    "submodule_integrity": true,
+    "guild_protocol_lock": true,
+    "guildtray_protocol_lock": true,
+    "arip_contract_linkage": true,
+    "arip_protocol_consistency": true,
+    "guardrail_status_contract": true
+  }
+}

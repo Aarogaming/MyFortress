@@ -1,0 +1,22 @@
+{
+  "schemaName": "RuntimeUnitSpec",
+  "schemaVersion": "1.0.0",
+  "unitId": "example.echo",
+  "command": "python",
+  "args": ["-c", "print('hello from unit')"],
+  "cwd": ".",
+  "env": {
+    "PYTHONUTF8": "1"
+  },
+  "killTree": true,
+  "jobObject": true,
+  "resources": {
+    "maxMemoryBytes": 0,
+    "maxCpuPercent": 0
+  },
+  "labels": {
+    "lane": "background",
+    "owner": "aas"
+  },
+  "extensions": {}
+}

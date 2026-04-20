@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/memory-feedback/v1",
+  "title": "MemoryFeedback v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaName",
+    "schemaVersion",
+    "issuedUtc",
+    "feedback",
+    "scope",
+    "namespace",
+    "key"
+  ],
+  "properties": {
+    "schemaName": { "const": "MemoryFeedback" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "issuedUtc": { "type": "string", "format": "date-time" },
+
+    "feedback": { "type": "string", "enum": ["POSITIVE", "NEGATIVE", "VERY_NEGATIVE"] },
+    "reason": { "type": "string" },
+
+    "scope": { "$ref": "#/$defs/scope" },
+    "namespace": { "type": "string", "minLength": 1 },
+    "key": { "type": "string", "minLength": 1 },
+
+    "signal": { "type": "string", "enum": ["retrieval", "ingestion", "manual"] },
+    "query": { "type": "string" },
+
+    "source": { "$ref": "#/$defs/providerRef" },
+    "traceId": { "type": "string", "minLength": 1 },
+    "requestMessageId": { "type": "string", "minLength": 1 },
+
+    "extensions": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "scope": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(global|session:[^\\s]+|task:[^\\s]+|hive:[^\\s]+)$"
+    },
+    "providerRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hiveId", "instanceId", "componentId"],
+      "properties": {
+        "hiveId": { "type": "string", "minLength": 1 },
+        "instanceId": { "type": "string", "minLength": 1 },
+        "componentId": { "type": "string", "minLength": 1 },
+        "nodeId": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

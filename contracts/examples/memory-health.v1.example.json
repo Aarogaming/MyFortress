@@ -1,0 +1,21 @@
+{
+  "schemaName": "MemoryHealth",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-06T13:20:05Z",
+  "status": "ok",
+  "provider": {
+    "hiveId": "local",
+    "instanceId": "dev-01",
+    "componentId": "core.memory"
+  },
+  "store": {
+    "items": 123,
+    "scopes": 3,
+    "namespaces": 5,
+    "bytesApprox": 65536,
+    "durable": true
+  },
+  "embeddings": {
+    "enabled": false
+  }
+}

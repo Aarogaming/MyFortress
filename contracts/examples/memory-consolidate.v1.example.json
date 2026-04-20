@@ -1,0 +1,18 @@
+{
+  "schemaName": "MemoryConsolidate",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-06T14:22:00Z",
+  "scope": "task:AAS-123",
+  "namespace": "observations",
+  "keyPrefix": "entity/",
+  "policyId": "mem-consolidate-default",
+  "limit": 200,
+  "dryRun": true,
+  "includePlan": true,
+  "source": {
+    "hiveId": "local",
+    "instanceId": "dev-01",
+    "componentId": "core.memory"
+  },
+  "traceId": "trace-mem-consolidate-001"
+}

@@ -1,0 +1,11 @@
+{
+  "schemaName": "InferenceModelsList",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-08T00:00:00Z",
+  "roots": ["C:/Users/aarog/.lmstudio"],
+  "extensions": [".gguf", ".safetensors"],
+  "maxDepth": 4,
+  "maxEntries": 200,
+  "traceId": "trace-example",
+  "extensionsObj": {}
+}

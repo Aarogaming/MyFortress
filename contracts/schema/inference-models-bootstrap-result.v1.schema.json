@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/inference-models-bootstrap-result/v1",
+  "title": "InferenceModelsBootstrapResult v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaName",
+    "schemaVersion",
+    "generatedUtc",
+    "recommendResult",
+    "plan"
+  ],
+  "properties": {
+    "schemaName": { "const": "InferenceModelsBootstrapResult" },
+    "schemaVersion": { "const": "1.0.0" },
+    "generatedUtc": { "type": "string", "format": "date-time" },
+
+    "recommendResult": { "$ref": "inference-models-recommend-result.v1.schema.json" },
+    "plan": { "type": "array", "items": { "$ref": "inference-model-load.v1.schema.json" } },
+    "loads": { "type": "array", "items": { "$ref": "inference-backend-status.v1.schema.json" } },
+
+    "extensions": { "type": "object", "additionalProperties": true }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/runtime-unit-status/v1",
+  "title": "RuntimeUnitStatus v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaName",
+    "schemaVersion",
+    "generatedUtc",
+    "unitId",
+    "state"
+  ],
+  "properties": {
+    "schemaName": { "const": "RuntimeUnitStatus" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "generatedUtc": { "type": "string", "format": "date-time" },
+    "unitId": { "type": "string", "minLength": 1 },
+    "state": {
+      "type": "string",
+      "enum": ["unknown", "starting", "running", "exited", "stopped", "failed"]
+    },
+
+    "pid": { "type": ["integer", "null"], "minimum": 0 },
+    "startedUtc": { "type": ["string", "null"], "format": "date-time" },
+    "endedUtc": { "type": ["string", "null"], "format": "date-time" },
+    "exitCode": { "type": ["integer", "null"] },
+
+    "spec": { "$ref": "runtime-unit-spec.v1.schema.json" },
+    "logDir": { "type": ["string", "null"] },
+
+    "source": { "$ref": "resource-snapshot.v1.schema.json#/$defs/providerRef" },
+    "traceId": { "type": "string", "minLength": 1 },
+    "extensions": { "type": "object", "additionalProperties": true }
+  }
+}

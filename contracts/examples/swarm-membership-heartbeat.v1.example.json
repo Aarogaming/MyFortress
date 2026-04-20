@@ -1,0 +1,19 @@
+{
+  "schemaName": "SwarmMembershipHeartbeat",
+  "schemaVersion": "1.0.0",
+  "emittedUtc": "2026-02-06T12:00:00Z",
+  "ttlSec": 10,
+  "nodeId": "node-a",
+  "instanceId": "dev-01",
+  "health": {
+    "status": "ok",
+    "summary": "healthy"
+  },
+  "capabilities": ["screen.capture@1.0.0", "mouse.control@1.0.0"],
+  "labels": {
+    "region": "local"
+  },
+  "weights": {
+    "screen.capture@1.0.0": 1.0
+  }
+}

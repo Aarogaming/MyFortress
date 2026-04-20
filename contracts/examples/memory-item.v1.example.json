@@ -1,0 +1,22 @@
+{
+  "schemaName": "MemoryItem",
+  "schemaVersion": "1.0.0",
+  "scope": "task:AAS-123",
+  "namespace": "decisions",
+  "key": "decision/M0.1",
+  "value": {
+    "status": "proposed",
+    "text": "Introduce a contextual + shared memory layer"
+  },
+  "tags": ["planning"],
+  "createdUtc": "2026-02-06T12:30:00Z",
+  "updatedUtc": "2026-02-06T12:30:00Z",
+  "ttlSec": 86400,
+  "revision": 0,
+  "source": {
+    "hiveId": "local",
+    "instanceId": "dev-01",
+    "componentId": "core.memory"
+  },
+  "traceId": "trace-mem-001"
+}

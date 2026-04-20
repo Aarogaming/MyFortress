@@ -1,0 +1,18 @@
+{
+  "schemaName": "InferenceModelsBootstrapResult",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-08T00:00:05Z",
+  "recommendResult": {
+    "schemaName": "InferenceModelsRecommendResult",
+    "schemaVersion": "1.0.0",
+    "generatedUtc": "2026-02-08T00:00:05Z",
+    "roots": ["C:/Users/aarog/.lmstudio"],
+    "truncated": false,
+    "warnings": [],
+    "recommendations": [],
+    "extensions": {}
+  },
+  "plan": [],
+  "loads": [],
+  "extensions": {}
+}

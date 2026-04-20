@@ -1,0 +1,14 @@
+{
+  "schemaName": "OpsIntervention",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-06T16:40:00Z",
+  "action": "shed_load",
+  "target": "background",
+  "reason": "Interactive lane p95 rising",
+  "ttlSec": 900,
+  "dryRun": true,
+  "parameters": { "reduceMaxOutputTokens": 256 },
+  "source": { "hiveId": "local", "instanceId": "dev-01", "componentId": "core.ops" },
+  "traceId": "trace-ops-002",
+  "correlationId": "msg-drift-001"
+}

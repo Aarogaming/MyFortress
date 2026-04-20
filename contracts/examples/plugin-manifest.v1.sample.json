@@ -1,0 +1,48 @@
+{
+  "schemaName": "PluginManifest",
+  "schemaVersion": "1.0.0",
+  "name": "home_assistant",
+  "version": "0.2.0",
+  "description": "Home Assistant bridge for device queries and actions",
+  "entry": "plugins/home_assistant/plugin.py",
+  "type": "plugin",
+  "enabled": true,
+  "owner": "AaroneousAutomationSuite",
+  "license": "MIT",
+  "repository": "https://github.com/Aarogaming/AaroneousAutomationSuite",
+  "capabilities": [
+    {
+      "schemaName": "Capability",
+      "schemaVersion": "1.0.0",
+      "name": "home.snapshot",
+      "version": "1.0.0",
+      "description": "Provide a consolidated home snapshot",
+      "contracts": [
+        {
+          "id": "https://aas.local/contracts/home-device-control/v1",
+          "name": "HomeDeviceControl",
+          "version": "1.0.0",
+          "direction": "consumes"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "type": "service",
+      "name": "myfortress",
+      "version": "1.0.0",
+      "optional": true,
+      "reason": "Prefer service mode when available"
+    }
+  ],
+  "interfaces": [
+    {
+      "type": "http",
+      "version": "1.0.0",
+      "endpoint": "http://localhost:8080"
+    }
+  ],
+  "tags": ["home", "integration"],
+  "configSchemaId": "https://aas.local/contracts/home-device-control/v1"
+}

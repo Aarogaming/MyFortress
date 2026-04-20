@@ -1,0 +1,17 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "ux",
+  "topic": "ux.persona.directive.v1",
+  "message_id": "msg-ux-persona-001",
+  "emitted_utc": "2026-02-06T16:00:00Z",
+  "trace_id": "trace-ux-persona-001",
+  "payload": {
+    "schemaName": "PersonaDirective",
+    "schemaVersion": "1.0.0",
+    "issuedUtc": "2026-02-06T16:00:00Z",
+    "scope": "session:planning-2026-02-06",
+    "directive": { "type": "set_fascia", "fasciaId": "thoughtful_pragmatist" }
+  },
+  "source": { "component": "persona-ui", "instanceId": "dev-01" }
+}

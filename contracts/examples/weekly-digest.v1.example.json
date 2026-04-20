@@ -1,0 +1,14 @@
+{
+  "schemaName": "WeeklyDigest",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-06T17:00:00Z",
+  "weekOfUtc": "2026-02-03",
+  "highlights": ["Comm envelope validation enabled in CI"],
+  "issues": ["Spike in schema validation failures after config drift"],
+  "actions": ["Emit ConfigSnapshot on startup", "Enable ops.drift.signal alerts"],
+  "evidence": [
+    { "kind": "trace_id", "id": "trace-ops-001", "note": "drift detection" }
+  ],
+  "source": { "hiveId": "local", "instanceId": "dev-01", "componentId": "core.reporter" },
+  "traceId": "trace-digest-001"
+}

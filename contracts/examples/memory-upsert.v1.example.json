@@ -1,0 +1,22 @@
+{
+  "schemaName": "MemoryUpsert",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-06T12:30:00Z",
+  "op": "upsert",
+  "scope": "task:AAS-123",
+  "namespace": "decisions",
+  "key": "decision/M0.1",
+  "value": {
+    "status": "proposed",
+    "text": "Introduce a contextual + shared memory layer"
+  },
+  "tags": ["planning"],
+  "ttlSec": 86400,
+  "idempotencyKey": "memory-upsert-001",
+  "source": {
+    "hiveId": "local",
+    "instanceId": "dev-01",
+    "componentId": "core.memory"
+  },
+  "traceId": "trace-mem-001"
+}

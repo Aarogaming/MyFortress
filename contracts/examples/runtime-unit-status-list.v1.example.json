@@ -1,0 +1,15 @@
+{
+  "schemaName": "RuntimeUnitStatusList",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-08T00:00:05Z",
+  "items": [
+    {
+      "schemaName": "RuntimeUnitStatus",
+      "schemaVersion": "1.0.0",
+      "generatedUtc": "2026-02-08T00:00:05Z",
+      "unitId": "example.long_running",
+      "state": "running",
+      "pid": 12345
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/myfortress/protocols/agent_interop_request_v1.schema.json",
+  "title": "Agent Interop Request V1",
+  "type": "object",
+  "required": [
+    "protocol_version",
+    "operation_id",
+    "request_id",
+    "source_repo",
+    "target_repo",
+    "initiator",
+    "intent",
+    "constraints",
+    "expected_outputs",
+    "timeout_sec",
+    "created_at_utc"
+  ],
+  "properties": {
+    "protocol_version": { "type": "string", "pattern": "^1\\.[0-9]+$" },
+    "operation_id": { "type": "string", "minLength": 1 },
+    "request_id": { "type": "string", "minLength": 1 },
+    "source_repo": { "type": "string", "minLength": 1 },
+    "target_repo": { "type": "string", "minLength": 1 },
+    "initiator": { "type": "string", "minLength": 1 },
+    "intent": { "type": "string", "minLength": 1 },
+    "constraints": { "type": "object" },
+    "expected_outputs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "timeout_sec": { "type": "integer", "minimum": 1 },
+    "created_at_utc": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": true
+}

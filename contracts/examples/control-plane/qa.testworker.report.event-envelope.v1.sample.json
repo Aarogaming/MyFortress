@@ -1,0 +1,19 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "qa",
+  "topic": "qa.testworker.report.v1",
+  "message_id": "msg-qa-report-001",
+  "emitted_utc": "2026-02-06T17:41:00Z",
+  "trace_id": "trace-qa-001",
+  "correlation_id": "msg-qa-task-001",
+  "payload": {
+    "schemaName": "TestWorkerReport",
+    "schemaVersion": "1.0.0",
+    "generatedUtc": "2026-02-06T17:41:00Z",
+    "requestMessageId": "msg-qa-task-001",
+    "status": "inconclusive",
+    "findings": []
+  },
+  "source": { "component": "qa-worker", "instanceId": "dev-01" }
+}

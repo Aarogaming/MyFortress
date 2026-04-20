@@ -1,0 +1,16 @@
+{
+  "schemaName": "LocalAgentInferenceState",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-08T00:00:00Z",
+  "activeBackendId": "chat",
+  "backends": {
+    "chat": {
+      "unitId": "inference.stub.chat",
+      "openaiBaseUrl": "http://127.0.0.1:9001/v1"
+    },
+    "emb": {
+      "unitId": "inference.stub.emb",
+      "openaiBaseUrl": "http://127.0.0.1:9002/v1"
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/memory-replication-policy/v1",
+  "title": "MemoryReplicationPolicy v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaName",
+    "schemaVersion",
+    "issuedUtc",
+    "policyId",
+    "enabled",
+    "sources",
+    "destinations"
+  ],
+  "properties": {
+    "schemaName": { "const": "MemoryReplicationPolicy" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "issuedUtc": { "type": "string", "format": "date-time" },
+    "policyId": { "type": "string", "minLength": 1 },
+    "enabled": { "type": "boolean" },
+
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/sourceRule" }
+    },
+    "destinations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/destinationRule" }
+    },
+
+    "notes": { "type": "string" },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "scopePattern": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(global|session:.*|task:.*|hive:.*)$"
+    },
+    "sourceRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scope", "namespaces"],
+      "properties": {
+        "scope": { "$ref": "#/$defs/scopePattern" },
+        "namespaces": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "keyPrefixAllow": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "keyPrefixDeny": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "destinationRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scope", "mode"],
+      "properties": {
+        "scope": { "$ref": "#/$defs/scopePattern" },
+        "mode": { "type": "string", "enum": ["derive"] },
+        "conflict": {
+          "type": "string",
+          "enum": ["prefer_revision", "prefer_origin_issued_utc", "prefer_updated_utc"]
+        }
+      }
+    }
+  }
+}

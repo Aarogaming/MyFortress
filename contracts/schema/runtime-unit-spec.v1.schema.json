@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/runtime-unit-spec/v1",
+  "title": "RuntimeUnitSpec v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaName",
+    "schemaVersion",
+    "unitId",
+    "command"
+  ],
+  "properties": {
+    "schemaName": { "const": "RuntimeUnitSpec" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "unitId": { "type": "string", "minLength": 1 },
+    "command": { "type": "string", "minLength": 1 },
+    "args": { "type": "array", "items": { "type": "string" } },
+    "cwd": { "type": "string" },
+    "env": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+
+    "killTree": { "type": "boolean", "default": true },
+    "jobObject": { "type": "boolean", "default": true },
+
+    "resources": { "$ref": "#/$defs/resources" },
+    "labels": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "resources": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "maxMemoryBytes": { "type": "integer", "minimum": 0 },
+        "maxCpuPercent": { "type": "number", "minimum": 0, "maximum": 100 }
+      }
+    }
+  }
+}

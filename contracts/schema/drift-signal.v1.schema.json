@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/drift-signal/v1",
+  "title": "DriftSignal v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "issuedUtc", "type", "severity", "summary"],
+  "properties": {
+    "schemaName": { "const": "DriftSignal" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "issuedUtc": { "type": "string", "format": "date-time" },
+    "type": { "type": "string", "enum": ["model", "data", "parameter", "goal", "config"] },
+    "severity": { "type": "string", "enum": ["info", "warning", "critical"] },
+    "summary": { "type": "string", "minLength": 1 },
+
+    "details": { "type": "object", "additionalProperties": true },
+
+    "source": { "$ref": "#/$defs/providerRef" },
+    "traceId": { "type": "string", "minLength": 1 },
+    "correlationId": { "type": "string", "minLength": 1 }
+  },
+  "$defs": {
+    "providerRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hiveId", "instanceId", "componentId"],
+      "properties": {
+        "hiveId": { "type": "string", "minLength": 1 },
+        "instanceId": { "type": "string", "minLength": 1 },
+        "componentId": { "type": "string", "minLength": 1 },
+        "nodeId": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

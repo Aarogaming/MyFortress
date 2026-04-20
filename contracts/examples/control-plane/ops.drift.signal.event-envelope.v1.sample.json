@@ -1,0 +1,19 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "ops",
+  "topic": "ops.drift.signal.v1",
+  "message_id": "msg-drift-001",
+  "emitted_utc": "2026-02-06T16:31:00Z",
+  "trace_id": "trace-ops-001",
+  "correlation_id": "msg-config-snapshot-001",
+  "payload": {
+    "schemaName": "DriftSignal",
+    "schemaVersion": "1.0.0",
+    "issuedUtc": "2026-02-06T16:31:00Z",
+    "type": "config",
+    "severity": "warning",
+    "summary": "Config hash differs from baseline"
+  },
+  "source": { "component": "ops", "instanceId": "dev-01" }
+}

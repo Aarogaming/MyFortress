@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/memory-search-result/v1",
+  "title": "MemorySearchResult v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaName",
+    "schemaVersion",
+    "generatedUtc",
+    "items"
+  ],
+  "properties": {
+    "schemaName": { "const": "MemorySearchResult" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "generatedUtc": { "type": "string", "format": "date-time" },
+    "query": { "type": "string" },
+
+    "items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/scoredMemoryItem" }
+    },
+
+    "error": { "$ref": "#/$defs/memoryError" },
+    "nextCursor": { "type": ["string", "null"], "minLength": 1 },
+
+    "source": { "$ref": "#/$defs/providerRef" },
+    "traceId": { "type": "string", "minLength": 1 },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "providerRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hiveId", "instanceId", "componentId"],
+      "properties": {
+        "hiveId": { "type": "string", "minLength": 1 },
+        "instanceId": { "type": "string", "minLength": 1 },
+        "componentId": { "type": "string", "minLength": 1 },
+        "nodeId": { "type": "string", "minLength": 1 }
+      }
+    },
+    "memoryItem": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["schemaName", "schemaVersion", "scope", "namespace", "key", "value"],
+      "properties": {
+        "schemaName": { "const": "MemoryItem" },
+        "schemaVersion": { "const": "1.0.0" },
+        "scope": { "type": "string" },
+        "namespace": { "type": "string" },
+        "key": { "type": "string" },
+        "value": { "type": "object" }
+      }
+    },
+    "scoredMemoryItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["score", "item"],
+      "properties": {
+        "score": { "type": "number", "minimum": 0 },
+        "item": { "$ref": "#/$defs/memoryItem" },
+        "highlights": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "memoryError": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "message", "retryable"],
+      "properties": {
+        "code": { "type": "string", "minLength": 1 },
+        "message": { "type": "string", "minLength": 1 },
+        "retryable": { "type": "boolean" },
+        "details": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    }
+  }
+}

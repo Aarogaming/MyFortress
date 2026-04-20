@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/resource-snapshot/v1",
+  "title": "ResourceSnapshot v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "generatedUtc", "host", "cpu", "memory"],
+  "properties": {
+    "schemaName": { "const": "ResourceSnapshot" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "generatedUtc": { "type": "string", "format": "date-time" },
+    "host": { "type": "string", "minLength": 1 },
+
+    "cpu": { "$ref": "#/$defs/cpu" },
+    "memory": { "$ref": "#/$defs/memory" },
+    "disk": { "$ref": "#/$defs/disk" },
+    "network": { "$ref": "#/$defs/network" },
+    "gpus": { "type": "array", "items": { "$ref": "#/$defs/gpu" } },
+
+    "source": { "$ref": "#/$defs/providerRef" },
+    "traceId": { "type": "string", "minLength": 1 },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "providerRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hiveId", "instanceId", "componentId"],
+      "properties": {
+        "hiveId": { "type": "string", "minLength": 1 },
+        "instanceId": { "type": "string", "minLength": 1 },
+        "componentId": { "type": "string", "minLength": 1 },
+        "nodeId": { "type": "string", "minLength": 1 }
+      }
+    },
+    "cpu": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["percent"],
+      "properties": {
+        "percent": { "type": "number", "minimum": 0, "maximum": 100 },
+        "cores": { "type": "integer", "minimum": 1 },
+        "load1": { "type": "number", "minimum": 0 },
+        "load5": { "type": "number", "minimum": 0 },
+        "load15": { "type": "number", "minimum": 0 }
+      }
+    },
+    "memory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["percent"],
+      "properties": {
+        "percent": { "type": "number", "minimum": 0, "maximum": 100 },
+        "totalBytes": { "type": "integer", "minimum": 0 },
+        "availableBytes": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "disk": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "readBytes": { "type": "integer", "minimum": 0 },
+        "writeBytes": { "type": "integer", "minimum": 0 },
+        "busyPercent": { "type": "number", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "network": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rxBytes": { "type": "integer", "minimum": 0 },
+        "txBytes": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "gpu": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "name": { "type": "string" },
+        "utilPercent": { "type": "number", "minimum": 0, "maximum": 100 },
+        "memUtilPercent": { "type": "number", "minimum": 0, "maximum": 100 },
+        "memTotalBytes": { "type": "integer", "minimum": 0 },
+        "memUsedBytes": { "type": "integer", "minimum": 0 },
+        "temperatureC": { "type": "number" }
+      }
+    }
+  }
+}

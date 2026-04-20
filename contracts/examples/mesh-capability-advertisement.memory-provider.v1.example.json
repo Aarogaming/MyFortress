@@ -1,0 +1,37 @@
+{
+  "schemaName": "MeshCapabilityAdvertisement",
+  "schemaVersion": "1.0.0",
+  "emittedUtc": "2026-02-06T12:40:00Z",
+  "ttlSec": 30,
+  "capabilityId": "memory.store@1.0.0",
+  "capability": { "name": "memory.store", "version": "1.0.0" },
+  "provider": {
+    "hiveId": "local",
+    "instanceId": "dev-01",
+    "componentId": "core.memory"
+  },
+  "transports": ["event_bus", "outbox"],
+  "contracts": [
+    {
+      "id": "https://aas.local/contracts/memory-upsert/v1",
+      "name": "memory-upsert",
+      "version": "1.0.0",
+      "direction": "consumes"
+    },
+    {
+      "id": "https://aas.local/contracts/memory-query/v1",
+      "name": "memory-query",
+      "version": "1.0.0",
+      "direction": "consumes"
+    },
+    {
+      "id": "https://aas.local/contracts/memory-query-result/v1",
+      "name": "memory-query-result",
+      "version": "1.0.0",
+      "direction": "produces"
+    }
+  ],
+  "labels": {
+    "tier": "hive"
+  }
+}

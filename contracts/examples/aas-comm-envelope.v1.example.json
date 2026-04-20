@@ -1,0 +1,10 @@
+{
+  "schemaName": "AASCommEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "demo",
+  "topic": "demo.event.v1",
+  "message_id": "msg-demo-001",
+  "emitted_utc": "2026-02-07T00:00:00Z",
+  "trace_id": "trace-demo-001",
+  "payload": { "x": 1 }
+}

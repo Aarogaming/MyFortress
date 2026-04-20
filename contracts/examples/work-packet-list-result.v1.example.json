@@ -1,0 +1,23 @@
+{
+  "schemaName": "WorkPacketListResult",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-08T00:00:00Z",
+  "items": [
+    {
+      "schemaName": "WorkPacket",
+      "schemaVersion": "1.0.0",
+      "packetId": "0001-aas-orchestrator",
+      "createdUtc": "2026-02-08T00:00:00Z",
+      "updatedUtc": "2026-02-08T00:00:00Z",
+      "state": "open",
+      "title": "AAS Orchestrator",
+      "goal": null,
+      "constraints": [],
+      "verifyCommands": [],
+      "notes": [],
+      "delegations": [],
+      "extensions": {}
+    }
+  ],
+  "extensions": {}
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aas.local/contracts/event-envelope/v1",
+  "title": "EventEnvelope v1",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schemaName",
+    "schemaVersion",
+    "kind",
+    "topic",
+    "message_id",
+    "emitted_utc",
+    "trace_id",
+    "payload",
+    "source"
+  ],
+  "properties": {
+    "schemaName": { "const": "EventEnvelope" },
+    "schemaVersion": { "const": "1.0.0" },
+    "kind": { "type": "string" },
+    "topic": { "type": "string" },
+    "message_id": { "type": "string", "minLength": 1 },
+    "emitted_utc": { "type": "string" },
+    "trace_id": { "type": "string", "minLength": 1 },
+    "correlation_id": { "type": ["string", "null"] },
+    "payload": { "type": "object" },
+    "source": { "type": "object" },
+
+    "event_type": { "type": "string" },
+    "severity": { "type": "string" },
+
+    "eventType": { "type": "string" },
+    "emittedUtc": { "type": "string" },
+    "traceId": { "type": "string" },
+    "correlationId": { "type": ["string", "null"] }
+  }
+}

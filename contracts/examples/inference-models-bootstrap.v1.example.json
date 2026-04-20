@@ -1,0 +1,18 @@
+{
+  "schemaName": "InferenceModelsBootstrap",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-08T00:00:00Z",
+  "purpose": "both",
+  "prefer": "small",
+  "roots": ["C:/Users/aarog/.lmstudio"],
+  "extensions": [".gguf"],
+  "apply": false,
+  "rollbackOnFailure": true,
+  "backendTypeOverride": "stub",
+  "autoPort": true,
+  "waitReadySec": 3,
+  "setActiveChat": true,
+  "setActiveEmbeddings": false,
+  "traceId": "trace-example",
+  "extensionsObj": {}
+}

@@ -1,0 +1,8 @@
+{
+  "schemaName": "WorkPacketNote",
+  "schemaVersion": "1.0.0",
+  "packetId": "0001-aas-orchestrator",
+  "author": "assistant",
+  "text": "Implemented create/list endpoints.",
+  "extensions": {}
+}

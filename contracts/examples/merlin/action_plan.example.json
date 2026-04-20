@@ -1,0 +1,50 @@
+{
+  "schema_name": "MerlinActionPlan",
+  "schema_version": 1,
+  "plan_id": "plan_demo_001",
+  "created_utc": "2026-02-10T00:00:00Z",
+  "intent": "Sync status, fetch logs, then enqueue a job if safe.",
+  "risk": {
+    "repo_write": false,
+    "protected_branch": false,
+    "network": true
+  },
+  "actions": [
+    {
+      "action_id": "a1",
+      "action_type": "GET_STATUS",
+      "params": {},
+      "rationale": "Capture baseline state before acting."
+    },
+    {
+      "action_id": "a2",
+      "action_type": "FETCH_LOG_TAIL",
+      "params": {
+        "lines": 200,
+        "source": "merlin"
+      },
+      "rationale": "Look for recent errors before enqueue."
+    },
+    {
+      "action_id": "a3",
+      "action_type": "ENQUEUE_JOB",
+      "params": {
+        "job_id": "job_reconcile_01",
+        "queue": "default"
+      },
+      "rationale": "Start reconciliation once preflight completes."
+    }
+  ],
+  "deferred_fetch": {
+    "when_online": [
+      {
+        "action_id": "df1",
+        "action_type": "SYNC_REQUEST",
+        "params": {
+          "target": "events"
+        },
+        "rationale": "Pull latest events when connectivity returns."
+      }
+    ]
+  }
+}

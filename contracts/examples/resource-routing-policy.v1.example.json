@@ -1,0 +1,19 @@
+{
+  "schemaName": "ResourceRoutingPolicy",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-06T15:31:00Z",
+  "policyId": "resource-default",
+  "enabled": true,
+  "defaults": {
+    "idleGpuUtilPercent": 30,
+    "busyCpuPercent": 75,
+    "overheadTolerance": 1.5,
+    "cpuOnlyMode": false,
+    "maxWaitMs": 25
+  },
+  "laneOverrides": {
+    "interactive": { "cpuOnlyMode": false, "maxWaitMs": 10 },
+    "background": { "maxWaitMs": 50 }
+  },
+  "notes": "Prefer GPU for batch/embedding workloads when CPU is saturated"
+}

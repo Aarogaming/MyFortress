@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/inference-backend-status-list/v1",
+  "title": "InferenceBackendStatusList v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "generatedUtc", "items"],
+  "properties": {
+    "schemaName": { "const": "InferenceBackendStatusList" },
+    "schemaVersion": { "const": "1.0.0" },
+    "generatedUtc": { "type": "string", "format": "date-time" },
+    "items": {
+      "type": "array",
+      "items": { "$ref": "inference-backend-status.v1.schema.json" }
+    }
+  }
+}

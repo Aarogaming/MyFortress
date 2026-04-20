@@ -1,0 +1,9 @@
+{
+  "schemaName": "WorkPacketSetState",
+  "schemaVersion": "1.0.0",
+  "packetId": "0001-aas-orchestrator",
+  "state": "in_progress",
+  "author": "assistant",
+  "note": "Implement verify delegation.",
+  "extensions": {}
+}

@@ -1,0 +1,43 @@
+{
+  "schemaName": "MemoryQueryResult",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-06T12:50:00Z",
+  "scope": "global",
+  "namespace": "decisions",
+  "items": [
+    {
+      "schemaName": "MemoryItem",
+      "schemaVersion": "1.0.0",
+      "scope": "hive:local",
+      "namespace": "decisions",
+      "key": "decision/M0.1",
+      "value": {
+        "status": "proposed",
+        "text": "Introduce a contextual + shared memory layer"
+      },
+      "tags": ["planning"],
+      "createdUtc": "2026-02-06T12:30:00Z",
+      "updatedUtc": "2026-02-06T12:50:00Z",
+      "revision": 1,
+      "origin": {
+        "hiveId": "local",
+        "instanceId": "dev-01",
+        "componentId": "core.memory"
+      },
+      "originIssuedUtc": "2026-02-06T12:30:00Z",
+      "originMessageId": "msg-mem-upsert-001",
+      "source": {
+        "hiveId": "swarm",
+        "instanceId": "replica-01",
+        "componentId": "core.memory.replica"
+      }
+    }
+  ],
+  "nextCursor": null,
+  "source": {
+    "hiveId": "swarm",
+    "instanceId": "replica-01",
+    "componentId": "core.memory.replica"
+  },
+  "traceId": "trace-mem-global-001"
+}

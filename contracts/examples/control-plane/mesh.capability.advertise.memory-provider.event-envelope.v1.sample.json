@@ -1,0 +1,26 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "mesh",
+  "topic": "mesh.capability.advertise.v1",
+  "message_id": "msg-mesh-mem-001",
+  "emitted_utc": "2026-02-06T12:40:00Z",
+  "trace_id": "trace-mesh-mem-001",
+  "payload": {
+    "schemaName": "MeshCapabilityAdvertisement",
+    "schemaVersion": "1.0.0",
+    "emittedUtc": "2026-02-06T12:40:00Z",
+    "ttlSec": 30,
+    "capabilityId": "memory.store@1.0.0",
+    "provider": {
+      "hiveId": "local",
+      "instanceId": "dev-01",
+      "componentId": "core.memory"
+    },
+    "transports": ["event_bus", "outbox"]
+  },
+  "source": {
+    "component": "mesh-advertiser",
+    "instanceId": "dev-01"
+  }
+}

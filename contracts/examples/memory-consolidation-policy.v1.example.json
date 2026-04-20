@@ -1,0 +1,27 @@
+{
+  "schemaName": "MemoryConsolidationPolicy",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-06T14:20:00Z",
+  "policyId": "mem-consolidate-default",
+  "enabled": true,
+  "defaults": {
+    "minItems": 5,
+    "maxItems": 200,
+    "maxOutputItems": 10,
+    "allowDelete": false,
+    "requireMinConfidence": 0.7,
+    "requireMinFeedback": "none",
+    "denyKeyPrefix": ["secrets/", "credentials/"],
+    "outputNamespace": "summaries",
+    "outputKeyPrefix": "summary/",
+    "ttlSec": 86400,
+    "consolidationPrompt": "Summarize observations into stable, non-speculative facts."
+  },
+  "rules": [
+    {
+      "match": { "namespace": "observations" },
+      "apply": { "requireMinConfidence": 0.5, "ttlSec": 3600 }
+    }
+  ],
+  "notes": "Default consolidation policy"
+}

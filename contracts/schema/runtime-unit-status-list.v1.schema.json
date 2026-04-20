@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/runtime-unit-status-list/v1",
+  "title": "RuntimeUnitStatusList v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "generatedUtc", "items"],
+  "properties": {
+    "schemaName": { "const": "RuntimeUnitStatusList" },
+    "schemaVersion": { "const": "1.0.0" },
+    "generatedUtc": { "type": "string", "format": "date-time" },
+    "items": {
+      "type": "array",
+      "items": { "$ref": "runtime-unit-status.v1.schema.json" }
+    }
+  }
+}

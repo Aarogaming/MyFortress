@@ -1,0 +1,21 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "research",
+  "topic": "research.discovery.result.v1",
+  "message_id": "msg-research-discovery-result-001",
+  "emitted_utc": "2026-02-06T15:00:02Z",
+  "trace_id": "trace-research-001",
+  "correlation_id": "msg-research-discovery-001",
+  "payload": {
+    "schemaName": "ResearchDiscoveryResult",
+    "schemaVersion": "1.0.0",
+    "generatedUtc": "2026-02-06T15:00:02Z",
+    "requestMessageId": "msg-research-discovery-001",
+    "candidates": []
+  },
+  "source": {
+    "component": "research-provider",
+    "instanceId": "dev-01"
+  }
+}

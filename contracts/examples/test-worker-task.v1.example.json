@@ -1,0 +1,10 @@
+{
+  "schemaName": "TestWorkerTask",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-06T17:40:00Z",
+  "target": { "type": "http", "url": "http://localhost:8000" },
+  "goals": ["Open the home page", "Verify status is healthy"],
+  "maxDurationSec": 120,
+  "dryRun": true,
+  "traceId": "trace-qa-001"
+}

@@ -1,0 +1,31 @@
+{
+  "service": {
+    "name": "MyFortress",
+    "role": "The Sentinel",
+    "status": "active"
+  },
+  "capabilities": {
+    "provides": [
+      "the-crucible-sandboxing",
+      "the-vault-management",
+      "security-hygiene-checks",
+      "policy-enforcement",
+      "auxiliary-gateway"
+    ],
+    "requires": [
+      "event-bus"
+    ]
+  },
+  "entry_points": {
+    "boot": "./scripts/sentinel_engine.py",
+    "agent_prompt": ".aas/AGENTS.md"
+  },
+  "communication": {
+    "channels": ["event_bus"],
+    "subscriptions": [
+      "artifact.policy.validation",
+      "system.security.audit",
+      "fortress.vetting.requested"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schemaName": "RuntimeUnitMeta",
+  "schemaVersion": "1.0.0",
+  "unitId": "example.long_running",
+  "pid": 12345,
+  "startedUtc": "2026-02-08T00:00:00Z",
+  "endedUtc": null,
+  "exitCode": null,
+  "spec": {
+    "command": "python",
+    "args": ["-c", "import time; time.sleep(60)"],
+    "cwd": null,
+    "killTree": true,
+    "jobObject": false,
+    "captureLogs": true
+  }
+}

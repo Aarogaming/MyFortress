@@ -1,0 +1,22 @@
+{
+  "schemaName": "MemoryReplicationPolicy",
+  "schemaVersion": "1.0.0",
+  "issuedUtc": "2026-02-06T13:00:00Z",
+  "policyId": "mem-repl-default",
+  "enabled": true,
+  "sources": [
+    {
+      "scope": "hive:.*",
+      "namespaces": ["decisions", "capabilities", "assignments"],
+      "keyPrefixDeny": ["secrets/", "credentials/"]
+    }
+  ],
+  "destinations": [
+    {
+      "scope": "global",
+      "mode": "derive",
+      "conflict": "prefer_origin_issued_utc"
+    }
+  ],
+  "notes": "Default derived global read model"
+}

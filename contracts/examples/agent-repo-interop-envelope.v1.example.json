@@ -1,0 +1,34 @@
+{
+  "schema_version": "0.1",
+  "session_id": "sess-20260213-0115-abc123",
+  "agent": {
+    "name": "codex",
+    "model": "openai/gpt-5.3-codex",
+    "host": "vscode"
+  },
+  "workspace": {
+    "primary_repo": "AaroneousAutomationSuite",
+    "read_repos": ["Maelstrom", "Merlin"],
+    "write_repos": ["AaroneousAutomationSuite"],
+    "session_tag": "coding"
+  },
+  "resource_mode": {
+    "routing": "local",
+    "fallback_model": "gpt-4o-mini",
+    "rg_governor": true,
+    "adaptive_watch": true,
+    "gpu_offload_intent": 42.8,
+    "focus_window_active": true
+  },
+  "metrics": {
+    "cpu_percent": 62.0,
+    "memory_percent": 61.8,
+    "gpu_percent": 8.0,
+    "gpu_memory_percent": 50.1,
+    "ide_cpu_percent": 14.0
+  },
+  "timestamps": {
+    "started_at": "2026-02-13T01:15:00Z",
+    "updated_at": "2026-02-13T01:20:00Z"
+  }
+}

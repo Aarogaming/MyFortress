@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/inference-models-recommend-result/v1",
+  "title": "InferenceModelsRecommendResult v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaName", "schemaVersion", "generatedUtc", "recommendations"],
+  "properties": {
+    "schemaName": { "const": "InferenceModelsRecommendResult" },
+    "schemaVersion": { "const": "1.0.0" },
+    "generatedUtc": { "type": "string", "format": "date-time" },
+
+    "recommendations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/recommendation" }
+    },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+    "roots": { "type": "array", "items": { "type": "string" } },
+    "truncated": { "type": "boolean" },
+
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "recommendation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["purpose", "modelId", "path", "backendType", "loadPayload", "reason"],
+      "properties": {
+        "purpose": { "type": "string", "enum": ["chat", "embeddings"] },
+        "modelId": { "type": "string", "minLength": 1 },
+        "path": { "type": "string", "minLength": 1 },
+        "backendType": {
+          "type": "string",
+          "enum": ["llama_cpp_python_server", "llama_cpp_server", "stub"]
+        },
+        "loadPayload": { "$ref": "inference-model-load.v1.schema.json" },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

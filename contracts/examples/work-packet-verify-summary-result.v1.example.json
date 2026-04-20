@@ -1,0 +1,35 @@
+{
+  "schemaName": "WorkPacketVerifySummaryResult",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-08T00:00:00Z",
+  "packetId": "0001-aas-orchestrator",
+  "role": "verify",
+  "runId": "abc12345",
+  "overall": "running",
+  "totals": {
+    "total": 2,
+    "running": 1,
+    "exited": 1,
+    "failed": 0,
+    "unknown": 0,
+    "passed": 1
+  },
+  "items": [
+    {
+      "ref": "work.verify.0001-aas-orchestrator.abc12345.1",
+      "unitStatus": {
+        "schemaName": "RuntimeUnitStatus",
+        "schemaVersion": "1.0.0",
+        "generatedUtc": "2026-02-08T00:00:00Z",
+        "unitId": "work.verify.0001-aas-orchestrator.abc12345.1",
+        "state": "running"
+      },
+      "extensions": {
+        "role": "verify",
+        "runId": "abc12345",
+        "command": "pytest -q"
+      }
+    }
+  ],
+  "extensions": {}
+}

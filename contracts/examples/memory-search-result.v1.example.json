@@ -1,0 +1,28 @@
+{
+  "schemaName": "MemorySearchResult",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-06T13:10:01Z",
+  "query": "What were the decisions about the memory layer?",
+  "items": [
+    {
+      "score": 0.86,
+      "item": {
+        "schemaName": "MemoryItem",
+        "schemaVersion": "1.0.0",
+        "scope": "hive:local",
+        "namespace": "decisions",
+        "key": "decision/M0.1",
+        "value": {
+          "status": "proposed",
+          "text": "Introduce a contextual + shared memory layer"
+        }
+      }
+    }
+  ],
+  "source": {
+    "hiveId": "local",
+    "instanceId": "dev-01",
+    "componentId": "core.memory"
+  },
+  "traceId": "trace-mem-search-001"
+}

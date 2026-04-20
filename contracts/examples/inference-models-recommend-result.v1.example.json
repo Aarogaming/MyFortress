@@ -1,0 +1,30 @@
+{
+  "schemaName": "InferenceModelsRecommendResult",
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-02-08T00:00:05Z",
+  "roots": ["C:/Users/aarog/.lmstudio"],
+  "truncated": false,
+  "warnings": [],
+  "recommendations": [
+    {
+      "purpose": "embeddings",
+      "modelId": "nomic-embed-text-v1.5.Q4_K_M",
+      "path": "C:/Users/aarog/.lmstudio/.internal/bundled-models/nomic-ai/nomic-embed-text-v1.5-GGUF/nomic-embed-text-v1.5.Q4_K_M.gguf",
+      "backendType": "llama_cpp_python_server",
+      "reason": "Embedding-tagged model in configured roots",
+      "loadPayload": {
+        "schemaName": "InferenceModelLoad",
+        "schemaVersion": "1.0.0",
+        "issuedUtc": "2026-02-08T00:00:05Z",
+        "backendType": "llama_cpp_python_server",
+        "backendId": "nomic-embed-text-v1.5.Q4_K_M",
+        "modelPath": "C:/Users/aarog/.lmstudio/.internal/bundled-models/nomic-ai/nomic-embed-text-v1.5-GGUF/nomic-embed-text-v1.5.Q4_K_M.gguf",
+        "port": 8090,
+        "setActive": false,
+        "waitReadySec": 3,
+        "dryRun": true
+      }
+    }
+  ],
+  "extensions": {}
+}

@@ -1,0 +1,18 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "ops",
+  "topic": "ops.resource.snapshot.v1",
+  "message_id": "msg-resource-snapshot-001",
+  "emitted_utc": "2026-02-06T15:30:00Z",
+  "trace_id": "trace-resource-001",
+  "payload": {
+    "schemaName": "ResourceSnapshot",
+    "schemaVersion": "1.0.0",
+    "generatedUtc": "2026-02-06T15:30:00Z",
+    "host": "devbox-01",
+    "cpu": { "percent": 82.1 },
+    "memory": { "percent": 41.2 }
+  },
+  "source": { "component": "resource-monitor", "instanceId": "dev-01" }
+}

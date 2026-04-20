@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aas.local/contracts/memory-ingestion-policy/v1",
+  "title": "MemoryIngestionPolicy v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaName",
+    "schemaVersion",
+    "issuedUtc",
+    "policyId",
+    "enabled",
+    "defaults"
+  ],
+  "properties": {
+    "schemaName": { "const": "MemoryIngestionPolicy" },
+    "schemaVersion": { "const": "1.0.0" },
+
+    "issuedUtc": { "type": "string", "format": "date-time" },
+    "policyId": { "type": "string", "minLength": 1 },
+    "enabled": { "type": "boolean" },
+
+    "defaults": { "$ref": "#/$defs/defaults" },
+
+    "rules": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/rule" }
+    },
+
+    "notes": { "type": "string" },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "defaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": { "type": "string", "enum": ["infer", "raw"] },
+        "confidenceThreshold": { "type": "number", "minimum": 0, "maximum": 1 },
+        "allowDelete": { "type": "boolean" },
+        "maxOps": { "type": "integer", "minimum": 1, "maximum": 1000 },
+        "customInstructions": { "type": "string" },
+        "factExtractionPrompt": { "type": "string" },
+        "mergeDecisionPrompt": { "type": "string" }
+      }
+    },
+    "rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["match", "apply"],
+      "properties": {
+        "match": { "$ref": "#/$defs/match" },
+        "apply": { "$ref": "#/$defs/defaults" }
+      }
+    },
+    "match": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope": { "type": "string", "minLength": 1 },
+        "namespace": { "type": "string", "minLength": 1 },
+        "keyPrefix": { "type": "string", "minLength": 1 },
+        "agentId": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

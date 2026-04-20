@@ -1,0 +1,23 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "memory",
+  "topic": "memory.merge.plan.v1",
+  "message_id": "msg-mem-merge-plan-001",
+  "emitted_utc": "2026-02-06T13:45:01Z",
+  "trace_id": "trace-mem-ingest-001",
+  "correlation_id": "msg-mem-ingest-001",
+  "payload": {
+    "schemaName": "MemoryMergePlan",
+    "schemaVersion": "1.0.0",
+    "generatedUtc": "2026-02-06T13:45:01Z",
+    "requestMessageId": "msg-mem-ingest-001",
+    "scope": "task:AAS-123",
+    "namespace": "decisions",
+    "actions": []
+  },
+  "source": {
+    "component": "memory-provider",
+    "instanceId": "dev-01"
+  }
+}

@@ -1,0 +1,336 @@
+{
+  "policy_id": "myfortress.janus-gate.v1",
+  "cycle_id": "CHIMERA-V2-RESEARCH-AND-EXECUTION-2026-02-15",
+  "status": "cp2_advisory_authoritative",
+  "generated_utc": "2026-02-15T00:00:00Z",
+  "mythic_name": "Janus Gate",
+  "collision_result": {
+    "query": "Janus Gate",
+    "search_scope": [
+      "MyFortress/**"
+    ],
+    "collision_found": false,
+    "colliding_paths": []
+  },
+  "fallback_plain_name": "composition-maelstrom-promotion-gate",
+  "scope": {
+    "repo": "MyFortress",
+    "path_allowlist_prefixes": [
+      "MyFortress/"
+    ]
+  },
+  "workflows": [
+    "composition",
+    "maelstrom_runtime_promotion"
+  ],
+  "workflow_requirements": {
+    "composition": {
+      "required_fields": [
+        "workflow_metadata.composition_spec_digest"
+      ],
+      "digest_fields": [
+        "workflow_metadata.composition_spec_digest"
+      ]
+    },
+    "maelstrom_runtime_promotion": {
+      "required_fields": [
+        "workflow_metadata.runtime_bundle_digest",
+        "workflow_metadata.promotion_from",
+        "workflow_metadata.promotion_to"
+      ],
+      "digest_fields": [
+        "workflow_metadata.runtime_bundle_digest"
+      ],
+      "allowed_transitions": [
+        "dev->staging",
+        "staging->canary",
+        "canary->prod"
+      ]
+    }
+  },
+  "pass_0": {
+    "risk_classes": {
+      "R0": {
+        "intent": "Metadata-only changes with no runtime path changes.",
+        "allowed_target_environments": [
+          "dev",
+          "staging"
+        ],
+        "required_controls": [
+          "scope_confined_myfortress",
+          "ticket_linked",
+          "lint_test_type_passed",
+          "docs_or_metadata_only"
+        ],
+        "min_distinct_approvals": 1,
+        "required_approval_roles": [
+          "service_owner"
+        ]
+      },
+      "R1": {
+        "intent": "Behavioral changes with bounded blast radius and rollback path.",
+        "allowed_target_environments": [
+          "dev",
+          "staging",
+          "canary"
+        ],
+        "required_controls": [
+          "scope_confined_myfortress",
+          "ticket_linked",
+          "lint_test_type_passed",
+          "schema_compat_verified",
+          "runbook_delta_recorded"
+        ],
+        "min_distinct_approvals": 2,
+        "required_approval_roles": [
+          "service_owner",
+          "qa_reviewer"
+        ]
+      },
+      "R2": {
+        "intent": "Security/reliability-impacting changes requiring canary evidence.",
+        "allowed_target_environments": [
+          "canary",
+          "prod"
+        ],
+        "required_controls": [
+          "scope_confined_myfortress",
+          "ticket_linked",
+          "lint_test_type_passed",
+          "threat_model_delta_reviewed",
+          "runtime_guardrails_declared",
+          "canary_soak_complete"
+        ],
+        "min_distinct_approvals": 2,
+        "required_approval_roles": [
+          "service_owner",
+          "security_reviewer"
+        ]
+      },
+      "R3": {
+        "intent": "Critical-path control-plane/runtime changes with highest blast radius.",
+        "allowed_target_environments": [
+          "prod"
+        ],
+        "required_controls": [
+          "scope_confined_myfortress",
+          "ticket_linked",
+          "lint_test_type_passed",
+          "change_window_scheduled",
+          "incident_commander_briefed",
+          "manual_promotion_holdpoint",
+          "rollback_drill_passed",
+          "kill_switch_verified"
+        ],
+        "min_distinct_approvals": 3,
+        "required_approval_roles": [
+          "service_owner",
+          "security_reviewer",
+          "incident_commander"
+        ]
+      }
+    }
+  },
+  "pass_1": {
+    "provenance_requirements": {
+      "required_fields": [
+        "source_repo",
+        "source_commit",
+        "build_pipeline",
+        "artifact_digest",
+        "sbom_digest",
+        "test_report_digest"
+      ],
+      "digest_fields": [
+        "artifact_digest",
+        "sbom_digest",
+        "test_report_digest"
+      ],
+      "attestation_requirements_by_risk": {
+        "R0": [
+          "author_attestation"
+        ],
+        "R1": [
+          "author_attestation",
+          "build_provenance"
+        ],
+        "R2": [
+          "build_provenance",
+          "sbom_attestation",
+          "test_results_attestation"
+        ],
+        "R3": [
+          "build_provenance",
+          "sbom_attestation",
+          "test_results_attestation",
+          "runtime_readiness_attestation",
+          "security_review_attestation"
+        ]
+      }
+    },
+    "incident_controls": {
+      "freeze_mode": "fail_closed",
+      "override_rules_by_risk": {
+        "R0": {
+          "allow_override": true,
+          "ticket_prefix": "INC-",
+          "required_roles": [
+            "service_owner"
+          ],
+          "min_reason_chars": 20,
+          "max_override_minutes": 240
+        },
+        "R1": {
+          "allow_override": true,
+          "ticket_prefix": "INC-",
+          "required_roles": [
+            "service_owner",
+            "incident_commander"
+          ],
+          "min_reason_chars": 20,
+          "max_override_minutes": 120
+        },
+        "R2": {
+          "allow_override": true,
+          "ticket_prefix": "INC-",
+          "required_roles": [
+            "security_reviewer",
+            "incident_commander"
+          ],
+          "min_reason_chars": 30,
+          "max_override_minutes": 60
+        },
+        "R3": {
+          "allow_override": true,
+          "ticket_prefix": "INC-",
+          "required_roles": [
+            "security_reviewer",
+            "incident_commander",
+            "platform_owner"
+          ],
+          "min_reason_chars": 40,
+          "max_override_minutes": 30
+        }
+      }
+    }
+  },
+  "pass_2": {
+    "phase_control": {
+      "active_cycle_phase": "CP2 Advisory Enforcement",
+      "active_rollout_phase": "observe",
+      "active_mode": "advisory",
+      "hard_fail_enabled": false,
+      "authoritative_sources": {
+        "policy_path": "docs/policy/JANUS_GATE_POLICY_V1.json",
+        "evaluator_entrypoint": "scripts/evaluate_policy_gate.py",
+        "evaluator_function": "gateway.policy.gate_eval.evaluate_gate"
+      }
+    },
+    "enforcement_rollout": [
+      {
+        "phase": "observe",
+        "mode": "advisory",
+        "entry_criteria": "Policy definition merged and sample envelopes passing.",
+        "exit_criteria": "No false-positive gate failures for three consecutive runs."
+      },
+      {
+        "phase": "soft_fail",
+        "mode": "required_with_override",
+        "entry_criteria": "Observe exit criteria met.",
+        "exit_criteria": "Override rate below 5% for two release cycles."
+      },
+      {
+        "phase": "hard_fail",
+        "mode": "required_fail_closed",
+        "entry_criteria": "Soft-fail exit criteria met.",
+        "exit_criteria": "Steady-state governance mode."
+      }
+    ],
+    "cp3_enforce_transition_matrix": {
+      "target_rollout_phase": "hard_fail",
+      "target_mode": "required_fail_closed",
+      "decision_rule": "all_criteria_required",
+      "criteria": [
+        {
+          "criterion_id": "CP3-01",
+          "name": "authoritative_policy_and_evaluator_pinned",
+          "required": true,
+          "type": "exact_match",
+          "evidence_fields": [
+            "phase_control.authoritative_sources.policy_path",
+            "phase_control.authoritative_sources.evaluator_entrypoint",
+            "phase_control.authoritative_sources.evaluator_function"
+          ],
+          "expected_values": {
+            "phase_control.authoritative_sources.policy_path": "docs/policy/JANUS_GATE_POLICY_V1.json",
+            "phase_control.authoritative_sources.evaluator_entrypoint": "scripts/evaluate_policy_gate.py",
+            "phase_control.authoritative_sources.evaluator_function": "gateway.policy.gate_eval.evaluate_gate"
+          }
+        },
+        {
+          "criterion_id": "CP3-02",
+          "name": "advisory_false_positive_rate_clean",
+          "required": true,
+          "type": "ratio_max",
+          "measurement_window": "3 consecutive release runs",
+          "metric_numerator": "false_positive_gate_failures",
+          "metric_denominator": "total_gate_evaluations",
+          "max_value": 0.0
+        },
+        {
+          "criterion_id": "CP3-03",
+          "name": "soft_fail_burn_in_override_rate",
+          "required": true,
+          "type": "ratio_max",
+          "measurement_window": "2 consecutive release cycles",
+          "metric_numerator": "approved_overrides",
+          "metric_denominator": "total_gate_evaluations",
+          "max_value": 0.05
+        },
+        {
+          "criterion_id": "CP3-04",
+          "name": "workflow_policy_compliance",
+          "required": true,
+          "type": "ratio_min",
+          "measurement_window": "most recent release cycle",
+          "metric_numerator": "policy_pass_or_valid_override_events",
+          "metric_denominator": "total_promotion_attempts",
+          "min_value": 1.0
+        },
+        {
+          "criterion_id": "CP3-05",
+          "name": "canary_soak_evidence_compliance",
+          "required": true,
+          "type": "ratio_min",
+          "measurement_window": "most recent release cycle",
+          "metric_numerator": "promotions_with_required_canary_soak_evidence",
+          "metric_denominator": "staging_to_canary_and_canary_to_prod_promotions",
+          "min_value": 1.0
+        },
+        {
+          "criterion_id": "CP3-06",
+          "name": "critical_policy_exceptions_closed",
+          "required": true,
+          "type": "count_max",
+          "measurement_window": "decision timestamp",
+          "metric_name": "open_critical_policy_exceptions",
+          "max_value": 0
+        }
+      ]
+    },
+    "integration_points": {
+      "AAS": [
+        "Emit envelope and attestation bundle into AAS artifact bus on promotion attempts.",
+        "Use AAS compatibility matrix updates as required evidence for risk-class changes."
+      ],
+      "Guild": [
+        "Route R2/R3 override reviews through Guild incident governance quorum.",
+        "Publish gate analytics to Guild planning lanes for policy tuning."
+      ],
+      "Maelstrom": [
+        "Block Maelstrom stage transitions unless envelope evaluates pass.",
+        "Require canary soak evidence for staging->canary and canary->prod transitions."
+      ]
+    }
+  }
+}

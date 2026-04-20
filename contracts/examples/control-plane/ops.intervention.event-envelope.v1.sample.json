@@ -1,0 +1,16 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "ops",
+  "topic": "ops.intervention.v1",
+  "message_id": "msg-ops-intervention-001",
+  "emitted_utc": "2026-02-06T16:40:00Z",
+  "trace_id": "trace-ops-002",
+  "payload": {
+    "schemaName": "OpsIntervention",
+    "schemaVersion": "1.0.0",
+    "issuedUtc": "2026-02-06T16:40:00Z",
+    "action": "shed_load"
+  },
+  "source": { "component": "ops", "instanceId": "dev-01" }
+}

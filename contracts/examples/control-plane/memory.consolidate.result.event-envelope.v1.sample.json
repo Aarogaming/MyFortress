@@ -1,0 +1,23 @@
+{
+  "schemaName": "EventEnvelope",
+  "schemaVersion": "1.0.0",
+  "kind": "memory",
+  "topic": "memory.consolidate.result.v1",
+  "message_id": "msg-mem-consolidate-result-001",
+  "emitted_utc": "2026-02-06T14:22:05Z",
+  "trace_id": "trace-mem-consolidate-001",
+  "correlation_id": "msg-mem-consolidate-001",
+  "payload": {
+    "schemaName": "MemoryConsolidateResult",
+    "schemaVersion": "1.0.0",
+    "generatedUtc": "2026-02-06T14:22:05Z",
+    "requestMessageId": "msg-mem-consolidate-001",
+    "scope": "task:AAS-123",
+    "namespace": "observations",
+    "operations": []
+  },
+  "source": {
+    "component": "memory-provider",
+    "instanceId": "dev-01"
+  }
+}
