@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "repo": "MyFortress",
+  "genome_version": "v1.0.0",
+  "current_stage": "stabilization",
+  "status": "quarantine_pending",
+  "mode": "solo",
+  "promotion": {
+    "gates_required": [
+      "manifest_schema_valid",
+      "capability_entrypoints_valid",
+      "heartbeat_check_passed",
+      "security_hooks_passed"
+    ],
+    "gates_passed": [],
+    "auditor": "pending"
+  },
+  "updated_at_utc": "2026-04-21T21:42:38Z"
+}

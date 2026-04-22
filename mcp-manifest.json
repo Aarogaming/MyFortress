@@ -1,0 +1,32 @@
+{
+  "repo": "MyFortress",
+  "description": "The Sentinel: To enforce absolute security, evaluate architectural policy gates, scan for vulnerabilities/secrets, and ensure federation compliance.",
+  "capabilities": [
+    {
+      "schema_version": "1.0",
+      "governing_body": "MyFortress",
+      "capability_id": "myfortress_fortress_secret_scan",
+      "name": "FortressSecretScan",
+      "description": "fortress_secret_scan execution capability for MyFortress.",
+      "mcp_type": "event_trigger",
+      "entry_point": "myfortress.fortress_secret_scan",
+      "version": "v1.0.0",
+      "confirmed_conditions": [
+        "quarantine_pending"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "governing_body": "MyFortress",
+      "capability_id": "myfortress_fortress_policy_evaluate",
+      "name": "FortressPolicyEvaluate",
+      "description": "fortress_policy_evaluate execution capability for MyFortress.",
+      "mcp_type": "event_trigger",
+      "entry_point": "myfortress.fortress_policy_evaluate",
+      "version": "v1.0.0",
+      "confirmed_conditions": [
+        "quarantine_pending"
+      ]
+    }
+  ]
+}
